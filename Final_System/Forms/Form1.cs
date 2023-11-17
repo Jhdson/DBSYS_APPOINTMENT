@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Final_System.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,6 +34,17 @@ namespace Final_System
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_register_Click(object sender, EventArgs e)
+        {
+            frm_register frm = new frm_register ();
+            frm.ShowDialog();
+        }
+
+        private void btn_register_Click_1(object sender, EventArgs e)
         {
 
         }

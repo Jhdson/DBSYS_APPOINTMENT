@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Final_System.Forms
 {
-    public partial class Register : Form
+    public partial class frm_register : Form
     {
-        public Register()
+        public frm_register()
         {
             InitializeComponent();
         }

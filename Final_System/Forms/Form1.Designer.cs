@@ -33,7 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_register = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbmini1 = new System.Windows.Forms.PictureBox();
@@ -107,16 +107,17 @@
             this.textBox1.Size = new System.Drawing.Size(169, 18);
             this.textBox1.TabIndex = 6;
             // 
-            // button2
+            // btn_register
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button2.Location = new System.Drawing.Point(49, 194);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(169, 26);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Create Account";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btn_register.BackColor = System.Drawing.Color.White;
+            this.btn_register.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_register.Location = new System.Drawing.Point(49, 194);
+            this.btn_register.Name = "btn_register";
+            this.btn_register.Size = new System.Drawing.Size(169, 26);
+            this.btn_register.TabIndex = 7;
+            this.btn_register.Text = "Create Account";
+            this.btn_register.UseVisualStyleBackColor = false;
+            this.btn_register.Click += new System.EventHandler(this.btn_register_Click_1);
             // 
             // label3
             // 
@@ -133,7 +134,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.BurlyWood;
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btn_register);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -229,7 +230,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_register;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
