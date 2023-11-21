@@ -34,3 +34,12 @@ C:\Users\jay hudson\Source\Repos\appointment_system\Final_System\obj\Debug\Final
 C:\Users\jay hudson\Source\Repos\appointment_system\Final_System\obj\Debug\Final_System.csproj.CoreCompileInputs.cache
 C:\Users\jay hudson\Source\Repos\appointment_system\Final_System\obj\Debug\Final_System.exe
 C:\Users\jay hudson\Source\Repos\appointment_system\Final_System\obj\Debug\Final_System.pdb
+C:\Users\USER\Desktop\appointment_system\Final_System\obj\Debug\Final_System.csproj.AssemblyReference.cache
+C:\Users\USER\Desktop\appointment_system\Final_System\obj\Debug\Final_System.Forms.Admin_Dashboard.resources
+C:\Users\USER\Desktop\appointment_system\Final_System\obj\Debug\Final_System.Login_form.resources
+C:\Users\USER\Desktop\appointment_system\Final_System\obj\Debug\Final_System.Forms.frm_register.resources
+C:\Users\USER\Desktop\appointment_system\Final_System\obj\Debug\Final_System.Properties.Resources.resources
+C:\Users\USER\Desktop\appointment_system\Final_System\obj\Debug\Final_System.csproj.GenerateResource.cache
+C:\Users\USER\Desktop\appointment_system\Final_System\obj\Debug\Final_System.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\appointment_system\Final_System\obj\Debug\Final_System.exe
+C:\Users\USER\Desktop\appointment_system\Final_System\obj\Debug\Final_System.pdb

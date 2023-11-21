@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppointmentsystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="FitnessSchedule">
+    <Key>
+      <PropertyRef Name="schedule_id" />
+    </Key>
+    <Property Name="schedule_id" Type="Int32" Nullable="false" />
+    <Property Name="instructor_id" Type="Int32" />
+    <Property Name="session_id" Type="Int32" />
+    <Property Name="day_of_week" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="start_time" Type="Time" Precision="7" />
+    <Property Name="end_time" Type="Time" Precision="7" />
+    <Property Name="location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="FitnessTrainingSessions" Relationship="Self.FK_FitnessSchedule_FitnessTrainingSessions" FromRole="FitnessSchedule" ToRole="FitnessTrainingSessions" />
+    <NavigationProperty Name="Instructor" Relationship="Self.FK_FitnessSchedule_Instructor" FromRole="FitnessSchedule" ToRole="Instructor" />
+  </EntityType>
+  <EntityType Name="FitnessTrainingSessions">
+    <Key>
+      <PropertyRef Name="Sesssion_id" />
+    </Key>
+    <Property Name="Sesssion_id" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Precision="0" />
+    <Property Name="time" Type="Time" Precision="7" />
+    <Property Name="instructor_id" Type="Int32" />
+    <Property Name="locationn" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="duration_minutes" Type="Int32" />
+    <Property Name="activity_type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="FitnessSchedule" Relationship="Self.FK_FitnessSchedule_FitnessTrainingSessions" FromRole="FitnessTrainingSessions" ToRole="FitnessSchedule" />
+    <NavigationProperty Name="Instructor" Relationship="Self.FK_FitnessTrainingSessions_Instructor" FromRole="FitnessTrainingSessions" ToRole="Instructor" />
+    <NavigationProperty Name="ParticipantFeedback" Relationship="Self.FK_ParticipantFeedback_FitnessTrainingSessions" FromRole="FitnessTrainingSessions" ToRole="ParticipantFeedback" />
+    <NavigationProperty Name="PaymentTransactions" Relationship="Self.FK_PaymentTransactions_FitnessTrainingSessions" FromRole="FitnessTrainingSessions" ToRole="PaymentTransactions" />
+  </EntityType>
+  <EntityType Name="Instructor">
+    <Key>
+      <PropertyRef Name="instructor_id" />
+    </Key>
+    <Property Name="instructor_id" Type="Int32" Nullable="false" />
+    <Property Name="name_ins" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="expertise" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="contact_info" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="FitnessSchedule" Relationship="Self.FK_FitnessSchedule_Instructor" FromRole="Instructor" ToRole="FitnessSchedule" />
+    <NavigationProperty Name="FitnessTrainingSessions" Relationship="Self.FK_FitnessTrainingSessions_Instructor" FromRole="Instructor" ToRole="FitnessTrainingSessions" />
+  </EntityType>
+  <EntityType Name="ParticipantFeedback">
+    <Key>
+      <PropertyRef Name="feedback_id" />
+    </Key>
+    <Property Name="feedback_id" Type="Int32" Nullable="false" />
+    <Property Name="session_id" Type="Int32" />
+    <Property Name="participant_id" Type="Int32" />
+    <Property Name="rating" Type="Int32" />
+    <Property Name="comments" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="FitnessTrainingSessions" Relationship="Self.FK_ParticipantFeedback_FitnessTrainingSessions" FromRole="ParticipantFeedback" ToRole="FitnessTrainingSessions" />
+    <NavigationProperty Name="Participants" Relationship="Self.FK_ParticipantFeedback_Participants" FromRole="ParticipantFeedback" ToRole="Participants" />
+  </EntityType>
+  <EntityType Name="Participants">
+    <Key>
+      <PropertyRef Name="participant_id" />
+    </Key>
+    <Property Name="participant_id" Type="Int32" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="middle_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="contact_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="address1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="postal_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ParticipantFeedback" Relationship="Self.FK_ParticipantFeedback_Participants" FromRole="Participants" ToRole="ParticipantFeedback" />
+    <NavigationProperty Name="PaymentTransactions" Relationship="Self.FK_PaymentTransactions_Participants" FromRole="Participants" ToRole="PaymentTransactions" />
+  </EntityType>
+  <EntityType Name="PaymentTransactions">
+    <Key>
+      <PropertyRef Name="transaction_id" />
+    </Key>
+    <Property Name="transaction_id" Type="Int32" Nullable="false" />
+    <Property Name="session_id" Type="Int32" />
+    <Property Name="participant_id" Type="Int32" />
+    <Property Name="payment_date" Type="DateTime" Precision="0" />
+    <Property Name="amount" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="payment_method" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="FitnessTrainingSessions" Relationship="Self.FK_PaymentTransactions_FitnessTrainingSessions" FromRole="PaymentTransactions" ToRole="FitnessTrainingSessions" />
+    <NavigationProperty Name="Participants" Relationship="Self.FK_PaymentTransactions_Participants" FromRole="PaymentTransactions" ToRole="Participants" />
+  </EntityType>
+  <Association Name="FK_FitnessSchedule_FitnessTrainingSessions">
+    <End Role="FitnessTrainingSessions" Type="Self.FitnessTrainingSessions" Multiplicity="0..1" />
+    <End Role="FitnessSchedule" Type="Self.FitnessSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FitnessTrainingSessions">
+        <PropertyRef Name="Sesssion_id" />
+      </Principal>
+      <Dependent Role="FitnessSchedule">
+        <PropertyRef Name="session_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FitnessSchedule_Instructor">
+    <End Role="Instructor" Type="Self.Instructor" Multiplicity="0..1" />
+    <End Role="FitnessSchedule" Type="Self.FitnessSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Instructor">
+        <PropertyRef Name="instructor_id" />
+      </Principal>
+      <Dependent Role="FitnessSchedule">
+        <PropertyRef Name="instructor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FitnessTrainingSessions_Instructor">
+    <End Role="Instructor" Type="Self.Instructor" Multiplicity="0..1" />
+    <End Role="FitnessTrainingSessions" Type="Self.FitnessTrainingSessions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Instructor">
+        <PropertyRef Name="instructor_id" />
+      </Principal>
+      <Dependent Role="FitnessTrainingSessions">
+        <PropertyRef Name="instructor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParticipantFeedback_FitnessTrainingSessions">
+    <End Role="FitnessTrainingSessions" Type="Self.FitnessTrainingSessions" Multiplicity="0..1" />
+    <End Role="ParticipantFeedback" Type="Self.ParticipantFeedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FitnessTrainingSessions">
+        <PropertyRef Name="Sesssion_id" />
+      </Principal>
+      <Dependent Role="ParticipantFeedback">
+        <PropertyRef Name="session_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PaymentTransactions_FitnessTrainingSessions">
+    <End Role="FitnessTrainingSessions" Type="Self.FitnessTrainingSessions" Multiplicity="0..1" />
+    <End Role="PaymentTransactions" Type="Self.PaymentTransactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FitnessTrainingSessions">
+        <PropertyRef Name="Sesssion_id" />
+      </Principal>
+      <Dependent Role="PaymentTransactions">
+        <PropertyRef Name="session_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParticipantFeedback_Participants">
+    <End Role="Participants" Type="Self.Participants" Multiplicity="0..1" />
+    <End Role="ParticipantFeedback" Type="Self.ParticipantFeedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participants">
+        <PropertyRef Name="participant_id" />
+      </Principal>
+      <Dependent Role="ParticipantFeedback">
+        <PropertyRef Name="participant_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PaymentTransactions_Participants">
+    <End Role="Participants" Type="Self.Participants" Multiplicity="0..1" />
+    <End Role="PaymentTransactions" Type="Self.PaymentTransactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participants">
+        <PropertyRef Name="participant_id" />
+      </Principal>
+      <Dependent Role="PaymentTransactions">
+        <PropertyRef Name="participant_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AppointmentsystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="FitnessSchedule" EntityType="Self.FitnessSchedule" />
+    <EntitySet Name="FitnessTrainingSessions" EntityType="Self.FitnessTrainingSessions" />
+    <EntitySet Name="Instructor" EntityType="Self.Instructor" />
+    <EntitySet Name="ParticipantFeedback" EntityType="Self.ParticipantFeedback" />
+    <EntitySet Name="Participants" EntityType="Self.Participants" />
+    <EntitySet Name="PaymentTransactions" EntityType="Self.PaymentTransactions" />
+    <AssociationSet Name="FK_FitnessSchedule_FitnessTrainingSessions" Association="Self.FK_FitnessSchedule_FitnessTrainingSessions">
+      <End Role="FitnessTrainingSessions" EntitySet="FitnessTrainingSessions" />
+      <End Role="FitnessSchedule" EntitySet="FitnessSchedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FitnessSchedule_Instructor" Association="Self.FK_FitnessSchedule_Instructor">
+      <End Role="Instructor" EntitySet="Instructor" />
+      <End Role="FitnessSchedule" EntitySet="FitnessSchedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FitnessTrainingSessions_Instructor" Association="Self.FK_FitnessTrainingSessions_Instructor">
+      <End Role="Instructor" EntitySet="Instructor" />
+      <End Role="FitnessTrainingSessions" EntitySet="FitnessTrainingSessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParticipantFeedback_FitnessTrainingSessions" Association="Self.FK_ParticipantFeedback_FitnessTrainingSessions">
+      <End Role="FitnessTrainingSessions" EntitySet="FitnessTrainingSessions" />
+      <End Role="ParticipantFeedback" EntitySet="ParticipantFeedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PaymentTransactions_FitnessTrainingSessions" Association="Self.FK_PaymentTransactions_FitnessTrainingSessions">
+      <End Role="FitnessTrainingSessions" EntitySet="FitnessTrainingSessions" />
+      <End Role="PaymentTransactions" EntitySet="PaymentTransactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParticipantFeedback_Participants" Association="Self.FK_ParticipantFeedback_Participants">
+      <End Role="Participants" EntitySet="Participants" />
+      <End Role="ParticipantFeedback" EntitySet="ParticipantFeedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PaymentTransactions_Participants" Association="Self.FK_PaymentTransactions_Participants">
+      <End Role="Participants" EntitySet="Participants" />
+      <End Role="PaymentTransactions" EntitySet="PaymentTransactions" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

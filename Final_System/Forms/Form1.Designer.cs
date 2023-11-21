@@ -115,7 +115,7 @@
             this.btn_register.Name = "btn_register";
             this.btn_register.Size = new System.Drawing.Size(169, 26);
             this.btn_register.TabIndex = 7;
-            this.btn_register.Text = "Create Account";
+            this.btn_register.Text = "Register";
             this.btn_register.UseVisualStyleBackColor = false;
             this.btn_register.Click += new System.EventHandler(this.btn_register_Click_1);
             // 
