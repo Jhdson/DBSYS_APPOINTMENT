@@ -46,7 +46,8 @@ namespace Final_System
 
         private void btn_register_Click_1(object sender, EventArgs e)
         {
-
+            frm_register frm = new frm_register();
+            frm.ShowDialog();
         }
     }
 }
