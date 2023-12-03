@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AppointmentSystemModelStoreContainer" CdmEntityContainer="AppointmentSystemEntities">
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="AppointmentSystemModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="roleId" ColumnName="roleId" />
+          <ScalarProperty Name="roleName" ColumnName="roleName" />
+          <ScalarProperty Name="roleDescription" ColumnName="roleDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblInstructor">
+      <EntityTypeMapping TypeName="AppointmentSystemModel.TblInstructor">
+        <MappingFragment StoreEntitySet="TblInstructor">
+          <ScalarProperty Name="instructorId" ColumnName="instructorId" />
+          <ScalarProperty Name="instructorLName" ColumnName="instructorLName" />
+          <ScalarProperty Name="instructorFName" ColumnName="instructorFName" />
+          <ScalarProperty Name="expertise" ColumnName="expertise" />
+          <ScalarProperty Name="contactNo" ColumnName="contactNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblLocation">
+      <EntityTypeMapping TypeName="AppointmentSystemModel.TblLocation">
+        <MappingFragment StoreEntitySet="TblLocation">
+          <ScalarProperty Name="locationId" ColumnName="locationId" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="barangay" ColumnName="barangay" />
+          <ScalarProperty Name="nameOfBuilding" ColumnName="nameOfBuilding" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUser">
+      <EntityTypeMapping TypeName="AppointmentSystemModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUser">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="userLastname" ColumnName="userLastname" />
+          <ScalarProperty Name="userFirstName" ColumnName="userFirstName" />
+          <ScalarProperty Name="userAddress" ColumnName="userAddress" />
+          <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+          <ScalarProperty Name="userNumber" ColumnName="userNumber" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userPass" ColumnName="userPass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Training">
+      <EntityTypeMapping TypeName="AppointmentSystemModel.Training">
+        <MappingFragment StoreEntitySet="Training">
+          <ScalarProperty Name="trainingId" ColumnName="trainingId" />
+          <ScalarProperty Name="trainingType" ColumnName="trainingType" />
+          <ScalarProperty Name="locationId" ColumnName="locationId" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="instructorId" ColumnName="instructorId" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

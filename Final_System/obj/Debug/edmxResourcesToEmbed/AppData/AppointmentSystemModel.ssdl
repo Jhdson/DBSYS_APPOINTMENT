@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppointmentSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="roleId" />
+    </Key>
+    <Property Name="roleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="roleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="roleDescription" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TblInstructor">
+    <Key>
+      <PropertyRef Name="instructorId" />
+    </Key>
+    <Property Name="instructorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="instructorLName" Type="varchar" MaxLength="128" />
+    <Property Name="instructorFName" Type="varchar" MaxLength="128" />
+    <Property Name="expertise" Type="varchar" MaxLength="128" />
+    <Property Name="contactNo" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="TblLocation">
+    <Key>
+      <PropertyRef Name="locationId" />
+    </Key>
+    <Property Name="locationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="city" Type="nvarchar" MaxLength="255" />
+    <Property Name="barangay" Type="nvarchar" MaxLength="255" />
+    <Property Name="nameOfBuilding" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userLastname" Type="nvarchar" MaxLength="128" />
+    <Property Name="userFirstName" Type="nvarchar" MaxLength="128" />
+    <Property Name="userAddress" Type="nvarchar" MaxLength="128" />
+    <Property Name="userEmail" Type="nvarchar" MaxLength="128" />
+    <Property Name="userNumber" Type="nvarchar" MaxLength="128" />
+    <Property Name="userName" Type="nvarchar" MaxLength="128" />
+    <Property Name="userPass" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="Training">
+    <Key>
+      <PropertyRef Name="trainingId" />
+    </Key>
+    <Property Name="trainingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="trainingType" Type="nvarchar" MaxLength="255" />
+    <Property Name="locationId" Type="int" />
+    <Property Name="duration" Type="int" />
+    <Property Name="instructorId" Type="int" />
+    <Property Name="date" Type="datetime" />
+  </EntityType>
+  <EntityContainer Name="AppointmentSystemModelStoreContainer">
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblInstructor" EntityType="Self.TblInstructor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblLocation" EntityType="Self.TblLocation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Training" EntityType="Self.Training" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

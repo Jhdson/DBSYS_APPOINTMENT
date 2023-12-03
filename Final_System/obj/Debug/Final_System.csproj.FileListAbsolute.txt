@@ -43,3 +43,10 @@ C:\Users\USER\Desktop\appointment_system\Final_System\obj\Debug\Final_System.csp
 C:\Users\USER\Desktop\appointment_system\Final_System\obj\Debug\Final_System.csproj.CoreCompileInputs.cache
 C:\Users\USER\Desktop\appointment_system\Final_System\obj\Debug\Final_System.exe
 C:\Users\USER\Desktop\appointment_system\Final_System\obj\Debug\Final_System.pdb
+C:\Users\USER\Desktop\appointment_system\Final_System\bin\Debug\Final_System.exe.config
+C:\Users\USER\Desktop\appointment_system\Final_System\bin\Debug\Final_System.exe
+C:\Users\USER\Desktop\appointment_system\Final_System\bin\Debug\Final_System.pdb
+C:\Users\USER\Desktop\appointment_system\Final_System\bin\Debug\EntityFramework.dll
+C:\Users\USER\Desktop\appointment_system\Final_System\bin\Debug\EntityFramework.xml
+C:\Users\USER\Desktop\appointment_system\Final_System\obj\Debug\Final_System.csproj.CopyComplete
+C:\Users\USER\Desktop\appointment_system\Final_System\obj\Debug\Final_System.Forms.Front.resources

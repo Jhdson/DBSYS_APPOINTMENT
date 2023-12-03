@@ -49,5 +49,25 @@ namespace Final_System
             frm_register frm = new frm_register();
             frm.ShowDialog();
         }
+
+        private void pbclose1_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.SetToolTip(pbclose, "close");
+        }
+
+        private void pbmini1_MouseHover(object sender, EventArgs e)
+        {
+            toolTip2.SetToolTip(pbmini1, "minize");
+        }
+
+        private void pbmini1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

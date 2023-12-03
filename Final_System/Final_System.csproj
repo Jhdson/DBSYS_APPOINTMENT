@@ -95,6 +95,12 @@
     <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Register.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
@@ -196,6 +205,10 @@
       <DependentUpon>AppointmentSystemModel.edmx</DependentUpon>
       <LastGenOutput>AppointmentSystemModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\core-removebg-preview.png" />
+    <None Include="Resources\Screenshot_2023-12-03_084310-removebg-preview.png" />
+    <None Include="Resources\bench.jpg" />
+    <None Include="Resources\front.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />

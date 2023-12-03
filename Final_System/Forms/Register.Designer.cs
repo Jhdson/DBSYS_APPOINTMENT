@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_Register = new System.Windows.Forms.Button();
@@ -51,17 +52,19 @@
             this.lblfirstname = new System.Windows.Forms.Label();
             this.txt_lastname = new System.Windows.Forms.TextBox();
             this.lbllastname = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pbclose1 = new System.Windows.Forms.PictureBox();
-            this.pbmini1 = new System.Windows.Forms.PictureBox();
+            this.pbminii2 = new System.Windows.Forms.PictureBox();
+            this.pbmini2 = new System.Windows.Forms.PictureBox();
+            this.pbclose2 = new System.Windows.Forms.PictureBox();
+            this.pbclose = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbclose1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbmini1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbminii2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbmini2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbclose2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbclose)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -242,7 +245,7 @@
             // 
             // txt_address
             // 
-            this.txt_address.Location = new System.Drawing.Point(23, 111);
+            this.txt_address.Location = new System.Drawing.Point(22, 108);
             this.txt_address.Name = "txt_address";
             this.txt_address.Size = new System.Drawing.Size(312, 20);
             this.txt_address.TabIndex = 11;
@@ -288,55 +291,61 @@
             this.lbllastname.TabIndex = 0;
             this.lbllastname.Text = "Last Name";
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::Final_System.Properties.Resources.square;
-            this.pictureBox3.Location = new System.Drawing.Point(740, 4);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(30, 26);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 4;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Final_System.Properties.Resources.square;
-            this.pictureBox2.Location = new System.Drawing.Point(773, 4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 26);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Final_System.Properties.Resources.final_gym;
-            this.pictureBox1.Location = new System.Drawing.Point(-1, 32);
+            this.pictureBox1.Location = new System.Drawing.Point(-1, 33);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(810, 455);
+            this.pictureBox1.Size = new System.Drawing.Size(810, 454);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // pbclose1
+            // pbminii2
             // 
-            this.pbclose1.Image = global::Final_System.Properties.Resources.close;
-            this.pbclose1.Location = new System.Drawing.Point(777, 7);
-            this.pbclose1.Name = "pbclose1";
-            this.pbclose1.Size = new System.Drawing.Size(24, 21);
-            this.pbclose1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbclose1.TabIndex = 5;
-            this.pbclose1.TabStop = false;
+            this.pbminii2.Image = global::Final_System.Properties.Resources.minimize_sign;
+            this.pbminii2.Location = new System.Drawing.Point(737, 12);
+            this.pbminii2.Name = "pbminii2";
+            this.pbminii2.Size = new System.Drawing.Size(14, 14);
+            this.pbminii2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbminii2.TabIndex = 6;
+            this.pbminii2.TabStop = false;
+            this.pbminii2.Click += new System.EventHandler(this.pbminii2_Click);
+            this.pbminii2.MouseHover += new System.EventHandler(this.pbminii2_MouseHover);
             // 
-            // pbmini1
+            // pbmini2
             // 
-            this.pbmini1.Image = global::Final_System.Properties.Resources.minimize_sign;
-            this.pbmini1.Location = new System.Drawing.Point(742, 14);
-            this.pbmini1.Name = "pbmini1";
-            this.pbmini1.Size = new System.Drawing.Size(26, 16);
-            this.pbmini1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbmini1.TabIndex = 6;
-            this.pbmini1.TabStop = false;
+            this.pbmini2.Image = global::Final_System.Properties.Resources.square;
+            this.pbmini2.Location = new System.Drawing.Point(727, 3);
+            this.pbmini2.Name = "pbmini2";
+            this.pbmini2.Size = new System.Drawing.Size(36, 27);
+            this.pbmini2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbmini2.TabIndex = 7;
+            this.pbmini2.TabStop = false;
+            // 
+            // pbclose2
+            // 
+            this.pbclose2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbclose2.Image = global::Final_System.Properties.Resources.close;
+            this.pbclose2.Location = new System.Drawing.Point(765, 6);
+            this.pbclose2.Name = "pbclose2";
+            this.pbclose2.Size = new System.Drawing.Size(24, 21);
+            this.pbclose2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbclose2.TabIndex = 8;
+            this.pbclose2.TabStop = false;
+            this.pbclose2.Click += new System.EventHandler(this.pbclose2_Click);
+            this.pbclose2.MouseHover += new System.EventHandler(this.pbclose2_MouseHover);
+            // 
+            // pbclose
+            // 
+            this.pbclose.Image = global::Final_System.Properties.Resources.square;
+            this.pbclose.Location = new System.Drawing.Point(765, 3);
+            this.pbclose.Name = "pbclose";
+            this.pbclose.Size = new System.Drawing.Size(30, 27);
+            this.pbclose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbclose.TabIndex = 9;
+            this.pbclose.TabStop = false;
+            this.pbclose.Click += new System.EventHandler(this.pbclose_Click);
             // 
             // frm_register
             // 
@@ -344,23 +353,23 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.BurlyWood;
             this.ClientSize = new System.Drawing.Size(807, 518);
-            this.Controls.Add(this.pbmini1);
-            this.Controls.Add(this.pbclose1);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pbminii2);
+            this.Controls.Add(this.pbclose2);
+            this.Controls.Add(this.pbmini2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbclose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Name = "frm_register";
             this.Text = "Register";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbclose1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbmini1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbminii2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbmini2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbclose2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbclose)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -390,11 +399,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_Register;
         private System.Windows.Forms.TextBox txt_confirmpass;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pbclose1;
-        private System.Windows.Forms.PictureBox pbmini1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ErrorProvider errorproviter1;
+        private System.Windows.Forms.PictureBox pbminii2;
+        private System.Windows.Forms.PictureBox pbmini2;
+        private System.Windows.Forms.PictureBox pbclose2;
+        private System.Windows.Forms.PictureBox pbclose;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip2;
     }
 }

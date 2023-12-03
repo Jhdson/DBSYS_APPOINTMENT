@@ -66,6 +66,61 @@ namespace Final_System.Forms
                 errorproviter1.SetError(txt_confirmpass, "Empty Field");
                 return;
             }
+            if (!txt_password.Text.Equals(txt_confirmpass.Text))
+            {
+                errorproviter1.Clear();
+                errorproviter1.SetError(txt_confirmpass, "Password not match");
+                return;
+            }
+
+            tblUser UserAccount = new tblUser();
+            UserAccount.userLastname = txt_lastname.Text;
+            UserAccount.userFirstName = txt_firstname.Text;
+            /*   UserAccount.usermid = txt_middlei.Text;  */
+            UserAccount.userAddress = txt_address.Text;
+            UserAccount.userEmail = txt_Emailadd.Text;
+            UserAccount.userNumber = txt_phone.Text;
+            UserAccount.userName = txt_username.Text;
+            UserAccount.userPass = txt_password.Text;
+            UserAccount.roleId = 1;
+
+            db.tblUser.Add(UserAccount);
+            db.SaveChanges();
+
+            txt_lastname.Clear();
+            txt_firstname.Clear();
+            txt_middlei.Clear();
+            txt_address.Clear();
+            txt_Emailadd.Clear();
+            txt_phone.Clear();
+            txt_username.Clear();
+            txt_password.Clear();
+            txt_confirmpass.Clear();
+            MessageBox.Show("Registed!");
+            this.Close();
+            new Login_form().Show();
+        }
+
+        private void pbclose2_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.SetToolTip(pbclose2, "Close");
+        }
+
+        private void pbminii2_MouseHover(object sender, EventArgs e)
+        {
+            toolTip2.SetToolTip(pbminii2, "Minimize");
+        }
+
+
+        private void pbminii2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pbclose2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
+
 }
