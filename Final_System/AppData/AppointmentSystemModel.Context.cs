@@ -13,10 +13,10 @@ namespace Final_System.AppData
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AppointmentsystemEntities : DbContext
+    public partial class AppointmentSystemEntities : DbContext
     {
-        public AppointmentsystemEntities()
-            : base("name=AppointmentsystemEntities")
+        public AppointmentSystemEntities()
+            : base("name=AppointmentSystemEntities")
         {
         }
     
@@ -25,11 +25,10 @@ namespace Final_System.AppData
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<FitnessSchedule> FitnessSchedule { get; set; }
-        public DbSet<FitnessTrainingSessions> FitnessTrainingSessions { get; set; }
-        public DbSet<Instructor> Instructor { get; set; }
-        public DbSet<ParticipantFeedback> ParticipantFeedback { get; set; }
-        public DbSet<Participants> Participants { get; set; }
-        public DbSet<PaymentTransactions> PaymentTransactions { get; set; }
+        public DbSet<Role> Role { get; set; }
+        public DbSet<TblInstructor> TblInstructor { get; set; }
+        public DbSet<TblLocation> TblLocation { get; set; }
+        public DbSet<tblUser> tblUser { get; set; }
+        public DbSet<Training> Training { get; set; }
     }
 }

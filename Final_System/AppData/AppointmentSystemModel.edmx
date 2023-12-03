@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AppointmentSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="roleId" />
+          </Key>
+          <Property Name="roleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="roleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="roleDescription" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TblInstructor">
+          <Key>
+            <PropertyRef Name="instructorId" />
+          </Key>
+          <Property Name="instructorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="instructorLName" Type="varchar" MaxLength="128" />
+          <Property Name="instructorFName" Type="varchar" MaxLength="128" />
+          <Property Name="expertise" Type="varchar" MaxLength="128" />
+          <Property Name="contactNo" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="TblLocation">
+          <Key>
+            <PropertyRef Name="locationId" />
+          </Key>
+          <Property Name="locationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="city" Type="nvarchar" MaxLength="255" />
+          <Property Name="barangay" Type="nvarchar" MaxLength="255" />
+          <Property Name="nameOfBuilding" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userLastname" Type="nvarchar" MaxLength="128" />
+          <Property Name="userFirstName" Type="nvarchar" MaxLength="128" />
+          <Property Name="userAddress" Type="nvarchar" MaxLength="128" />
+          <Property Name="userEmail" Type="nvarchar" MaxLength="128" />
+          <Property Name="userNumber" Type="nvarchar" MaxLength="128" />
+          <Property Name="userName" Type="nvarchar" MaxLength="128" />
+          <Property Name="userPass" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Training">
+          <Key>
+            <PropertyRef Name="trainingId" />
+          </Key>
+          <Property Name="trainingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="trainingType" Type="nvarchar" MaxLength="255" />
+          <Property Name="locationId" Type="int" />
+          <Property Name="duration" Type="int" />
+          <Property Name="instructorId" Type="int" />
+          <Property Name="date" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="AppointmentSystemModelStoreContainer">
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblInstructor" EntityType="Self.TblInstructor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblLocation" EntityType="Self.TblLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Training" EntityType="Self.Training" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AppointmentSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="roleId" />
+          </Key>
+          <Property Name="roleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="roleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="roleDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblInstructor">
+          <Key>
+            <PropertyRef Name="instructorId" />
+          </Key>
+          <Property Name="instructorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="instructorLName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="instructorFName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblLocation">
+          <Key>
+            <PropertyRef Name="locationId" />
+          </Key>
+          <Property Name="locationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="city" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="barangay" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="nameOfBuilding" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userLastname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="userFirstName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="userAddress" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="userEmail" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="userNumber" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="userName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="userPass" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Training">
+          <Key>
+            <PropertyRef Name="trainingId" />
+          </Key>
+          <Property Name="trainingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="trainingType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="locationId" Type="Int32" />
+          <Property Name="duration" Type="Int32" />
+          <Property Name="instructorId" Type="Int32" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="AppointmentSystemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="TblInstructor" EntityType="Self.TblInstructor" />
+          <EntitySet Name="TblLocation" EntityType="Self.TblLocation" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" />
+          <EntitySet Name="Training" EntityType="Self.Training" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AppointmentSystemModelStoreContainer" CdmEntityContainer="AppointmentSystemEntities">
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="AppointmentSystemModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="roleId" ColumnName="roleId" />
+                <ScalarProperty Name="roleName" ColumnName="roleName" />
+                <ScalarProperty Name="roleDescription" ColumnName="roleDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblInstructor">
+            <EntityTypeMapping TypeName="AppointmentSystemModel.TblInstructor">
+              <MappingFragment StoreEntitySet="TblInstructor">
+                <ScalarProperty Name="instructorId" ColumnName="instructorId" />
+                <ScalarProperty Name="instructorLName" ColumnName="instructorLName" />
+                <ScalarProperty Name="instructorFName" ColumnName="instructorFName" />
+                <ScalarProperty Name="expertise" ColumnName="expertise" />
+                <ScalarProperty Name="contactNo" ColumnName="contactNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblLocation">
+            <EntityTypeMapping TypeName="AppointmentSystemModel.TblLocation">
+              <MappingFragment StoreEntitySet="TblLocation">
+                <ScalarProperty Name="locationId" ColumnName="locationId" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="barangay" ColumnName="barangay" />
+                <ScalarProperty Name="nameOfBuilding" ColumnName="nameOfBuilding" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUser">
+            <EntityTypeMapping TypeName="AppointmentSystemModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="userLastname" ColumnName="userLastname" />
+                <ScalarProperty Name="userFirstName" ColumnName="userFirstName" />
+                <ScalarProperty Name="userAddress" ColumnName="userAddress" />
+                <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+                <ScalarProperty Name="userNumber" ColumnName="userNumber" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="userPass" ColumnName="userPass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Training">
+            <EntityTypeMapping TypeName="AppointmentSystemModel.Training">
+              <MappingFragment StoreEntitySet="Training">
+                <ScalarProperty Name="trainingId" ColumnName="trainingId" />
+                <ScalarProperty Name="trainingType" ColumnName="trainingType" />
+                <ScalarProperty Name="locationId" ColumnName="locationId" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="instructorId" ColumnName="instructorId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

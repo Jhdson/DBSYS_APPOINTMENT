@@ -395,5 +395,6 @@
         private System.Windows.Forms.PictureBox pbclose1;
         private System.Windows.Forms.PictureBox pbmini1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ErrorProvider errorproviter1;
     }
 }

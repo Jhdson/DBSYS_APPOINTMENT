@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Final_System.AppData;
 
 namespace Final_System.Forms
 {
     public partial class frm_register : Form
     {
-         Final_SystemEntities
+        AppointmentSystemEntities db;
         public frm_register()
         {
             InitializeComponent();
@@ -22,47 +23,47 @@ namespace Final_System.Forms
         {
             if (String.IsNullOrEmpty(txt_lastname.Text))
             {
-                ErrorProvider.SetError(txt_lastname, "Empty Field");
+                errorproviter1.SetError(txt_lastname, "Empty Field");
                 return;
             }
             if (String.IsNullOrEmpty(txt_firstname.Text))
             {
-                ErrorProvider.SetError(txt_firstname, "Empty Field");
+                errorproviter1.SetError(txt_firstname, "Empty Field");
                 return;
             }
             if (String.IsNullOrEmpty(txt_middlei.Text))
             {
-                ErrorProvider.SetError(txt_middlei, "Empty Field");
+                errorproviter1.SetError(txt_middlei, "Empty Field");
                 return;
             }
             if (String.IsNullOrEmpty(txt_address.Text))
             {
-                ErrorProvider.SetError(txt_address, "Empty Field");
+                errorproviter1.SetError(txt_address, "Empty Field");
                 return;
             }
             if (String.IsNullOrEmpty(txt_Emailadd.Text))
             {
-                ErrorProvider.SetError(txt_Emailadd, "Empty Field");
+                errorproviter1.SetError(txt_Emailadd, "Empty Field");
                 return;
             }
             if (String.IsNullOrEmpty(txt_phone.Text))
             {
-                ErrorProvider.SetError(txt_phone, "Empty Field");
+                errorproviter1.SetError(txt_phone, "Empty Field");
                 return;
             }
             if (String.IsNullOrEmpty(txt_username.Text))
             {
-                ErrorProvider.SetError(txt_username, "Empty Field");
+                errorproviter1.SetError(txt_username, "Empty Field");
                 return;
             }
             if (String.IsNullOrEmpty(txt_password.Text))
             {
-                ErrorProvider.SetError(txt_password, "Empty Field");
+                errorproviter1.SetError(txt_password, "Empty Field");
                 return;
             }
             if (String.IsNullOrEmpty(txt_confirmpass.Text))
             {
-                ErrorProvider.SetError(txt_confirmpass, "Empty Field");
+                errorproviter1.SetError(txt_confirmpass, "Empty Field");
                 return;
             }
         }

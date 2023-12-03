@@ -53,15 +53,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppData\Final_SystemModel.Context.cs">
+    <Compile Include="AppData\AppointmentSystemModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Final_SystemModel.Context.tt</DependentUpon>
+      <DependentUpon>AppointmentSystemModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppData\Final_SystemModel.Designer.cs">
+    <Compile Include="AppData\AppointmentSystemModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Final_SystemModel.edmx</DependentUpon>
+      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\AppointmentSystemModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppointmentSystemModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\Role.cs">
+      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\TblInstructor.cs">
+      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\TblLocation.cs">
+      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\tblUser.cs">
+      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\Training.cs">
+      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Forms\Admin_Dashboard.cs">
       <SubType>Form</SubType>
@@ -102,12 +122,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EntityDeploy Include="AppData\Final_SystemModel.edmx">
+    <EntityDeploy Include="AppData\AppointmentSystemModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Final_SystemModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>AppointmentSystemModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="AppData\Final_SystemModel.edmx.diagram">
-      <DependentUpon>Final_SystemModel.edmx</DependentUpon>
+    <None Include="AppData\AppointmentSystemModel.edmx.diagram">
+      <DependentUpon>AppointmentSystemModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -163,13 +183,24 @@
     <None Include="Resources\minimize-sign.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AppData\Final_SystemModel.Context.tt">
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AppData\AppointmentSystemModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Final_SystemModel.Context.cs</LastGenOutput>
+      <DependentUpon>AppointmentSystemModel.edmx</DependentUpon>
+      <LastGenOutput>AppointmentSystemModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="AppData\AppointmentSystemModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AppointmentSystemModel.edmx</DependentUpon>
+      <LastGenOutput>AppointmentSystemModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Folder Include="Model\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
