@@ -1,6 +1,6 @@
 ﻿namespace Final_System.Forms
 {
-    partial class Front
+    partial class Staff_Dashboard
     {
         /// <summary>
         /// Required designer variable.
@@ -50,7 +50,7 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // Front
+            // Staff_Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -59,8 +59,8 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Front";
-            this.Text = "Form2";
+            this.Name = "Staff_Dashboard";
+            this.Text = "Staff";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

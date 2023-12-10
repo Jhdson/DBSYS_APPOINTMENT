@@ -10,6 +10,12 @@
         <EntityTypeShape EntityType="AppointmentSystemModel.TblLocation" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AppointmentSystemModel.tblUser" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AppointmentSystemModel.Training" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppointmentSystemModel.sysdiagrams" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="AppointmentSystemModel.Schedule" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="AppointmentSystemModel.TrainingType" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="AppointmentSystemModel.vw_TrainingTable" Width="1.5" PointX="5.375" PointY="7.75" />
+        <EntityTypeShape EntityType="AppointmentSystemModel.vw_UserTable" Width="1.5" PointX="7.375" PointY="6.75" />
+        <AssociationConnector Association="AppointmentSystemModel.FK_Training_TblLocation" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

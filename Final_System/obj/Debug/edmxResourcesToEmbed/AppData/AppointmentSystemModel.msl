@@ -34,9 +34,12 @@
     <EntitySetMapping Name="tblUser">
       <EntityTypeMapping TypeName="AppointmentSystemModel.tblUser">
         <MappingFragment StoreEntitySet="tblUser">
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="roleID" ColumnName="roleID" />
+          <ScalarProperty Name="usermid" ColumnName="usermid" />
+          <ScalarProperty Name="userFirstname" ColumnName="userFirstname" />
           <ScalarProperty Name="userId" ColumnName="userId" />
           <ScalarProperty Name="userLastname" ColumnName="userLastname" />
-          <ScalarProperty Name="userFirstName" ColumnName="userFirstName" />
           <ScalarProperty Name="userAddress" ColumnName="userAddress" />
           <ScalarProperty Name="userEmail" ColumnName="userEmail" />
           <ScalarProperty Name="userNumber" ColumnName="userNumber" />
@@ -57,5 +60,86 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="AppointmentSystemModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schedule">
+      <EntityTypeMapping TypeName="AppointmentSystemModel.Schedule">
+        <MappingFragment StoreEntitySet="Schedule">
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="day" ColumnName="day" />
+          <ScalarProperty Name="month" ColumnName="month" />
+          <ScalarProperty Name="scheduleId" ColumnName="scheduleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrainingType">
+      <EntityTypeMapping TypeName="AppointmentSystemModel.TrainingType">
+        <MappingFragment StoreEntitySet="TrainingType">
+          <ScalarProperty Name="trainingDescription" ColumnName="trainingDescription" />
+          <ScalarProperty Name="trainingtypeId" ColumnName="trainingtypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_TrainingTable">
+      <EntityTypeMapping TypeName="AppointmentSystemModel.vw_TrainingTable">
+        <MappingFragment StoreEntitySet="vw_TrainingTable">
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
+          <ScalarProperty Name="Duration_Time" ColumnName="Duration Time" />
+          <ScalarProperty Name="Location_Id_" ColumnName="Location Id " />
+          <ScalarProperty Name="Training_Type" ColumnName="Training Type" />
+          <ScalarProperty Name="Training_Id" ColumnName="Training Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_UserTable">
+      <EntityTypeMapping TypeName="AppointmentSystemModel.vw_UserTable">
+        <MappingFragment StoreEntitySet="vw_UserTable">
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone Number" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="User_Id" ColumnName="User Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="AppointmentSystemModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="AppointmentSystemModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_deleteUSER" FunctionName="AppointmentSystemModel.Store.sp_deleteUSER" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="AppointmentSystemModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="AppointmentSystemModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AppointmentSystemModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="AppointmentSystemModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AppointmentSystemModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_InsertUser" FunctionName="AppointmentSystemModel.Store.sp_InsertUser" />
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="AppointmentSystemModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_UPDATEUSER" FunctionName="AppointmentSystemModel.Store.sp_UPDATEUSER" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="AppointmentSystemModel.Store.sp_upgraddiagrams" />
   </EntityContainerMapping>
 </Mapping>

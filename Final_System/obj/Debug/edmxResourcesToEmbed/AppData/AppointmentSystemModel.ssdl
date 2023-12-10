@@ -8,6 +8,27 @@
     <Property Name="roleName" Type="nvarchar" MaxLength="50" />
     <Property Name="roleDescription" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AppointmentSystem.dbo.Schedule' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="scheduleId" />
+    </Key>
+    <Property Name="scheduleId" Type="int" Nullable="false" />
+    <Property Name="month" Type="nvarchar" MaxLength="50" />
+    <Property Name="day" Type="nvarchar" MaxLength="50" />
+    <Property Name="time" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <EntityType Name="TblInstructor">
     <Key>
       <PropertyRef Name="instructorId" />
@@ -32,13 +53,16 @@
       <PropertyRef Name="userId" />
     </Key>
     <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="userLastname" Type="nvarchar" MaxLength="128" />
-    <Property Name="userFirstName" Type="nvarchar" MaxLength="128" />
-    <Property Name="userAddress" Type="nvarchar" MaxLength="128" />
-    <Property Name="userEmail" Type="nvarchar" MaxLength="128" />
-    <Property Name="userNumber" Type="nvarchar" MaxLength="128" />
-    <Property Name="userName" Type="nvarchar" MaxLength="128" />
-    <Property Name="userPass" Type="nvarchar" MaxLength="128" />
+    <Property Name="userLastname" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="userFirstname" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="usermid" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="userAddress" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="userEmail" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="userNumber" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="userName" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="userPass" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="roleID" Type="int" />
+    <Property Name="createdBy" Type="nvarchar" MaxLength="128" />
   </EntityType>
   <EntityType Name="Training">
     <Key>
@@ -51,11 +75,157 @@
     <Property Name="instructorId" Type="int" />
     <Property Name="date" Type="datetime" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AppointmentSystem.dbo.TrainingType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TrainingType">
+    <Key>
+      <PropertyRef Name="trainingtypeId" />
+    </Key>
+    <Property Name="trainingtypeId" Type="int" Nullable="false" />
+    <Property Name="trainingDescription" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AppointmentSystem.dbo.vw_TrainingTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_TrainingTable">
+    <Key>
+      <PropertyRef Name="Training Id" />
+    </Key>
+    <Property Name="Training Id" Type="int" Nullable="false" />
+    <Property Name="Training Type" Type="nvarchar" MaxLength="255" />
+    <Property Name="Location Id " Type="int" />
+    <Property Name="Duration Time" Type="int" />
+    <Property Name="DATE" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_UserTable">
+    <Key>
+      <PropertyRef Name="User Id" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="User Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="387" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="128" />
+    <Property Name="Email" Type="nvarchar" MaxLength="128" />
+    <Property Name="Phone Number" Type="nvarchar" MaxLength="128" />
+    <Property Name="Username" Type="nvarchar" MaxLength="128" />
+    <Property Name="Password" Type="nvarchar" MaxLength="128" />
+    <Property Name="Role" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Training_TblLocation">
+    <End Role="TblLocation" Type="Self.TblLocation" Multiplicity="0..1" />
+    <End Role="Training" Type="Self.Training" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLocation">
+        <PropertyRef Name="locationId" />
+      </Principal>
+      <Dependent Role="Training">
+        <PropertyRef Name="locationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_deleteUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_InsertUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userLastname" Type="nvarchar" Mode="In" />
+    <Parameter Name="userFirstname" Type="nvarchar" Mode="In" />
+    <Parameter Name="usermiddleIn" Type="nvarchar" Mode="In" />
+    <Parameter Name="userAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="userEmail" Type="nvarchar" Mode="In" />
+    <Parameter Name="userNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="Uusername" Type="nvarchar" Mode="In" />
+    <Parameter Name="userpass" Type="nvarchar" Mode="In" />
+    <Parameter Name="roleID" Type="int" Mode="In" />
+    <Parameter Name="CreatedBY" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_UPDATEUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userID" Type="int" Mode="In" />
+    <Parameter Name="userLastname" Type="nvarchar" Mode="In" />
+    <Parameter Name="userFirstname" Type="nvarchar" Mode="In" />
+    <Parameter Name="usermiddleIn" Type="nvarchar" Mode="In" />
+    <Parameter Name="userAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="userEmail" Type="nvarchar" Mode="In" />
+    <Parameter Name="userNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="Uusername" Type="nvarchar" Mode="In" />
+    <Parameter Name="userpass" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="AppointmentSystemModelStoreContainer">
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblInstructor" EntityType="Self.TblInstructor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblLocation" EntityType="Self.TblLocation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Training" EntityType="Self.Training" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Schedule" EntityType="Self.Schedule" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[Schedule].[scheduleId] AS [scheduleId], 
+[Schedule].[month] AS [month], 
+[Schedule].[day] AS [day], 
+[Schedule].[time] AS [time]
+FROM [dbo].[Schedule] AS [Schedule]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TrainingType" EntityType="Self.TrainingType" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[TrainingType].[trainingtypeId] AS [trainingtypeId], 
+[TrainingType].[trainingDescription] AS [trainingDescription]
+FROM [dbo].[TrainingType] AS [TrainingType]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_TrainingTable" EntityType="Self.vw_TrainingTable" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_TrainingTable].[Training Id] AS [Training Id], 
+[vw_TrainingTable].[Training Type] AS [Training Type], 
+[vw_TrainingTable].[Location Id ] AS [Location Id ], 
+[vw_TrainingTable].[Duration Time] AS [Duration Time], 
+[vw_TrainingTable].[DATE] AS [DATE]
+FROM [dbo].[vw_TrainingTable] AS [vw_TrainingTable]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_UserTable" EntityType="Self.vw_UserTable" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_UserTable].[User Id] AS [User Id], 
+[vw_UserTable].[Name] AS [Name], 
+[vw_UserTable].[Address] AS [Address], 
+[vw_UserTable].[Email] AS [Email], 
+[vw_UserTable].[Phone Number] AS [Phone Number], 
+[vw_UserTable].[Username] AS [Username], 
+[vw_UserTable].[Password] AS [Password], 
+[vw_UserTable].[Role] AS [Role]
+FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Training_TblLocation" Association="Self.FK_Training_TblLocation">
+      <End Role="TblLocation" EntitySet="TblLocation" />
+      <End Role="Training" EntitySet="Training" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

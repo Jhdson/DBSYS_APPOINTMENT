@@ -20,5 +20,7 @@ namespace Final_System.AppData
         public Nullable<int> duration { get; set; }
         public Nullable<int> instructorId { get; set; }
         public Nullable<System.DateTime> date { get; set; }
+    
+        public virtual TblLocation TblLocation { get; set; }
     }
 }

@@ -10,20 +10,13 @@
 namespace Final_System.AppData
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class TblLocation
+    public partial class sp_helpdiagrams_Result
     {
-        public TblLocation()
-        {
-            this.Training = new HashSet<Training>();
-        }
-    
-        public int locationId { get; set; }
-        public string city { get; set; }
-        public string barangay { get; set; }
-        public string nameOfBuilding { get; set; }
-    
-        public virtual ICollection<Training> Training { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

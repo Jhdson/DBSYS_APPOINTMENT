@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Final_System.Forms
 {
-    public partial class Front : Form
+    public partial class UserDashboard : Form
     {
-        public Front()
+        public UserDashboard()
         {
             InitializeComponent();
         }

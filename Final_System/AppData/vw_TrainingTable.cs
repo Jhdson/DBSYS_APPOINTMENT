@@ -12,18 +12,12 @@ namespace Final_System.AppData
     using System;
     using System.Collections.Generic;
     
-    public partial class TblLocation
+    public partial class vw_TrainingTable
     {
-        public TblLocation()
-        {
-            this.Training = new HashSet<Training>();
-        }
-    
-        public int locationId { get; set; }
-        public string city { get; set; }
-        public string barangay { get; set; }
-        public string nameOfBuilding { get; set; }
-    
-        public virtual ICollection<Training> Training { get; set; }
+        public int Training_Id { get; set; }
+        public string Training_Type { get; set; }
+        public Nullable<int> Location_Id_ { get; set; }
+        public Nullable<int> Duration_Time { get; set; }
+        public Nullable<System.DateTime> DATE { get; set; }
     }
 }

@@ -22,5 +22,9 @@ namespace Final_System.AppData
         public string userNumber { get; set; }
         public string userName { get; set; }
         public string userPass { get; set; }
+        public string userFirstname { get; set; }
+        public string usermid { get; set; }
+        public Nullable<int> roleID { get; set; }
+        public string createdBy { get; set; }
     }
 }

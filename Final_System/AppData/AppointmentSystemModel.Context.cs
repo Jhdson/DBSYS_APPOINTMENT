@@ -12,6 +12,9 @@ namespace Final_System.AppData
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Objects;
+    using System.Data.Objects.DataClasses;
+    using System.Linq;
     
     public partial class AppointmentSystemEntities : DbContext
     {
@@ -30,5 +33,208 @@ namespace Final_System.AppData
         public DbSet<TblLocation> TblLocation { get; set; }
         public DbSet<tblUser> tblUser { get; set; }
         public DbSet<Training> Training { get; set; }
+        public DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public DbSet<Schedule> Schedule { get; set; }
+        public DbSet<TrainingType> TrainingType { get; set; }
+        public DbSet<vw_TrainingTable> vw_TrainingTable { get; set; }
+        public DbSet<vw_UserTable> vw_UserTable { get; set; }
+    
+        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_deleteUSER(Nullable<int> userID)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_deleteUSER", userIDParameter);
+        }
+    
+        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual int sp_InsertUser(string userLastname, string userFirstname, string usermiddleIn, string userAddress, string userEmail, string userNumber, string uusername, string userpass, Nullable<int> roleID, string createdBY)
+        {
+            var userLastnameParameter = userLastname != null ?
+                new ObjectParameter("userLastname", userLastname) :
+                new ObjectParameter("userLastname", typeof(string));
+    
+            var userFirstnameParameter = userFirstname != null ?
+                new ObjectParameter("userFirstname", userFirstname) :
+                new ObjectParameter("userFirstname", typeof(string));
+    
+            var usermiddleInParameter = usermiddleIn != null ?
+                new ObjectParameter("usermiddleIn", usermiddleIn) :
+                new ObjectParameter("usermiddleIn", typeof(string));
+    
+            var userAddressParameter = userAddress != null ?
+                new ObjectParameter("userAddress", userAddress) :
+                new ObjectParameter("userAddress", typeof(string));
+    
+            var userEmailParameter = userEmail != null ?
+                new ObjectParameter("userEmail", userEmail) :
+                new ObjectParameter("userEmail", typeof(string));
+    
+            var userNumberParameter = userNumber != null ?
+                new ObjectParameter("userNumber", userNumber) :
+                new ObjectParameter("userNumber", typeof(string));
+    
+            var uusernameParameter = uusername != null ?
+                new ObjectParameter("Uusername", uusername) :
+                new ObjectParameter("Uusername", typeof(string));
+    
+            var userpassParameter = userpass != null ?
+                new ObjectParameter("userpass", userpass) :
+                new ObjectParameter("userpass", typeof(string));
+    
+            var roleIDParameter = roleID.HasValue ?
+                new ObjectParameter("roleID", roleID) :
+                new ObjectParameter("roleID", typeof(int));
+    
+            var createdBYParameter = createdBY != null ?
+                new ObjectParameter("CreatedBY", createdBY) :
+                new ObjectParameter("CreatedBY", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertUser", userLastnameParameter, userFirstnameParameter, usermiddleInParameter, userAddressParameter, userEmailParameter, userNumberParameter, uusernameParameter, userpassParameter, roleIDParameter, createdBYParameter);
+        }
+    
+        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var new_diagramnameParameter = new_diagramname != null ?
+                new ObjectParameter("new_diagramname", new_diagramname) :
+                new ObjectParameter("new_diagramname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
+        }
+    
+        public virtual int sp_UPDATEUSER(Nullable<int> userID, string userLastname, string userFirstname, string usermiddleIn, string userAddress, string userEmail, string userNumber, string uusername, string userpass)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(int));
+    
+            var userLastnameParameter = userLastname != null ?
+                new ObjectParameter("userLastname", userLastname) :
+                new ObjectParameter("userLastname", typeof(string));
+    
+            var userFirstnameParameter = userFirstname != null ?
+                new ObjectParameter("userFirstname", userFirstname) :
+                new ObjectParameter("userFirstname", typeof(string));
+    
+            var usermiddleInParameter = usermiddleIn != null ?
+                new ObjectParameter("usermiddleIn", usermiddleIn) :
+                new ObjectParameter("usermiddleIn", typeof(string));
+    
+            var userAddressParameter = userAddress != null ?
+                new ObjectParameter("userAddress", userAddress) :
+                new ObjectParameter("userAddress", typeof(string));
+    
+            var userEmailParameter = userEmail != null ?
+                new ObjectParameter("userEmail", userEmail) :
+                new ObjectParameter("userEmail", typeof(string));
+    
+            var userNumberParameter = userNumber != null ?
+                new ObjectParameter("userNumber", userNumber) :
+                new ObjectParameter("userNumber", typeof(string));
+    
+            var uusernameParameter = uusername != null ?
+                new ObjectParameter("Uusername", uusername) :
+                new ObjectParameter("Uusername", typeof(string));
+    
+            var userpassParameter = userpass != null ?
+                new ObjectParameter("userpass", userpass) :
+                new ObjectParameter("userpass", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UPDATEUSER", userIDParameter, userLastnameParameter, userFirstnameParameter, usermiddleInParameter, userAddressParameter, userEmailParameter, userNumberParameter, uusernameParameter, userpassParameter);
+        }
+    
+        public virtual int sp_upgraddiagrams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
     }
 }

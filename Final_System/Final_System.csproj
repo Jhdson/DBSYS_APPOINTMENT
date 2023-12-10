@@ -71,6 +71,18 @@
     <Compile Include="AppData\Role.cs">
       <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AppData\Schedule.cs">
+      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\sp_helpdiagrams_Result.cs">
+      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\sysdiagrams.cs">
+      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="AppData\TblInstructor.cs">
       <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
     </Compile>
@@ -83,23 +95,32 @@
     <Compile Include="AppData\Training.cs">
       <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AppData\TrainingType.cs">
+      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\vw_TrainingTable.cs">
+      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\vw_UserTable.cs">
+      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Admin_Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Admin_Dashboard.Designer.cs">
       <DependentUpon>Admin_Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form1.cs">
+    <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form2.cs">
+    <Compile Include="Forms\Staff.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="Forms\Staff.Designer.cs">
+      <DependentUpon>Staff.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Register.cs">
       <SubType>Form</SubType>
@@ -107,19 +128,31 @@
     <Compile Include="Forms\Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserForm.Designer.cs">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserLogged.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\userRepository.cs" />
+    <Compile Include="Utils\Constant.cs" />
     <EmbeddedResource Include="Forms\Admin_Dashboard.resx">
       <DependentUpon>Admin_Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Staff.resx">
+      <DependentUpon>Staff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserForm.resx">
+      <DependentUpon>UserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -210,10 +243,6 @@
     <None Include="Resources\bench.jpg" />
     <None Include="Resources\front.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="Repositories\" />
-    <Folder Include="Utils\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

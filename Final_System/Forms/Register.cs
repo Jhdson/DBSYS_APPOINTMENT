@@ -17,6 +17,7 @@ namespace Final_System.Forms
         public frm_register()
         {
             InitializeComponent();
+            db = new AppointmentSystemEntities();
         }
 
         private void btn_Register_Click(object sender, EventArgs e)
@@ -73,18 +74,18 @@ namespace Final_System.Forms
                 return;
             }
 
-            tblUser UserAccount = new tblUser();
-            UserAccount.userLastname = txt_lastname.Text;
-            UserAccount.userFirstName = txt_firstname.Text;
-            /*   UserAccount.usermid = txt_middlei.Text;  */
-            UserAccount.userAddress = txt_address.Text;
-            UserAccount.userEmail = txt_Emailadd.Text;
-            UserAccount.userNumber = txt_phone.Text;
-            UserAccount.userName = txt_username.Text;
-            UserAccount.userPass = txt_password.Text;
-            UserAccount.roleId = 1;
+            tblUser UserTBL = new tblUser();
+            UserTBL.userLastname = txt_lastname.Text;
+            UserTBL.userFirstName = txt_firstname.Text;
+            UserTBL.usermid = txt_middlei.Text;
+            UserTBL.userAddress = txt_address.Text;
+            UserTBL.userEmail = txt_Emailadd.Text;
+            UserTBL.userNumber = txt_phone.Text;
+            UserTBL.userName = txt_username.Text;
+            UserTBL.userPass = txt_password.Text;
+            UserTBL.roleID = 1;
 
-            db.tblUser.Add(UserAccount);
+            db.tblUser.Add(UserTBL);
             db.SaveChanges();
 
             txt_lastname.Clear();
