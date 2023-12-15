@@ -103,7 +103,7 @@ namespace Final_System
                             this.Hide();
                             break;
                         case Roles.Admin:
-                            new Admin_Dashboard().Show();
+                            new AdminAddInstructor().Show();
                             this.Hide();
                             break;
                         default:

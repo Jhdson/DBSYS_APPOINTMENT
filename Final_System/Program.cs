@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Final_System.Forms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace Final_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login_form());
+            Application.Run(new AdminAddInstructor());
         }
     }
 }
