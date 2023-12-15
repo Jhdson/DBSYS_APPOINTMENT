@@ -16,11 +16,11 @@ namespace Final_System
 {
     public partial class Login_form : Form
     {
-        private object errorProviderCustom;
-
+        userRepository repo;
         public Login_form()
         {
             InitializeComponent();
+            repo = new userRepository();
         }
 
         
@@ -44,7 +44,7 @@ namespace Final_System
 
         private void btn_register_Click_1(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             new frm_register().Show();
         }
 
@@ -69,7 +69,7 @@ namespace Final_System
         }
 
      
-        private void btn_login_Click(object sender, EventArgs e,)
+        private void btn_login_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(textUSERNAME.Text))
             {
@@ -84,7 +84,7 @@ namespace Final_System
                 return;
             }
 
-            var userLogged = userRepository.GetUserByUsername(textUSERNAME.Text);
+            var userLogged = repo.GetUserByUsername(textUSERNAME.Text);
 
             if (userLogged != null)
             {

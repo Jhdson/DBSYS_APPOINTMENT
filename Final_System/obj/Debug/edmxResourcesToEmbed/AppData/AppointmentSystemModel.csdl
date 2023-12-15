@@ -26,7 +26,7 @@
     <Property Name="city" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="barangay" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="nameOfBuilding" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Training" Relationship="AppointmentSystemModel.FK_Training_TblLocation" FromRole="TblLocation" ToRole="Training" />
+    <NavigationProperty Name="Training" Relationship="Self.FK_Training_TblLocation" FromRole="TblLocation" ToRole="Training" />
   </EntityType>
   <EntityType Name="tblUser">
     <Key>
@@ -34,14 +34,13 @@
     </Key>
     <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="userLastname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="userFirstName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="userFirstname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="usermid" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="userAddress" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="userEmail" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="userNumber" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="userName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="userPass" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="userFirstname" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="usermid" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="roleID" Type="Int32" />
     <Property Name="createdBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
   </EntityType>
@@ -55,89 +54,7 @@
     <Property Name="duration" Type="Int32" />
     <Property Name="instructorId" Type="Int32" />
     <Property Name="date" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="TblLocation" Relationship="AppointmentSystemModel.FK_Training_TblLocation" FromRole="Training" ToRole="TblLocation" />
-  </EntityType>
-  <EntityContainer Name="AppointmentSystemEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Role" EntityType="Self.Role" />
-    <EntitySet Name="TblInstructor" EntityType="Self.TblInstructor" />
-    <EntitySet Name="TblLocation" EntityType="Self.TblLocation" />
-    <EntitySet Name="tblUser" EntityType="Self.tblUser" />
-    <EntitySet Name="Training" EntityType="Self.Training" />
-    <EntitySet Name="sysdiagrams" EntityType="AppointmentSystemModel.sysdiagrams" />
-    <EntitySet Name="Schedule" EntityType="AppointmentSystemModel.Schedule" />
-    <EntitySet Name="TrainingType" EntityType="AppointmentSystemModel.TrainingType" />
-    <EntitySet Name="vw_TrainingTable" EntityType="AppointmentSystemModel.vw_TrainingTable" />
-    <EntitySet Name="vw_UserTable" EntityType="AppointmentSystemModel.vw_UserTable" />
-    <AssociationSet Name="FK_Training_TblLocation" Association="AppointmentSystemModel.FK_Training_TblLocation">
-      <End Role="TblLocation" EntitySet="TblLocation" />
-      <End Role="Training" EntitySet="Training" />
-    </AssociationSet>
-    <FunctionImport Name="sp_alterdiagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="version" Mode="In" Type="Int32" />
-      <Parameter Name="definition" Mode="In" Type="Binary" />
-    </FunctionImport>
-    <FunctionImport Name="sp_creatediagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="version" Mode="In" Type="Int32" />
-      <Parameter Name="definition" Mode="In" Type="Binary" />
-    </FunctionImport>
-    <FunctionImport Name="sp_deleteUSER">
-      <Parameter Name="userID" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_dropdiagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(AppointmentSystemModel.sp_helpdiagramdefinition_Result)">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(AppointmentSystemModel.sp_helpdiagrams_Result)">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_InsertUser">
-      <Parameter Name="userLastname" Mode="In" Type="String" />
-      <Parameter Name="userFirstname" Mode="In" Type="String" />
-      <Parameter Name="usermiddleIn" Mode="In" Type="String" />
-      <Parameter Name="userAddress" Mode="In" Type="String" />
-      <Parameter Name="userEmail" Mode="In" Type="String" />
-      <Parameter Name="userNumber" Mode="In" Type="String" />
-      <Parameter Name="Uusername" Mode="In" Type="String" />
-      <Parameter Name="userpass" Mode="In" Type="String" />
-      <Parameter Name="roleID" Mode="In" Type="Int32" />
-      <Parameter Name="CreatedBY" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_renamediagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="new_diagramname" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_UPDATEUSER">
-      <Parameter Name="userID" Mode="In" Type="Int32" />
-      <Parameter Name="userLastname" Mode="In" Type="String" />
-      <Parameter Name="userFirstname" Mode="In" Type="String" />
-      <Parameter Name="usermiddleIn" Mode="In" Type="String" />
-      <Parameter Name="userAddress" Mode="In" Type="String" />
-      <Parameter Name="userEmail" Mode="In" Type="String" />
-      <Parameter Name="userNumber" Mode="In" Type="String" />
-      <Parameter Name="Uusername" Mode="In" Type="String" />
-      <Parameter Name="userpass" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_upgraddiagrams" />
-  </EntityContainer>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="TblLocation" Relationship="Self.FK_Training_TblLocation" FromRole="Training" ToRole="TblLocation" />
   </EntityType>
   <EntityType Name="Schedule">
     <Key>
@@ -171,7 +88,7 @@
       <PropertyRef Name="Name" />
     </Key>
     <Property Name="User_Id" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="387" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="387" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="Phone_Number" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
@@ -180,8 +97,8 @@
     <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_Training_TblLocation">
-    <End Type="AppointmentSystemModel.TblLocation" Role="TblLocation" Multiplicity="0..1" />
-    <End Type="AppointmentSystemModel.Training" Role="Training" Multiplicity="*" />
+    <End Role="TblLocation" Type="Self.TblLocation" Multiplicity="0..1" />
+    <End Role="Training" Type="Self.Training" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblLocation">
         <PropertyRef Name="locationId" />
@@ -191,15 +108,45 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <ComplexType Name="sp_helpdiagramdefinition_Result">
-    <Property Type="Int32" Name="version" Nullable="true" />
-    <Property Type="Binary" Name="definition" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="sp_helpdiagrams_Result">
-    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-    <Property Type="Int32" Name="ID" Nullable="false" />
-    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-    <Property Type="Int32" Name="OwnerID" Nullable="false" />
-  </ComplexType>
+  <EntityContainer Name="AppointmentSystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="TblInstructor" EntityType="Self.TblInstructor" />
+    <EntitySet Name="TblLocation" EntityType="Self.TblLocation" />
+    <EntitySet Name="tblUser" EntityType="Self.tblUser" />
+    <EntitySet Name="Training" EntityType="Self.Training" />
+    <EntitySet Name="Schedule" EntityType="Self.Schedule" />
+    <EntitySet Name="TrainingType" EntityType="Self.TrainingType" />
+    <EntitySet Name="vw_TrainingTable" EntityType="Self.vw_TrainingTable" />
+    <EntitySet Name="vw_UserTable" EntityType="Self.vw_UserTable" />
+    <AssociationSet Name="FK_Training_TblLocation" Association="Self.FK_Training_TblLocation">
+      <End Role="TblLocation" EntitySet="TblLocation" />
+      <End Role="Training" EntitySet="Training" />
+    </AssociationSet>
+    <FunctionImport Name="sp_deleteUSER">
+      <Parameter Name="userID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_InsertUser">
+      <Parameter Name="userLastname" Mode="In" Type="String" />
+      <Parameter Name="userFirstname" Mode="In" Type="String" />
+      <Parameter Name="usermiddleIn" Mode="In" Type="String" />
+      <Parameter Name="userAddress" Mode="In" Type="String" />
+      <Parameter Name="userEmail" Mode="In" Type="String" />
+      <Parameter Name="userNumber" Mode="In" Type="String" />
+      <Parameter Name="Uusername" Mode="In" Type="String" />
+      <Parameter Name="userpass" Mode="In" Type="String" />
+      <Parameter Name="roleID" Mode="In" Type="Int32" />
+      <Parameter Name="CreatedBY" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UPDATEUSER">
+      <Parameter Name="userID" Mode="In" Type="Int32" />
+      <Parameter Name="userLastname" Mode="In" Type="String" />
+      <Parameter Name="userFirstname" Mode="In" Type="String" />
+      <Parameter Name="usermiddleIn" Mode="In" Type="String" />
+      <Parameter Name="userAddress" Mode="In" Type="String" />
+      <Parameter Name="userEmail" Mode="In" Type="String" />
+      <Parameter Name="userNumber" Mode="In" Type="String" />
+      <Parameter Name="Uusername" Mode="In" Type="String" />
+      <Parameter Name="userpass" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
 </Schema>

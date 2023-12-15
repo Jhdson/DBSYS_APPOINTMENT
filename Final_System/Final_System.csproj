@@ -74,15 +74,6 @@
     <Compile Include="AppData\Schedule.cs">
       <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppData\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppData\sp_helpdiagrams_Result.cs">
-      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppData\sysdiagrams.cs">
-      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="AppData\TblInstructor.cs">
       <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
     </Compile>
@@ -228,6 +219,13 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\core-removebg-preview.png" />
+    <None Include="Resources\Screenshot_2023-12-03_084310-removebg-preview.png" />
+    <None Include="Resources\bench.jpg" />
+    <None Include="Resources\front.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
     <Content Include="AppData\AppointmentSystemModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AppointmentSystemModel.edmx</DependentUpon>
@@ -238,11 +236,6 @@
       <DependentUpon>AppointmentSystemModel.edmx</DependentUpon>
       <LastGenOutput>AppointmentSystemModel.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\core-removebg-preview.png" />
-    <None Include="Resources\Screenshot_2023-12-03_084310-removebg-preview.png" />
-    <None Include="Resources\bench.jpg" />
-    <None Include="Resources\front.jpg" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -76,7 +76,7 @@ namespace Final_System.Forms
 
             tblUser UserTBL = new tblUser();
             UserTBL.userLastname = txt_lastname.Text;
-            UserTBL.userFirstName = txt_firstname.Text;
+            UserTBL.userFirstname = txt_firstname.Text;
             UserTBL.usermid = txt_middlei.Text;
             UserTBL.userAddress = txt_address.Text;
             UserTBL.userEmail = txt_Emailadd.Text;

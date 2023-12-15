@@ -16,14 +16,13 @@ namespace Final_System.AppData
     {
         public int userId { get; set; }
         public string userLastname { get; set; }
-        public string userFirstName { get; set; }
+        public string userFirstname { get; set; }
+        public string usermid { get; set; }
         public string userAddress { get; set; }
         public string userEmail { get; set; }
         public string userNumber { get; set; }
         public string userName { get; set; }
         public string userPass { get; set; }
-        public string userFirstname { get; set; }
-        public string usermid { get; set; }
         public Nullable<int> roleID { get; set; }
         public string createdBy { get; set; }
     }
