@@ -29,6 +29,7 @@ namespace Final_System.AppData
         }
     
         public DbSet<Role> Role { get; set; }
+        public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<TblInstructor> TblInstructor { get; set; }
         public DbSet<TblLocation> TblLocation { get; set; }
         public DbSet<tblUser> tblUser { get; set; }
@@ -131,6 +132,43 @@ namespace Final_System.AppData
                 new ObjectParameter("userpass", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UPDATEUSER", userIDParameter, userLastnameParameter, userFirstnameParameter, usermiddleInParameter, userAddressParameter, userEmailParameter, userNumberParameter, uusernameParameter, userpassParameter);
+        }
+    
+        public virtual int sp_Add(string userFirstname, string userLastname, string usermid, string userAddress, string userEmail, string userNumber, string userName, string userPass)
+        {
+            var userFirstnameParameter = userFirstname != null ?
+                new ObjectParameter("userFirstname", userFirstname) :
+                new ObjectParameter("userFirstname", typeof(string));
+    
+            var userLastnameParameter = userLastname != null ?
+                new ObjectParameter("userLastname", userLastname) :
+                new ObjectParameter("userLastname", typeof(string));
+    
+            var usermidParameter = usermid != null ?
+                new ObjectParameter("usermid", usermid) :
+                new ObjectParameter("usermid", typeof(string));
+    
+            var userAddressParameter = userAddress != null ?
+                new ObjectParameter("userAddress", userAddress) :
+                new ObjectParameter("userAddress", typeof(string));
+    
+            var userEmailParameter = userEmail != null ?
+                new ObjectParameter("userEmail", userEmail) :
+                new ObjectParameter("userEmail", typeof(string));
+    
+            var userNumberParameter = userNumber != null ?
+                new ObjectParameter("userNumber", userNumber) :
+                new ObjectParameter("userNumber", typeof(string));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("userName", userName) :
+                new ObjectParameter("userName", typeof(string));
+    
+            var userPassParameter = userPass != null ?
+                new ObjectParameter("userPass", userPass) :
+                new ObjectParameter("userPass", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Add", userFirstnameParameter, userLastnameParameter, usermidParameter, userAddressParameter, userEmailParameter, userNumberParameter, userNameParameter, userPassParameter);
         }
     }
 }

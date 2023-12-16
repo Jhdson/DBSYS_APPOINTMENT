@@ -48,10 +48,7 @@ namespace Final_System
             new frm_register().Show();
         }
 
-        private void pbclose1_MouseHover(object sender, EventArgs e)
-        {
-            toolTip1.SetToolTip(pbclose, "close");
-        }
+     
 
         private void pbmini1_MouseHover(object sender, EventArgs e)
         {

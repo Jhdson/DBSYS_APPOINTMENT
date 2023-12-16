@@ -33,7 +33,7 @@ namespace Final_System.Repositories
                 return db.vw_UserTable.ToList();
             }
         }
-        public ErrorCode InsertUserUsingStoredProf(string userLastname, string userFirstname, string usermiddleIn, string userAddress, string userEmail, string userNumber, string uusername
+        public ErrorCode InsertUserUsingStoredProf(string userFirstname, string userLastname, string usermiddleIn, string userAddress, string userEmail, string userNumber, string uusername
             , string userpass, int roleID, string createdBY, string Response)
         {
             using (db = new AppointmentSystemEntities())
@@ -53,9 +53,29 @@ namespace Final_System.Repositories
                 }
             }
         }
+        public ErrorCode ADDUserUsingStoredProf(string userFirstname, string userLastname, string usermiddleIn, string userAddress, string userEmail, string userNumber, string uusername
+            , string userpass, string Response)
+        {
+            using (db = new AppointmentSystemEntities())
+            {
+                try
+                {
+
+                    db.sp_(userLastname, userFirstname, usermiddleIn, userAddress,
+                        userEmail, userNumber, uusername, userpass);
+                    Response = " Added ";
+                    return ErrorCode.Success;
+                }
+                catch (Exception ex)
+                {
+                    Response = ex.Message;
+                    return ErrorCode.Error;
+                }
+            }
+        }
 
 
-        public ErrorCode UpdateUserUsingStoredProf(int? userID, string userLastname, string userFirstname, string usermiddleIn, string userAddress, string userEmail, string userNumber, string uusername
+        public ErrorCode UpdateUserUsingStoredProf(int? userID, string userFirstname, string userFirstname, string usermiddleIn, string userAddress, string userEmail, string userNumber, string uusername
             , string userpass, string Response)
         {
             using (db = new AppointmentSystemEntities())

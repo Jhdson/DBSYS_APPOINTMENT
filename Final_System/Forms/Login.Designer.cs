@@ -37,26 +37,22 @@
             this.btn_register = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pbmini1 = new System.Windows.Forms.PictureBox();
             this.pbclose1 = new System.Windows.Forms.PictureBox();
-            this.pbmini = new System.Windows.Forms.PictureBox();
-            this.pbclose = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbmini1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbclose1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbmini)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbclose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -158,6 +154,16 @@
             this.panel1.Size = new System.Drawing.Size(385, 455);
             this.panel1.TabIndex = 1;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Final_System.Properties.Resources.Screenshot_2023_12_03_084310_removebg_preview;
+            this.pictureBox2.Location = new System.Drawing.Point(121, 80);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(154, 79);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
+            // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.BurlyWood;
@@ -180,16 +186,6 @@
             this.pictureBox4.TabIndex = 7;
             this.pictureBox4.TabStop = false;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Final_System.Properties.Resources.Screenshot_2023_12_03_084310_removebg_preview;
-            this.pictureBox2.Location = new System.Drawing.Point(121, 80);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(154, 79);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 9;
-            this.pictureBox2.TabStop = false;
-            // 
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.BurlyWood;
@@ -204,9 +200,9 @@
             // pbmini1
             // 
             this.pbmini1.Image = global::Final_System.Properties.Resources.minimize_sign;
-            this.pbmini1.Location = new System.Drawing.Point(741, 14);
+            this.pbmini1.Location = new System.Drawing.Point(738, 12);
             this.pbmini1.Name = "pbmini1";
-            this.pbmini1.Size = new System.Drawing.Size(14, 14);
+            this.pbmini1.Size = new System.Drawing.Size(26, 14);
             this.pbmini1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbmini1.TabIndex = 5;
             this.pbmini1.TabStop = false;
@@ -217,35 +213,14 @@
             // 
             this.pbclose1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbclose1.Image = global::Final_System.Properties.Resources.close;
-            this.pbclose1.Location = new System.Drawing.Point(770, 7);
+            this.pbclose1.Location = new System.Drawing.Point(770, 5);
             this.pbclose1.Name = "pbclose1";
             this.pbclose1.Size = new System.Drawing.Size(24, 21);
             this.pbclose1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbclose1.TabIndex = 4;
             this.pbclose1.TabStop = false;
             this.pbclose1.Click += new System.EventHandler(this.pictureBox4_Click);
-            this.pbclose1.MouseHover += new System.EventHandler(this.pbclose1_MouseHover);
-            // 
-            // pbmini
-            // 
-            this.pbmini.Image = global::Final_System.Properties.Resources.square;
-            this.pbmini.Location = new System.Drawing.Point(731, 4);
-            this.pbmini.Name = "pbmini";
-            this.pbmini.Size = new System.Drawing.Size(34, 26);
-            this.pbmini.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbmini.TabIndex = 3;
-            this.pbmini.TabStop = false;
-            // 
-            // pbclose
-            // 
-            this.pbclose.Image = global::Final_System.Properties.Resources.square;
-            this.pbclose.Location = new System.Drawing.Point(769, 4);
-            this.pbclose.Name = "pbclose";
-            this.pbclose.Size = new System.Drawing.Size(30, 26);
-            this.pbclose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbclose.TabIndex = 2;
-            this.pbclose.TabStop = false;
-            this.pbclose.Click += new System.EventHandler(this.pictureBox2_Click);
+          
             // 
             // pictureBox1
             // 
@@ -270,22 +245,18 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pbmini1);
             this.Controls.Add(this.pbclose1);
-            this.Controls.Add(this.pbmini);
-            this.Controls.Add(this.pbclose);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login_form";
             this.Text = "log in ";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbmini1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbclose1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbmini)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbclose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -301,8 +272,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pbclose;
-        private System.Windows.Forms.PictureBox pbmini;
         private System.Windows.Forms.PictureBox pbclose1;
         private System.Windows.Forms.PictureBox pbmini1;
         private System.Windows.Forms.ToolTip toolTip1;

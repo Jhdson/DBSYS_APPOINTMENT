@@ -74,6 +74,9 @@
     <Compile Include="AppData\Schedule.cs">
       <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AppData\sysdiagrams.cs">
+      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="AppData\TblInstructor.cs">
       <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
     </Compile>
@@ -233,7 +236,6 @@
     <None Include="Resources\bench.jpg" />
     <None Include="Resources\front.jpg" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="AppData\AppointmentSystemModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

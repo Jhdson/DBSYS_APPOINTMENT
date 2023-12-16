@@ -10,18 +10,6 @@ C:\Users\jay hudson\source\repos\Final_System\obj\Debug\Final_System.exe
 C:\Users\jay hudson\source\repos\Final_System\obj\Debug\Final_System.pdb
 C:\Users\jay hudson\source\repos\Final_System\obj\Debug\Final_System.Login_form.resources
 C:\Users\jay hudson\source\repos\Final_System\obj\Debug\Final_System.Forms.Register.resources
-C:\Users\jay hudson\Desktop\database\Final_System\bin\Debug\Final_System.exe.config
-C:\Users\jay hudson\Desktop\database\Final_System\bin\Debug\Final_System.exe
-C:\Users\jay hudson\Desktop\database\Final_System\bin\Debug\Final_System.pdb
-C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.csproj.AssemblyReference.cache
-C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.csproj.SuggestedBindingRedirects.cache
-C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.Login_form.resources
-C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.Properties.Resources.resources
-C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.csproj.GenerateResource.cache
-C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.csproj.CoreCompileInputs.cache
-C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.exe
-C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.pdb
-C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.Forms.frm_register.resources
 C:\Users\jay hudson\Source\Repos\appointment_system\Final_System\bin\Debug\Final_System.exe.config
 C:\Users\jay hudson\Source\Repos\appointment_system\Final_System\bin\Debug\Final_System.exe
 C:\Users\jay hudson\Source\Repos\appointment_system\Final_System\bin\Debug\Final_System.pdb
@@ -85,3 +73,14 @@ C:\Users\User\OneDrive\Desktop\DBSYS_APPOINTMENT\Final_System\obj\Debug\Final_Sy
 C:\Users\User\OneDrive\Desktop\DBSYS_APPOINTMENT\Final_System\obj\Debug\Final_System.csproj.CopyComplete
 C:\Users\User\OneDrive\Desktop\DBSYS_APPOINTMENT\Final_System\obj\Debug\Final_System.exe
 C:\Users\User\OneDrive\Desktop\DBSYS_APPOINTMENT\Final_System\obj\Debug\Final_System.pdb
+C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.csproj.AssemblyReference.cache
+C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.csproj.SuggestedBindingRedirects.cache
+C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.Forms.AdminAddInstructor.resources
+C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.Forms.Admin_Dashboard.resources
+C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.Login_form.resources
+C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.Forms.Staff_Dashboard.resources
+C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.Forms.frm_register.resources
+C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.Forms.UserDashboard.resources
+C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.Properties.Resources.resources
+C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.csproj.GenerateResource.cache
+C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.csproj.CoreCompileInputs.cache

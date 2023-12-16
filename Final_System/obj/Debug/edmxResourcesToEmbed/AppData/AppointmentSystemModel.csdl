@@ -8,6 +8,16 @@
     <Property Name="roleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="roleDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
   <EntityType Name="TblInstructor">
     <Key>
       <PropertyRef Name="instructorId" />
@@ -110,6 +120,7 @@
   </Association>
   <EntityContainer Name="AppointmentSystemEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="TblInstructor" EntityType="Self.TblInstructor" />
     <EntitySet Name="TblLocation" EntityType="Self.TblLocation" />
     <EntitySet Name="tblUser" EntityType="Self.tblUser" />
@@ -147,6 +158,16 @@
       <Parameter Name="userNumber" Mode="In" Type="String" />
       <Parameter Name="Uusername" Mode="In" Type="String" />
       <Parameter Name="userpass" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Add">
+      <Parameter Name="userFirstname" Mode="In" Type="String" />
+      <Parameter Name="userLastname" Mode="In" Type="String" />
+      <Parameter Name="usermid" Mode="In" Type="String" />
+      <Parameter Name="userAddress" Mode="In" Type="String" />
+      <Parameter Name="userEmail" Mode="In" Type="String" />
+      <Parameter Name="userNumber" Mode="In" Type="String" />
+      <Parameter Name="userName" Mode="In" Type="String" />
+      <Parameter Name="userPass" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
 </Schema>
