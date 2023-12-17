@@ -1,5 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="AppointmentSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="checkoutBOOK">
+    <Key>
+      <PropertyRef Name="checkoutID" />
+    </Key>
+    <Property Name="checkoutID" Type="int" Nullable="false" />
+    <Property Name="Cfname" Type="nvarchar" MaxLength="128" />
+    <Property Name="Clname" Type="nvarchar" MaxLength="128" />
+    <Property Name="Caddress" Type="nvarchar" MaxLength="128" />
+    <Property Name="Cemail" Type="nvarchar" MaxLength="128" />
+    <Property Name="Cphone" Type="nvarchar" MaxLength="128" />
+    <Property Name="Cdatestart" Type="datetime" />
+    <Property Name="Cdateexpire" Type="datetime" />
+    <Property Name="Cpayment" Type="int" />
+  </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="roleId" />
@@ -7,17 +21,6 @@
     <Property Name="roleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="roleName" Type="nvarchar" MaxLength="50" />
     <Property Name="roleDescription" Type="nvarchar" MaxLength="50" />
-  </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'AppointmentSystem.dbo.Schedule' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="Schedule">
-    <Key>
-      <PropertyRef Name="scheduleId" />
-    </Key>
-    <Property Name="scheduleId" Type="int" Nullable="false" />
-    <Property Name="month" Type="nvarchar" MaxLength="50" />
-    <Property Name="day" Type="nvarchar" MaxLength="50" />
-    <Property Name="time" Type="int" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -38,15 +41,6 @@ warning 6002: The table/view 'AppointmentSystem.dbo.Schedule' does not have a pr
     <Property Name="instructorFName" Type="varchar" MaxLength="128" />
     <Property Name="expertise" Type="varchar" MaxLength="128" />
     <Property Name="contactNo" Type="nvarchar" MaxLength="128" />
-  </EntityType>
-  <EntityType Name="TblLocation">
-    <Key>
-      <PropertyRef Name="locationId" />
-    </Key>
-    <Property Name="locationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="city" Type="nvarchar" MaxLength="255" />
-    <Property Name="barangay" Type="nvarchar" MaxLength="255" />
-    <Property Name="nameOfBuilding" Type="nvarchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="tblUser">
     <Key>
@@ -136,6 +130,17 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
     <Parameter Name="Uusername" Type="nvarchar" Mode="In" />
     <Parameter Name="userpass" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="sp_INSERTUSERr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="userFirstname" Type="nvarchar" Mode="In" />
+    <Parameter Name="userLastname" Type="nvarchar" Mode="In" />
+    <Parameter Name="usermiddleIn" Type="nvarchar" Mode="In" />
+    <Parameter Name="userAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="userEmail" Type="nvarchar" Mode="In" />
+    <Parameter Name="userNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="Uusername" Type="nvarchar" Mode="In" />
+    <Parameter Name="userpass" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="sp_UpdateInstructor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="instructorId" Type="int" Mode="In" />
     <Parameter Name="instructorLName" Type="nvarchar" Mode="In" />
@@ -155,19 +160,11 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
     <Parameter Name="userpass" Type="nvarchar" Mode="In" />
   </Function>
   <EntityContainer Name="AppointmentSystemModelStoreContainer">
+    <EntitySet Name="checkoutBOOK" EntityType="Self.checkoutBOOK" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblInstructor" EntityType="Self.TblInstructor" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TblLocation" EntityType="Self.TblLocation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Schedule" EntityType="Self.Schedule" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-[Schedule].[scheduleId] AS [scheduleId], 
-[Schedule].[month] AS [month], 
-[Schedule].[day] AS [day], 
-[Schedule].[time] AS [time]
-FROM [dbo].[Schedule] AS [Schedule]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="vw_InsTable" EntityType="Self.vw_InsTable" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [vw_InsTable].[Instructor Id] AS [Instructor Id], 

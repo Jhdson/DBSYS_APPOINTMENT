@@ -12,11 +12,16 @@ namespace Final_System.AppData
     using System;
     using System.Collections.Generic;
     
-    public partial class Schedule
+    public partial class checkoutBOOK
     {
-        public int scheduleId { get; set; }
-        public string month { get; set; }
-        public string day { get; set; }
-        public Nullable<int> time { get; set; }
+        public int checkoutID { get; set; }
+        public string Cfname { get; set; }
+        public string Clname { get; set; }
+        public string Caddress { get; set; }
+        public string Cemail { get; set; }
+        public string Cphone { get; set; }
+        public Nullable<System.DateTime> Cdatestart { get; set; }
+        public Nullable<System.DateTime> Cdateexpire { get; set; }
+        public Nullable<int> Cpayment { get; set; }
     }
 }

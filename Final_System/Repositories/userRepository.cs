@@ -23,7 +23,7 @@ namespace Final_System.Repositories
         {
             using (db = new AppointmentSystemEntities())
             {
-                return db.tblUser.Where(m => m.userName == username).FirstOrDefault();
+                return db.tblUsers.Where(m => m.userName == username).FirstOrDefault();
 
             }
         }
@@ -77,7 +77,7 @@ namespace Final_System.Repositories
                 try
                 {
 
-                    db.sp_Add1(userID,userFirstname, userLastname, usermiddleIn, userAddress,
+                    db.sp_INSERTUSERr(userID,userFirstname, userLastname, usermiddleIn, userAddress,
                         userEmail, userNumber, uusername, userpass);
                     Response = " Added Successfully";
                     return ErrorCode.Success;

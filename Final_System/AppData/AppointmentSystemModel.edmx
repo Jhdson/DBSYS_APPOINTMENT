@@ -4,7 +4,21 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="AppointmentSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AppointmentSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="checkoutBOOK">
+          <Key>
+            <PropertyRef Name="checkoutID" />
+          </Key>
+          <Property Name="checkoutID" Type="int" Nullable="false" />
+          <Property Name="Cfname" Type="nvarchar" MaxLength="128" />
+          <Property Name="Clname" Type="nvarchar" MaxLength="128" />
+          <Property Name="Caddress" Type="nvarchar" MaxLength="128" />
+          <Property Name="Cemail" Type="nvarchar" MaxLength="128" />
+          <Property Name="Cphone" Type="nvarchar" MaxLength="128" />
+          <Property Name="Cdatestart" Type="datetime" />
+          <Property Name="Cdateexpire" Type="datetime" />
+          <Property Name="Cpayment" Type="int" />
+        </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="roleId" />
@@ -12,17 +26,6 @@
           <Property Name="roleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="roleName" Type="nvarchar" MaxLength="50" />
           <Property Name="roleDescription" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'AppointmentSystem.dbo.Schedule' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Schedule">
-          <Key>
-            <PropertyRef Name="scheduleId" />
-          </Key>
-          <Property Name="scheduleId" Type="int" Nullable="false" />
-          <Property Name="month" Type="nvarchar" MaxLength="50" />
-          <Property Name="day" Type="nvarchar" MaxLength="50" />
-          <Property Name="time" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -43,15 +46,6 @@ warning 6002: The table/view 'AppointmentSystem.dbo.Schedule' does not have a pr
           <Property Name="instructorFName" Type="varchar" MaxLength="128" />
           <Property Name="expertise" Type="varchar" MaxLength="128" />
           <Property Name="contactNo" Type="nvarchar" MaxLength="128" />
-        </EntityType>
-        <EntityType Name="TblLocation">
-          <Key>
-            <PropertyRef Name="locationId" />
-          </Key>
-          <Property Name="locationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="city" Type="nvarchar" MaxLength="255" />
-          <Property Name="barangay" Type="nvarchar" MaxLength="255" />
-          <Property Name="nameOfBuilding" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="tblUser">
           <Key>
@@ -141,6 +135,17 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
           <Parameter Name="Uusername" Type="nvarchar" Mode="In" />
           <Parameter Name="userpass" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="sp_INSERTUSERr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="userFirstname" Type="nvarchar" Mode="In" />
+          <Parameter Name="userLastname" Type="nvarchar" Mode="In" />
+          <Parameter Name="usermiddleIn" Type="nvarchar" Mode="In" />
+          <Parameter Name="userAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="userEmail" Type="nvarchar" Mode="In" />
+          <Parameter Name="userNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="Uusername" Type="nvarchar" Mode="In" />
+          <Parameter Name="userpass" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="sp_UpdateInstructor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="instructorId" Type="int" Mode="In" />
           <Parameter Name="instructorLName" Type="nvarchar" Mode="In" />
@@ -160,19 +165,11 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
           <Parameter Name="userpass" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="AppointmentSystemModelStoreContainer">
+          <EntitySet Name="checkoutBOOK" EntityType="Self.checkoutBOOK" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblInstructor" EntityType="Self.TblInstructor" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TblLocation" EntityType="Self.TblLocation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Schedule" EntityType="Self.Schedule" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[Schedule].[scheduleId] AS [scheduleId], 
-[Schedule].[month] AS [month], 
-[Schedule].[day] AS [day], 
-[Schedule].[time] AS [time]
-FROM [dbo].[Schedule] AS [Schedule]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="vw_InsTable" EntityType="Self.vw_InsTable" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [vw_InsTable].[Instructor Id] AS [Instructor Id], 
@@ -203,10 +200,25 @@ FROM [dbo].[vw_TrainingTable] AS [vw_TrainingTable]</DefiningQuery>
 FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AppointmentSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="checkoutBOOK">
+          <Key>
+            <PropertyRef Name="checkoutID" />
+          </Key>
+          <Property Name="checkoutID" Type="Int32" Nullable="false" />
+          <Property Name="Cfname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Clname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Caddress" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Cemail" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Cphone" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Cdatestart" Type="DateTime" Precision="3" />
+          <Property Name="Cdateexpire" Type="DateTime" Precision="3" />
+          <Property Name="Cpayment" Type="Int32" />
+        </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="roleId" />
@@ -215,7 +227,7 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           <Property Name="roleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="roleDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
+        <EntityType Name="sysdiagram">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
@@ -235,16 +247,6 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="TblLocation">
-          <Key>
-            <PropertyRef Name="locationId" />
-          </Key>
-          <Property Name="locationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="city" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="barangay" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="nameOfBuilding" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Training" Relationship="Self.FK_Training_TblLocation" FromRole="TblLocation" ToRole="Training" />
-        </EntityType>
         <EntityType Name="tblUser">
           <Key>
             <PropertyRef Name="userId" />
@@ -259,35 +261,16 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           <Property Name="userName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="userPass" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="roleID" Type="Int32" />
-          <Property Name="createdBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Training">
+        <EntityType Name="vw_InsTable">
           <Key>
-            <PropertyRef Name="trainingId" />
+            <PropertyRef Name="Instructor_Id" />
+            <PropertyRef Name="Name" />
           </Key>
-          <Property Name="trainingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="trainingType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="locationId" Type="Int32" />
-          <Property Name="duration" Type="Int32" />
-          <Property Name="instructorId" Type="Int32" />
-          <Property Name="date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="TblLocation" Relationship="Self.FK_Training_TblLocation" FromRole="Training" ToRole="TblLocation" />
-        </EntityType>
-        <EntityType Name="Schedule">
-          <Key>
-            <PropertyRef Name="scheduleId" />
-          </Key>
-          <Property Name="scheduleId" Type="Int32" Nullable="false" />
-          <Property Name="month" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="day" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="time" Type="Int32" />
-        </EntityType>
-        <EntityType Name="TrainingType">
-          <Key>
-            <PropertyRef Name="trainingtypeId" />
-          </Key>
-          <Property Name="trainingtypeId" Type="Int32" Nullable="false" />
-          <Property Name="trainingDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Instructor_Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="257" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="vw_TrainingTable">
           <Key>
@@ -313,35 +296,37 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <Association Name="FK_Training_TblLocation">
-          <End Role="TblLocation" Type="Self.TblLocation" Multiplicity="0..1" />
-          <End Role="Training" Type="Self.Training" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblLocation">
-              <PropertyRef Name="locationId" />
-            </Principal>
-            <Dependent Role="Training">
-              <PropertyRef Name="locationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="AppointmentSystemEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Role" EntityType="Self.Role" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="TblInstructor" EntityType="Self.TblInstructor" />
-          <EntitySet Name="TblLocation" EntityType="Self.TblLocation" />
-          <EntitySet Name="tblUser" EntityType="Self.tblUser" />
-          <EntitySet Name="Training" EntityType="Self.Training" />
-          <EntitySet Name="Schedule" EntityType="Self.Schedule" />
-          <EntitySet Name="TrainingType" EntityType="Self.TrainingType" />
+          <EntitySet Name="checkoutBOOKs" EntityType="Self.checkoutBOOK" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TblInstructors" EntityType="Self.TblInstructor" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+          <EntitySet Name="vw_InsTable" EntityType="Self.vw_InsTable" />
           <EntitySet Name="vw_TrainingTable" EntityType="Self.vw_TrainingTable" />
           <EntitySet Name="vw_UserTable" EntityType="Self.vw_UserTable" />
-          <AssociationSet Name="FK_Training_TblLocation" Association="Self.FK_Training_TblLocation">
-            <End Role="TblLocation" EntitySet="TblLocation" />
-            <End Role="Training" EntitySet="Training" />
-          </AssociationSet>
+          <FunctionImport Name="sp_addinstructor">
+            <Parameter Name="instructorId" Mode="In" Type="Int32" />
+            <Parameter Name="instructorLName" Mode="In" Type="String" />
+            <Parameter Name="instructorFName" Mode="In" Type="String" />
+            <Parameter Name="expertise" Mode="In" Type="String" />
+            <Parameter Name="contactNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_checkoutBOOK">
+            <Parameter Name="checkid" Mode="In" Type="Int32" />
+            <Parameter Name="checkfname" Mode="In" Type="String" />
+            <Parameter Name="checklname" Mode="In" Type="String" />
+            <Parameter Name="checkAddress" Mode="In" Type="String" />
+            <Parameter Name="checkEmail" Mode="In" Type="String" />
+            <Parameter Name="checkPhone" Mode="In" Type="String" />
+            <Parameter Name="checkDateSTART" Mode="In" Type="DateTime" />
+            <Parameter Name="checkDateEXPIRE" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_DELETEINSTRUCTOR">
+            <Parameter Name="instructorId" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="sp_deleteUSER">
-          <Parameter Name="userID" Mode="In" Type="Int32" />
+            <Parameter Name="userID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_InsertUser">
             <Parameter Name="userFirstname" Mode="In" Type="String" />
@@ -352,6 +337,24 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
             <Parameter Name="userNumber" Mode="In" Type="String" />
             <Parameter Name="Uusername" Mode="In" Type="String" />
             <Parameter Name="userpass" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_INSERTUSERr">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="userFirstname" Mode="In" Type="String" />
+            <Parameter Name="userLastname" Mode="In" Type="String" />
+            <Parameter Name="usermiddleIn" Mode="In" Type="String" />
+            <Parameter Name="userAddress" Mode="In" Type="String" />
+            <Parameter Name="userEmail" Mode="In" Type="String" />
+            <Parameter Name="userNumber" Mode="In" Type="String" />
+            <Parameter Name="Uusername" Mode="In" Type="String" />
+            <Parameter Name="userpass" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateInstructor">
+            <Parameter Name="instructorId" Mode="In" Type="Int32" />
+            <Parameter Name="instructorLName" Mode="In" Type="String" />
+            <Parameter Name="instructorFName" Mode="In" Type="String" />
+            <Parameter Name="expertise" Mode="In" Type="String" />
+            <Parameter Name="contactNo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_UPDATEUSER">
             <Parameter Name="userID" Mode="In" Type="Int32" />
@@ -364,73 +367,29 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
             <Parameter Name="Uusername" Mode="In" Type="String" />
             <Parameter Name="userpass" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_Add">
-            <Parameter Name="userFirstname" Mode="In" Type="String" />
-            <Parameter Name="userLastname" Mode="In" Type="String" />
-            <Parameter Name="usermid" Mode="In" Type="String" />
-            <Parameter Name="userAddress" Mode="In" Type="String" />
-            <Parameter Name="userEmail" Mode="In" Type="String" />
-            <Parameter Name="userNumber" Mode="In" Type="String" />
-            <Parameter Name="userName" Mode="In" Type="String" />
-            <Parameter Name="userPass" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_Add1">
-            <Parameter Name="userId" Mode="In" Type="Int32" />
-            <Parameter Name="userFirstname" Mode="In" Type="String" />
-            <Parameter Name="userLastname" Mode="In" Type="String" />
-            <Parameter Name="usermid" Mode="In" Type="String" />
-            <Parameter Name="userAddress" Mode="In" Type="String" />
-            <Parameter Name="userEmail" Mode="In" Type="String" />
-            <Parameter Name="userNumber" Mode="In" Type="String" />
-            <Parameter Name="userName" Mode="In" Type="String" />
-            <Parameter Name="userPass" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_addinstructor">
-            <Parameter Name="instructorId" Mode="In" Type="Int32" />
-            <Parameter Name="instructorLName" Mode="In" Type="String" />
-            <Parameter Name="instructorFName" Mode="In" Type="String" />
-            <Parameter Name="expertise" Mode="In" Type="String" />
-            <Parameter Name="contactNo" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_UpdateInstructor">
-            <Parameter Name="instructorId" Mode="In" Type="Int32" />
-            <Parameter Name="instructorLName" Mode="In" Type="String" />
-            <Parameter Name="instructorFName" Mode="In" Type="String" />
-            <Parameter Name="expertise" Mode="In" Type="String" />
-            <Parameter Name="contactNo" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_DELETEINSTRUCTOR">
-          <Parameter Name="instructorId" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <EntitySet Name="vw_InsTable" EntityType="AppointmentSystemModel.vw_InsTable" />
-          <FunctionImport Name="sp_checkoutBOOK">
-            <Parameter Name="checkid" Mode="In" Type="Int32" />
-            <Parameter Name="checkfname" Mode="In" Type="String" />
-            <Parameter Name="checklname" Mode="In" Type="String" />
-            <Parameter Name="checkAddress" Mode="In" Type="String" />
-            <Parameter Name="checkEmail" Mode="In" Type="String" />
-            <Parameter Name="checkPhone" Mode="In" Type="String" />
-            <Parameter Name="checkDateSTART" Mode="In" Type="DateTime" />
-            <Parameter Name="checkDateEXPIRE" Mode="In" Type="DateTime" />
-          </FunctionImport>
         </EntityContainer>
-        <EntityType Name="vw_InsTable">
-          <Key>
-            <PropertyRef Name="Instructor_Id" />
-            <PropertyRef Name="Name" />
-          </Key>
-          <Property Name="Instructor_Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="257" FixedLength="false" Unicode="false" />
-          <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="AppointmentSystemModelStoreContainer" CdmEntityContainer="AppointmentSystemEntities">
-          <EntitySetMapping Name="Role">
+          <EntitySetMapping Name="checkoutBOOKs">
+            <EntityTypeMapping TypeName="AppointmentSystemModel.checkoutBOOK">
+              <MappingFragment StoreEntitySet="checkoutBOOK">
+                <ScalarProperty Name="checkoutID" ColumnName="checkoutID" />
+                <ScalarProperty Name="Cfname" ColumnName="Cfname" />
+                <ScalarProperty Name="Clname" ColumnName="Clname" />
+                <ScalarProperty Name="Caddress" ColumnName="Caddress" />
+                <ScalarProperty Name="Cemail" ColumnName="Cemail" />
+                <ScalarProperty Name="Cphone" ColumnName="Cphone" />
+                <ScalarProperty Name="Cdatestart" ColumnName="Cdatestart" />
+                <ScalarProperty Name="Cdateexpire" ColumnName="Cdateexpire" />
+                <ScalarProperty Name="Cpayment" ColumnName="Cpayment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="AppointmentSystemModel.Role">
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="roleId" ColumnName="roleId" />
@@ -440,7 +399,7 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="AppointmentSystemModel.sysdiagrams">
+            <EntityTypeMapping TypeName="AppointmentSystemModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -450,7 +409,7 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TblInstructor">
+          <EntitySetMapping Name="TblInstructors">
             <EntityTypeMapping TypeName="AppointmentSystemModel.TblInstructor">
               <MappingFragment StoreEntitySet="TblInstructor">
                 <ScalarProperty Name="instructorId" ColumnName="instructorId" />
@@ -461,17 +420,7 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TblLocation">
-            <EntityTypeMapping TypeName="AppointmentSystemModel.TblLocation">
-              <MappingFragment StoreEntitySet="TblLocation">
-                <ScalarProperty Name="locationId" ColumnName="locationId" />
-                <ScalarProperty Name="city" ColumnName="city" />
-                <ScalarProperty Name="barangay" ColumnName="barangay" />
-                <ScalarProperty Name="nameOfBuilding" ColumnName="nameOfBuilding" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblUser">
+          <EntitySetMapping Name="tblUsers">
             <EntityTypeMapping TypeName="AppointmentSystemModel.tblUser">
               <MappingFragment StoreEntitySet="tblUser">
                 <ScalarProperty Name="userId" ColumnName="userId" />
@@ -487,13 +436,13 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Schedule">
-            <EntityTypeMapping TypeName="AppointmentSystemModel.Schedule">
-              <MappingFragment StoreEntitySet="Schedule">
-                <ScalarProperty Name="scheduleId" ColumnName="scheduleId" />
-                <ScalarProperty Name="month" ColumnName="month" />
-                <ScalarProperty Name="day" ColumnName="day" />
-                <ScalarProperty Name="time" ColumnName="time" />
+          <EntitySetMapping Name="vw_InsTable">
+            <EntityTypeMapping TypeName="AppointmentSystemModel.vw_InsTable">
+              <MappingFragment StoreEntitySet="vw_InsTable">
+                <ScalarProperty Name="Instructor_Id" ColumnName="Instructor Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="expertise" ColumnName="expertise" />
+                <ScalarProperty Name="contactNo" ColumnName="contactNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -522,23 +471,14 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_addinstructor" FunctionName="AppointmentSystemModel.Store.sp_addinstructor" />
+          <FunctionImportMapping FunctionImportName="sp_checkoutBOOK" FunctionName="AppointmentSystemModel.Store.sp_checkoutBOOK" />
+          <FunctionImportMapping FunctionImportName="sp_DELETEINSTRUCTOR" FunctionName="AppointmentSystemModel.Store.sp_DELETEINSTRUCTOR" />
           <FunctionImportMapping FunctionImportName="sp_deleteUSER" FunctionName="AppointmentSystemModel.Store.sp_deleteUSER" />
           <FunctionImportMapping FunctionImportName="sp_InsertUser" FunctionName="AppointmentSystemModel.Store.sp_InsertUser" />
-          <FunctionImportMapping FunctionImportName="sp_UPDATEUSER" FunctionName="AppointmentSystemModel.Store.sp_UPDATEUSER" />
-          <FunctionImportMapping FunctionImportName="sp_addinstructor" FunctionName="AppointmentSystemModel.Store.sp_addinstructor" />
+          <FunctionImportMapping FunctionImportName="sp_INSERTUSERr" FunctionName="AppointmentSystemModel.Store.sp_INSERTUSERr" />
           <FunctionImportMapping FunctionImportName="sp_UpdateInstructor" FunctionName="AppointmentSystemModel.Store.sp_UpdateInstructor" />
-          <FunctionImportMapping FunctionImportName="sp_DELETEINSTRUCTOR" FunctionName="AppointmentSystemModel.Store.sp_DELETEINSTRUCTOR" />
-          <EntitySetMapping Name="vw_InsTable">
-            <EntityTypeMapping TypeName="AppointmentSystemModel.vw_InsTable">
-              <MappingFragment StoreEntitySet="vw_InsTable">
-                <ScalarProperty Name="contactNo" ColumnName="contactNo" />
-                <ScalarProperty Name="expertise" ColumnName="expertise" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Instructor_Id" ColumnName="Instructor Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_checkoutBOOK" FunctionName="AppointmentSystemModel.Store.sp_checkoutBOOK" />
+          <FunctionImportMapping FunctionImportName="sp_UPDATEUSER" FunctionName="AppointmentSystemModel.Store.sp_UPDATEUSER" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -553,7 +493,7 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="true" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

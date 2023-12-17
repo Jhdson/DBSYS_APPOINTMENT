@@ -68,28 +68,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppointmentSystemModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="AppData\checkoutBOOK.cs">
+      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="AppData\Role.cs">
       <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppData\Schedule.cs">
-      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppData\sysdiagrams.cs">
+    <Compile Include="AppData\sysdiagram.cs">
       <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\TblInstructor.cs">
       <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppData\TblLocation.cs">
-      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="AppData\tblUser.cs">
-      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppData\Training.cs">
-      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppData\TrainingType.cs">
       <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\vw_InsTable.cs">
@@ -231,6 +222,12 @@
     <None Include="Resources\front.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\bababaer.jpg" />
+    <None Include="Resources\8-removebg-preview.png" />
+    <None Include="Resources\sdfg.jpg" />
+    <None Include="Resources\samesulek.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="AppData\AppointmentSystemModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AppointmentSystemModel.edmx</DependentUpon>
@@ -241,10 +238,6 @@
       <DependentUpon>AppointmentSystemModel.edmx</DependentUpon>
       <LastGenOutput>AppointmentSystemModel.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\bababaer.jpg" />
-    <None Include="Resources\8-removebg-preview.png" />
-    <None Include="Resources\sdfg.jpg" />
-    <None Include="Resources\samesulek.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

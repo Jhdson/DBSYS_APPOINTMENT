@@ -85,7 +85,7 @@ namespace Final_System.Forms
             UserTBL.userPass = txt_password.Text;
             UserTBL.roleID = 1;
 
-            db.tblUser.Add(UserTBL);
+            db.tblUsers.Add(UserTBL);
             db.SaveChanges();
 
             txt_lastname.Clear();

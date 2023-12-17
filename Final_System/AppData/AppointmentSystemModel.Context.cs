@@ -28,17 +28,85 @@ namespace Final_System.AppData
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Role> Role { get; set; }
-        public DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public DbSet<TblInstructor> TblInstructor { get; set; }
-        public DbSet<TblLocation> TblLocation { get; set; }
-        public DbSet<tblUser> tblUser { get; set; }
-        public DbSet<Training> Training { get; set; }
-        public DbSet<Schedule> Schedule { get; set; }
-        public DbSet<TrainingType> TrainingType { get; set; }
+        public DbSet<checkoutBOOK> checkoutBOOKs { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<sysdiagram> sysdiagrams { get; set; }
+        public DbSet<TblInstructor> TblInstructors { get; set; }
+        public DbSet<tblUser> tblUsers { get; set; }
+        public DbSet<vw_InsTable> vw_InsTable { get; set; }
         public DbSet<vw_TrainingTable> vw_TrainingTable { get; set; }
         public DbSet<vw_UserTable> vw_UserTable { get; set; }
-        public DbSet<vw_InsTable> vw_InsTable { get; set; }
+    
+        public virtual int sp_addinstructor(Nullable<int> instructorId, string instructorLName, string instructorFName, string expertise, string contactNo)
+        {
+            var instructorIdParameter = instructorId.HasValue ?
+                new ObjectParameter("instructorId", instructorId) :
+                new ObjectParameter("instructorId", typeof(int));
+    
+            var instructorLNameParameter = instructorLName != null ?
+                new ObjectParameter("instructorLName", instructorLName) :
+                new ObjectParameter("instructorLName", typeof(string));
+    
+            var instructorFNameParameter = instructorFName != null ?
+                new ObjectParameter("instructorFName", instructorFName) :
+                new ObjectParameter("instructorFName", typeof(string));
+    
+            var expertiseParameter = expertise != null ?
+                new ObjectParameter("expertise", expertise) :
+                new ObjectParameter("expertise", typeof(string));
+    
+            var contactNoParameter = contactNo != null ?
+                new ObjectParameter("contactNo", contactNo) :
+                new ObjectParameter("contactNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_addinstructor", instructorIdParameter, instructorLNameParameter, instructorFNameParameter, expertiseParameter, contactNoParameter);
+        }
+    
+        public virtual int sp_checkoutBOOK(Nullable<int> checkid, string checkfname, string checklname, string checkAddress, string checkEmail, string checkPhone, Nullable<System.DateTime> checkDateSTART, Nullable<System.DateTime> checkDateEXPIRE)
+        {
+            var checkidParameter = checkid.HasValue ?
+                new ObjectParameter("checkid", checkid) :
+                new ObjectParameter("checkid", typeof(int));
+    
+            var checkfnameParameter = checkfname != null ?
+                new ObjectParameter("checkfname", checkfname) :
+                new ObjectParameter("checkfname", typeof(string));
+    
+            var checklnameParameter = checklname != null ?
+                new ObjectParameter("checklname", checklname) :
+                new ObjectParameter("checklname", typeof(string));
+    
+            var checkAddressParameter = checkAddress != null ?
+                new ObjectParameter("checkAddress", checkAddress) :
+                new ObjectParameter("checkAddress", typeof(string));
+    
+            var checkEmailParameter = checkEmail != null ?
+                new ObjectParameter("checkEmail", checkEmail) :
+                new ObjectParameter("checkEmail", typeof(string));
+    
+            var checkPhoneParameter = checkPhone != null ?
+                new ObjectParameter("checkPhone", checkPhone) :
+                new ObjectParameter("checkPhone", typeof(string));
+    
+            var checkDateSTARTParameter = checkDateSTART.HasValue ?
+                new ObjectParameter("checkDateSTART", checkDateSTART) :
+                new ObjectParameter("checkDateSTART", typeof(System.DateTime));
+    
+            var checkDateEXPIREParameter = checkDateEXPIRE.HasValue ?
+                new ObjectParameter("checkDateEXPIRE", checkDateEXPIRE) :
+                new ObjectParameter("checkDateEXPIRE", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_checkoutBOOK", checkidParameter, checkfnameParameter, checklnameParameter, checkAddressParameter, checkEmailParameter, checkPhoneParameter, checkDateSTARTParameter, checkDateEXPIREParameter);
+        }
+    
+        public virtual int sp_DELETEINSTRUCTOR(Nullable<int> instructorId)
+        {
+            var instructorIdParameter = instructorId.HasValue ?
+                new ObjectParameter("instructorId", instructorId) :
+                new ObjectParameter("instructorId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_DELETEINSTRUCTOR", instructorIdParameter);
+        }
     
         public virtual int sp_deleteUSER(Nullable<int> userID)
         {
@@ -86,6 +154,72 @@ namespace Final_System.AppData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertUser", userFirstnameParameter, userLastnameParameter, usermiddleInParameter, userAddressParameter, userEmailParameter, userNumberParameter, uusernameParameter, userpassParameter);
         }
     
+        public virtual int sp_INSERTUSERr(Nullable<int> userId, string userFirstname, string userLastname, string usermiddleIn, string userAddress, string userEmail, string userNumber, string uusername, string userpass)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            var userFirstnameParameter = userFirstname != null ?
+                new ObjectParameter("userFirstname", userFirstname) :
+                new ObjectParameter("userFirstname", typeof(string));
+    
+            var userLastnameParameter = userLastname != null ?
+                new ObjectParameter("userLastname", userLastname) :
+                new ObjectParameter("userLastname", typeof(string));
+    
+            var usermiddleInParameter = usermiddleIn != null ?
+                new ObjectParameter("usermiddleIn", usermiddleIn) :
+                new ObjectParameter("usermiddleIn", typeof(string));
+    
+            var userAddressParameter = userAddress != null ?
+                new ObjectParameter("userAddress", userAddress) :
+                new ObjectParameter("userAddress", typeof(string));
+    
+            var userEmailParameter = userEmail != null ?
+                new ObjectParameter("userEmail", userEmail) :
+                new ObjectParameter("userEmail", typeof(string));
+    
+            var userNumberParameter = userNumber != null ?
+                new ObjectParameter("userNumber", userNumber) :
+                new ObjectParameter("userNumber", typeof(string));
+    
+            var uusernameParameter = uusername != null ?
+                new ObjectParameter("Uusername", uusername) :
+                new ObjectParameter("Uusername", typeof(string));
+    
+            var userpassParameter = userpass != null ?
+                new ObjectParameter("userpass", userpass) :
+                new ObjectParameter("userpass", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_INSERTUSERr", userIdParameter, userFirstnameParameter, userLastnameParameter, usermiddleInParameter, userAddressParameter, userEmailParameter, userNumberParameter, uusernameParameter, userpassParameter);
+        }
+    
+        public virtual int sp_UpdateInstructor(Nullable<int> instructorId, string instructorLName, string instructorFName, string expertise, string contactNo)
+        {
+            var instructorIdParameter = instructorId.HasValue ?
+                new ObjectParameter("instructorId", instructorId) :
+                new ObjectParameter("instructorId", typeof(int));
+    
+            var instructorLNameParameter = instructorLName != null ?
+                new ObjectParameter("instructorLName", instructorLName) :
+                new ObjectParameter("instructorLName", typeof(string));
+    
+            var instructorFNameParameter = instructorFName != null ?
+                new ObjectParameter("instructorFName", instructorFName) :
+                new ObjectParameter("instructorFName", typeof(string));
+    
+            var expertiseParameter = expertise != null ?
+                new ObjectParameter("expertise", expertise) :
+                new ObjectParameter("expertise", typeof(string));
+    
+            var contactNoParameter = contactNo != null ?
+                new ObjectParameter("contactNo", contactNo) :
+                new ObjectParameter("contactNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdateInstructor", instructorIdParameter, instructorLNameParameter, instructorFNameParameter, expertiseParameter, contactNoParameter);
+        }
+    
         public virtual int sp_UPDATEUSER(Nullable<int> userID, string userLastname, string userFirstname, string usermiddleIn, string userAddress, string userEmail, string userNumber, string uusername, string userpass)
         {
             var userIDParameter = userID.HasValue ?
@@ -125,180 +259,6 @@ namespace Final_System.AppData
                 new ObjectParameter("userpass", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UPDATEUSER", userIDParameter, userLastnameParameter, userFirstnameParameter, usermiddleInParameter, userAddressParameter, userEmailParameter, userNumberParameter, uusernameParameter, userpassParameter);
-        }
-    
-        public virtual int sp_Add(string userFirstname, string userLastname, string usermid, string userAddress, string userEmail, string userNumber, string userName, string userPass)
-        {
-            var userFirstnameParameter = userFirstname != null ?
-                new ObjectParameter("userFirstname", userFirstname) :
-                new ObjectParameter("userFirstname", typeof(string));
-    
-            var userLastnameParameter = userLastname != null ?
-                new ObjectParameter("userLastname", userLastname) :
-                new ObjectParameter("userLastname", typeof(string));
-    
-            var usermidParameter = usermid != null ?
-                new ObjectParameter("usermid", usermid) :
-                new ObjectParameter("usermid", typeof(string));
-    
-            var userAddressParameter = userAddress != null ?
-                new ObjectParameter("userAddress", userAddress) :
-                new ObjectParameter("userAddress", typeof(string));
-    
-            var userEmailParameter = userEmail != null ?
-                new ObjectParameter("userEmail", userEmail) :
-                new ObjectParameter("userEmail", typeof(string));
-    
-            var userNumberParameter = userNumber != null ?
-                new ObjectParameter("userNumber", userNumber) :
-                new ObjectParameter("userNumber", typeof(string));
-    
-            var userNameParameter = userName != null ?
-                new ObjectParameter("userName", userName) :
-                new ObjectParameter("userName", typeof(string));
-    
-            var userPassParameter = userPass != null ?
-                new ObjectParameter("userPass", userPass) :
-                new ObjectParameter("userPass", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Add", userFirstnameParameter, userLastnameParameter, usermidParameter, userAddressParameter, userEmailParameter, userNumberParameter, userNameParameter, userPassParameter);
-        }
-    
-        public virtual int sp_Add1(Nullable<int> userId, string userFirstname, string userLastname, string usermid, string userAddress, string userEmail, string userNumber, string userName, string userPass)
-        {
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("userId", userId) :
-                new ObjectParameter("userId", typeof(int));
-    
-            var userFirstnameParameter = userFirstname != null ?
-                new ObjectParameter("userFirstname", userFirstname) :
-                new ObjectParameter("userFirstname", typeof(string));
-    
-            var userLastnameParameter = userLastname != null ?
-                new ObjectParameter("userLastname", userLastname) :
-                new ObjectParameter("userLastname", typeof(string));
-    
-            var usermidParameter = usermid != null ?
-                new ObjectParameter("usermid", usermid) :
-                new ObjectParameter("usermid", typeof(string));
-    
-            var userAddressParameter = userAddress != null ?
-                new ObjectParameter("userAddress", userAddress) :
-                new ObjectParameter("userAddress", typeof(string));
-    
-            var userEmailParameter = userEmail != null ?
-                new ObjectParameter("userEmail", userEmail) :
-                new ObjectParameter("userEmail", typeof(string));
-    
-            var userNumberParameter = userNumber != null ?
-                new ObjectParameter("userNumber", userNumber) :
-                new ObjectParameter("userNumber", typeof(string));
-    
-            var userNameParameter = userName != null ?
-                new ObjectParameter("userName", userName) :
-                new ObjectParameter("userName", typeof(string));
-    
-            var userPassParameter = userPass != null ?
-                new ObjectParameter("userPass", userPass) :
-                new ObjectParameter("userPass", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Add1", userIdParameter, userFirstnameParameter, userLastnameParameter, usermidParameter, userAddressParameter, userEmailParameter, userNumberParameter, userNameParameter, userPassParameter);
-        }
-    
-        public virtual int sp_addinstructor(Nullable<int> instructorId, string instructorLName, string instructorFName, string expertise, string contactNo)
-        {
-            var instructorIdParameter = instructorId.HasValue ?
-                new ObjectParameter("instructorId", instructorId) :
-                new ObjectParameter("instructorId", typeof(int));
-    
-            var instructorLNameParameter = instructorLName != null ?
-                new ObjectParameter("instructorLName", instructorLName) :
-                new ObjectParameter("instructorLName", typeof(string));
-    
-            var instructorFNameParameter = instructorFName != null ?
-                new ObjectParameter("instructorFName", instructorFName) :
-                new ObjectParameter("instructorFName", typeof(string));
-    
-            var expertiseParameter = expertise != null ?
-                new ObjectParameter("expertise", expertise) :
-                new ObjectParameter("expertise", typeof(string));
-    
-            var contactNoParameter = contactNo != null ?
-                new ObjectParameter("contactNo", contactNo) :
-                new ObjectParameter("contactNo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_addinstructor", instructorIdParameter, instructorLNameParameter, instructorFNameParameter, expertiseParameter, contactNoParameter);
-        }
-    
-        public virtual int sp_UpdateInstructor(Nullable<int> instructorId, string instructorLName, string instructorFName, string expertise, string contactNo)
-        {
-            var instructorIdParameter = instructorId.HasValue ?
-                new ObjectParameter("instructorId", instructorId) :
-                new ObjectParameter("instructorId", typeof(int));
-    
-            var instructorLNameParameter = instructorLName != null ?
-                new ObjectParameter("instructorLName", instructorLName) :
-                new ObjectParameter("instructorLName", typeof(string));
-    
-            var instructorFNameParameter = instructorFName != null ?
-                new ObjectParameter("instructorFName", instructorFName) :
-                new ObjectParameter("instructorFName", typeof(string));
-    
-            var expertiseParameter = expertise != null ?
-                new ObjectParameter("expertise", expertise) :
-                new ObjectParameter("expertise", typeof(string));
-    
-            var contactNoParameter = contactNo != null ?
-                new ObjectParameter("contactNo", contactNo) :
-                new ObjectParameter("contactNo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdateInstructor", instructorIdParameter, instructorLNameParameter, instructorFNameParameter, expertiseParameter, contactNoParameter);
-        }
-    
-        public virtual int sp_DELETEINSTRUCTOR(Nullable<int> instructorId)
-        {
-            var instructorIdParameter = instructorId.HasValue ?
-                new ObjectParameter("instructorId", instructorId) :
-                new ObjectParameter("instructorId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_DELETEINSTRUCTOR", instructorIdParameter);
-        }
-    
-        public virtual int sp_checkoutBOOK(Nullable<int> checkid, string checkfname, string checklname, string checkAddress, string checkEmail, string checkPhone, Nullable<System.DateTime> checkDateSTART, Nullable<System.DateTime> checkDateEXPIRE)
-        {
-            var checkidParameter = checkid.HasValue ?
-                new ObjectParameter("checkid", checkid) :
-                new ObjectParameter("checkid", typeof(int));
-    
-            var checkfnameParameter = checkfname != null ?
-                new ObjectParameter("checkfname", checkfname) :
-                new ObjectParameter("checkfname", typeof(string));
-    
-            var checklnameParameter = checklname != null ?
-                new ObjectParameter("checklname", checklname) :
-                new ObjectParameter("checklname", typeof(string));
-    
-            var checkAddressParameter = checkAddress != null ?
-                new ObjectParameter("checkAddress", checkAddress) :
-                new ObjectParameter("checkAddress", typeof(string));
-    
-            var checkEmailParameter = checkEmail != null ?
-                new ObjectParameter("checkEmail", checkEmail) :
-                new ObjectParameter("checkEmail", typeof(string));
-    
-            var checkPhoneParameter = checkPhone != null ?
-                new ObjectParameter("checkPhone", checkPhone) :
-                new ObjectParameter("checkPhone", typeof(string));
-    
-            var checkDateSTARTParameter = checkDateSTART.HasValue ?
-                new ObjectParameter("checkDateSTART", checkDateSTART) :
-                new ObjectParameter("checkDateSTART", typeof(System.DateTime));
-    
-            var checkDateEXPIREParameter = checkDateEXPIRE.HasValue ?
-                new ObjectParameter("checkDateEXPIRE", checkDateEXPIRE) :
-                new ObjectParameter("checkDateEXPIRE", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_checkoutBOOK", checkidParameter, checkfnameParameter, checklnameParameter, checkAddressParameter, checkEmailParameter, checkPhoneParameter, checkDateSTARTParameter, checkDateEXPIREParameter);
         }
     }
 }

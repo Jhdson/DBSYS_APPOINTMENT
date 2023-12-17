@@ -30,11 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pnlInstructor = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView1ins = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtinsNumber = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.btnDELETEINS = new System.Windows.Forms.Button();
             this.btnUPDATEINS = new System.Windows.Forms.Button();
             this.btnAddINS = new System.Windows.Forms.Button();
@@ -74,7 +73,7 @@
             this.pbclose1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlInstructor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1ins)).BeginInit();
             this.panel2.SuspendLayout();
             this.pnlUsers.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -86,26 +85,27 @@
             // pnlInstructor
             // 
             this.pnlInstructor.BackColor = System.Drawing.Color.SeaShell;
-            this.pnlInstructor.Controls.Add(this.dataGridView1);
+            this.pnlInstructor.Controls.Add(this.dataGridView1ins);
             this.pnlInstructor.Controls.Add(this.panel2);
             this.pnlInstructor.Location = new System.Drawing.Point(12, 57);
             this.pnlInstructor.Name = "pnlInstructor";
             this.pnlInstructor.Size = new System.Drawing.Size(782, 449);
             this.pnlInstructor.TabIndex = 0;
+            this.pnlInstructor.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlInstructor_Paint);
             // 
-            // dataGridView1
+            // dataGridView1ins
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 47);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(455, 345);
-            this.dataGridView1.TabIndex = 15;
+            this.dataGridView1ins.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1ins.Location = new System.Drawing.Point(16, 47);
+            this.dataGridView1ins.Name = "dataGridView1ins";
+            this.dataGridView1ins.Size = new System.Drawing.Size(455, 345);
+            this.dataGridView1ins.TabIndex = 15;
+            this.dataGridView1ins.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1ins_CellContentClick);
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.txtinsNumber);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.btnDELETEINS);
             this.panel2.Controls.Add(this.btnUPDATEINS);
             this.panel2.Controls.Add(this.btnAddINS);
@@ -121,49 +121,44 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(281, 346);
             this.panel2.TabIndex = 14;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // txtinsNumber
             // 
-            this.txtinsNumber.Location = new System.Drawing.Point(13, 34);
+            this.txtinsNumber.Location = new System.Drawing.Point(116, 41);
             this.txtinsNumber.Name = "txtinsNumber";
-            this.txtinsNumber.Size = new System.Drawing.Size(175, 20);
+            this.txtinsNumber.Size = new System.Drawing.Size(162, 20);
             this.txtinsNumber.TabIndex = 18;
+            this.txtinsNumber.TextChanged += new System.EventHandler(this.txtinsNumber_TextChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(17, 7);
+            this.label6.Location = new System.Drawing.Point(6, 48);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(101, 13);
             this.label6.TabIndex = 17;
             this.label6.Text = "Instructor\'s  Number";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 229);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 13);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "availability";
-            // 
             // btnDELETEINS
             // 
-            this.btnDELETEINS.Location = new System.Drawing.Point(182, 305);
+            this.btnDELETEINS.Location = new System.Drawing.Point(195, 305);
             this.btnDELETEINS.Name = "btnDELETEINS";
             this.btnDELETEINS.Size = new System.Drawing.Size(75, 23);
             this.btnDELETEINS.TabIndex = 15;
             this.btnDELETEINS.Text = "Delete";
             this.btnDELETEINS.UseVisualStyleBackColor = true;
+            this.btnDELETEINS.Click += new System.EventHandler(this.btnDELETEINS_Click);
             // 
             // btnUPDATEINS
             // 
-            this.btnUPDATEINS.Location = new System.Drawing.Point(101, 305);
+            this.btnUPDATEINS.Location = new System.Drawing.Point(103, 305);
             this.btnUPDATEINS.Name = "btnUPDATEINS";
             this.btnUPDATEINS.Size = new System.Drawing.Size(75, 23);
             this.btnUPDATEINS.TabIndex = 14;
             this.btnUPDATEINS.Text = "Update";
             this.btnUPDATEINS.UseVisualStyleBackColor = true;
+            this.btnUPDATEINS.Click += new System.EventHandler(this.btnUPDATEINS_Click);
             // 
             // btnAddINS
             // 
@@ -173,18 +168,19 @@
             this.btnAddINS.TabIndex = 3;
             this.btnAddINS.Text = "Create";
             this.btnAddINS.UseVisualStyleBackColor = true;
+            this.btnAddINS.Click += new System.EventHandler(this.btnAddINS_Click);
             // 
             // txtfnameins
             // 
-            this.txtfnameins.Location = new System.Drawing.Point(9, 75);
+            this.txtfnameins.Location = new System.Drawing.Point(116, 75);
             this.txtfnameins.Name = "txtfnameins";
-            this.txtfnameins.Size = new System.Drawing.Size(175, 20);
+            this.txtfnameins.Size = new System.Drawing.Size(162, 20);
             this.txtfnameins.TabIndex = 1;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 185);
+            this.label4.Location = new System.Drawing.Point(23, 210);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 13);
             this.label4.TabIndex = 6;
@@ -192,22 +188,22 @@
             // 
             // txtexins
             // 
-            this.txtexins.Location = new System.Drawing.Point(6, 161);
+            this.txtexins.Location = new System.Drawing.Point(116, 161);
             this.txtexins.Name = "txtexins";
-            this.txtexins.Size = new System.Drawing.Size(175, 20);
+            this.txtexins.Size = new System.Drawing.Size(162, 20);
             this.txtexins.TabIndex = 5;
             // 
             // txtcontactins
             // 
-            this.txtcontactins.Location = new System.Drawing.Point(6, 206);
+            this.txtcontactins.Location = new System.Drawing.Point(116, 203);
             this.txtcontactins.Name = "txtcontactins";
-            this.txtcontactins.Size = new System.Drawing.Size(175, 20);
+            this.txtcontactins.Size = new System.Drawing.Size(162, 20);
             this.txtcontactins.TabIndex = 7;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 148);
+            this.label3.Location = new System.Drawing.Point(57, 168);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 4;
@@ -216,7 +212,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 59);
+            this.label1.Location = new System.Drawing.Point(50, 82);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 0;
@@ -224,19 +220,20 @@
             // 
             // txtlnameins
             // 
-            this.txtlnameins.Location = new System.Drawing.Point(13, 124);
+            this.txtlnameins.Location = new System.Drawing.Point(116, 117);
             this.txtlnameins.Name = "txtlnameins";
-            this.txtlnameins.Size = new System.Drawing.Size(175, 20);
+            this.txtlnameins.Size = new System.Drawing.Size(162, 20);
             this.txtlnameins.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 101);
+            this.label2.Location = new System.Drawing.Point(49, 122);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Last Name";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // btnUsers
             // 
@@ -487,19 +484,19 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.BurlyWood;
+            this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(807, 518);
             this.Controls.Add(this.pbmini1);
             this.Controls.Add(this.pbclose1);
             this.Controls.Add(this.btnInstructor);
             this.Controls.Add(this.btnUsers);
-            this.Controls.Add(this.pnlUsers);
             this.Controls.Add(this.pnlInstructor);
+            this.Controls.Add(this.pnlUsers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdminAddInstructor";
             this.Text = "AdminAddInstructor";
             this.pnlInstructor.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1ins)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.pnlUsers.ResumeLayout(false);
@@ -529,7 +526,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtlnameins;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView1ins;
         private System.Windows.Forms.Panel pnlUsers;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnDELETE;
@@ -555,7 +552,6 @@
         private System.Windows.Forms.ErrorProvider errorProviderCustom1;
         private System.Windows.Forms.PictureBox pbclose1;
         private System.Windows.Forms.PictureBox pbmini1;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtinsNumber;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ToolTip toolTip1;

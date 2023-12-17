@@ -1,7 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="AppointmentSystemModelStoreContainer" CdmEntityContainer="AppointmentSystemEntities">
-    <EntitySetMapping Name="Role">
+    <EntitySetMapping Name="checkoutBOOKs">
+      <EntityTypeMapping TypeName="AppointmentSystemModel.checkoutBOOK">
+        <MappingFragment StoreEntitySet="checkoutBOOK">
+          <ScalarProperty Name="checkoutID" ColumnName="checkoutID" />
+          <ScalarProperty Name="Cfname" ColumnName="Cfname" />
+          <ScalarProperty Name="Clname" ColumnName="Clname" />
+          <ScalarProperty Name="Caddress" ColumnName="Caddress" />
+          <ScalarProperty Name="Cemail" ColumnName="Cemail" />
+          <ScalarProperty Name="Cphone" ColumnName="Cphone" />
+          <ScalarProperty Name="Cdatestart" ColumnName="Cdatestart" />
+          <ScalarProperty Name="Cdateexpire" ColumnName="Cdateexpire" />
+          <ScalarProperty Name="Cpayment" ColumnName="Cpayment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
       <EntityTypeMapping TypeName="AppointmentSystemModel.Role">
         <MappingFragment StoreEntitySet="Role">
           <ScalarProperty Name="roleId" ColumnName="roleId" />
@@ -11,7 +26,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="AppointmentSystemModel.sysdiagrams">
+      <EntityTypeMapping TypeName="AppointmentSystemModel.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -21,7 +36,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TblInstructor">
+    <EntitySetMapping Name="TblInstructors">
       <EntityTypeMapping TypeName="AppointmentSystemModel.TblInstructor">
         <MappingFragment StoreEntitySet="TblInstructor">
           <ScalarProperty Name="instructorId" ColumnName="instructorId" />
@@ -32,17 +47,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TblLocation">
-      <EntityTypeMapping TypeName="AppointmentSystemModel.TblLocation">
-        <MappingFragment StoreEntitySet="TblLocation">
-          <ScalarProperty Name="locationId" ColumnName="locationId" />
-          <ScalarProperty Name="city" ColumnName="city" />
-          <ScalarProperty Name="barangay" ColumnName="barangay" />
-          <ScalarProperty Name="nameOfBuilding" ColumnName="nameOfBuilding" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblUser">
+    <EntitySetMapping Name="tblUsers">
       <EntityTypeMapping TypeName="AppointmentSystemModel.tblUser">
         <MappingFragment StoreEntitySet="tblUser">
           <ScalarProperty Name="userId" ColumnName="userId" />
@@ -58,13 +63,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Schedule">
-      <EntityTypeMapping TypeName="AppointmentSystemModel.Schedule">
-        <MappingFragment StoreEntitySet="Schedule">
-          <ScalarProperty Name="scheduleId" ColumnName="scheduleId" />
-          <ScalarProperty Name="month" ColumnName="month" />
-          <ScalarProperty Name="day" ColumnName="day" />
-          <ScalarProperty Name="time" ColumnName="time" />
+    <EntitySetMapping Name="vw_InsTable">
+      <EntityTypeMapping TypeName="AppointmentSystemModel.vw_InsTable">
+        <MappingFragment StoreEntitySet="vw_InsTable">
+          <ScalarProperty Name="Instructor_Id" ColumnName="Instructor Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="expertise" ColumnName="expertise" />
+          <ScalarProperty Name="contactNo" ColumnName="contactNo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -93,22 +98,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_addinstructor" FunctionName="AppointmentSystemModel.Store.sp_addinstructor" />
+    <FunctionImportMapping FunctionImportName="sp_checkoutBOOK" FunctionName="AppointmentSystemModel.Store.sp_checkoutBOOK" />
+    <FunctionImportMapping FunctionImportName="sp_DELETEINSTRUCTOR" FunctionName="AppointmentSystemModel.Store.sp_DELETEINSTRUCTOR" />
     <FunctionImportMapping FunctionImportName="sp_deleteUSER" FunctionName="AppointmentSystemModel.Store.sp_deleteUSER" />
     <FunctionImportMapping FunctionImportName="sp_InsertUser" FunctionName="AppointmentSystemModel.Store.sp_InsertUser" />
-    <FunctionImportMapping FunctionImportName="sp_UPDATEUSER" FunctionName="AppointmentSystemModel.Store.sp_UPDATEUSER" />
-    <FunctionImportMapping FunctionImportName="sp_addinstructor" FunctionName="AppointmentSystemModel.Store.sp_addinstructor" />
+    <FunctionImportMapping FunctionImportName="sp_INSERTUSERr" FunctionName="AppointmentSystemModel.Store.sp_INSERTUSERr" />
     <FunctionImportMapping FunctionImportName="sp_UpdateInstructor" FunctionName="AppointmentSystemModel.Store.sp_UpdateInstructor" />
-    <FunctionImportMapping FunctionImportName="sp_DELETEINSTRUCTOR" FunctionName="AppointmentSystemModel.Store.sp_DELETEINSTRUCTOR" />
-    <EntitySetMapping Name="vw_InsTable">
-      <EntityTypeMapping TypeName="AppointmentSystemModel.vw_InsTable">
-        <MappingFragment StoreEntitySet="vw_InsTable">
-          <ScalarProperty Name="contactNo" ColumnName="contactNo" />
-          <ScalarProperty Name="expertise" ColumnName="expertise" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Instructor_Id" ColumnName="Instructor Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_checkoutBOOK" FunctionName="AppointmentSystemModel.Store.sp_checkoutBOOK" />
+    <FunctionImportMapping FunctionImportName="sp_UPDATEUSER" FunctionName="AppointmentSystemModel.Store.sp_UPDATEUSER" />
   </EntityContainerMapping>
 </Mapping>

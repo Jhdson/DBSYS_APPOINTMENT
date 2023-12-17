@@ -24,6 +24,5 @@ namespace Final_System.AppData
         public string userName { get; set; }
         public string userPass { get; set; }
         public Nullable<int> roleID { get; set; }
-        public string createdBy { get; set; }
     }
 }

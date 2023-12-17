@@ -351,6 +351,7 @@
             // 
             // pnlINSTUCTOR
             // 
+            this.pnlINSTUCTOR.BackColor = System.Drawing.Color.SeaShell;
             this.pnlINSTUCTOR.Controls.Add(this.label8);
             this.pnlINSTUCTOR.Controls.Add(this.label10);
             this.pnlINSTUCTOR.Controls.Add(this.txtBOOKLN);

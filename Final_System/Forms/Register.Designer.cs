@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.btn_Register = new System.Windows.Forms.Button();
             this.txt_confirmpass = new System.Windows.Forms.TextBox();
             this.txt_firstname = new System.Windows.Forms.TextBox();
@@ -66,8 +65,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.LightGray;
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.BackColor = System.Drawing.Color.SeaShell;
             this.panel1.Controls.Add(this.btn_Register);
             this.panel1.Controls.Add(this.txt_confirmpass);
             this.panel1.Controls.Add(this.txt_firstname);
@@ -93,16 +91,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(418, 371);
             this.panel1.TabIndex = 2;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(220, 335);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 25);
-            this.button1.TabIndex = 30;
-            this.button1.Text = "Reset";
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // btn_Register
             // 
@@ -327,7 +315,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(807, 518);
             this.Controls.Add(this.pbminii2);
             this.Controls.Add(this.pbclose2);
@@ -371,7 +359,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_Register;
         private System.Windows.Forms.TextBox txt_confirmpass;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ErrorProvider errorproviter1;
         private System.Windows.Forms.PictureBox pbminii2;
         private System.Windows.Forms.PictureBox pbclose2;
