@@ -68,26 +68,6 @@ warning 6002: The table/view 'AppointmentSystem.dbo.Schedule' does not have a pr
           <Property Name="userPass" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="roleID" Type="int" />
         </EntityType>
-        <EntityType Name="Training">
-          <Key>
-            <PropertyRef Name="trainingId" />
-          </Key>
-          <Property Name="trainingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="trainingType" Type="nvarchar" MaxLength="255" />
-          <Property Name="locationId" Type="int" />
-          <Property Name="duration" Type="int" />
-          <Property Name="instructorId" Type="int" />
-          <Property Name="date" Type="datetime" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'AppointmentSystem.dbo.TrainingType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="TrainingType">
-          <Key>
-            <PropertyRef Name="trainingtypeId" />
-          </Key>
-          <Property Name="trainingtypeId" Type="int" Nullable="false" />
-          <Property Name="trainingDescription" Type="nvarchar" MaxLength="255" />
-        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'AppointmentSystem.dbo.vw_InsTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vw_InsTable">
@@ -128,35 +108,22 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
           <Property Name="Password" Type="nvarchar" MaxLength="128" />
           <Property Name="Role" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK_Training_TblLocation">
-          <End Role="TblLocation" Type="Self.TblLocation" Multiplicity="0..1" />
-          <End Role="Training" Type="Self.Training" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblLocation">
-              <PropertyRef Name="locationId" />
-            </Principal>
-            <Dependent Role="Training">
-              <PropertyRef Name="locationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Function Name="sp_Add1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="userId" Type="int" Mode="In" />
-          <Parameter Name="userFirstname" Type="nvarchar" Mode="In" />
-          <Parameter Name="userLastname" Type="nvarchar" Mode="In" />
-          <Parameter Name="usermid" Type="nvarchar" Mode="In" />
-          <Parameter Name="userAddress" Type="nvarchar" Mode="In" />
-          <Parameter Name="userEmail" Type="nvarchar" Mode="In" />
-          <Parameter Name="userNumber" Type="nvarchar" Mode="In" />
-          <Parameter Name="userName" Type="nvarchar" Mode="In" />
-          <Parameter Name="userPass" Type="nvarchar" Mode="In" />
-        </Function>
         <Function Name="sp_addinstructor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="instructorId" Type="int" Mode="In" />
           <Parameter Name="instructorLName" Type="nvarchar" Mode="In" />
           <Parameter Name="instructorFName" Type="nvarchar" Mode="In" />
           <Parameter Name="expertise" Type="nvarchar" Mode="In" />
           <Parameter Name="contactNo" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_checkoutBOOK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="checkid" Type="int" Mode="In" />
+          <Parameter Name="checkfname" Type="nvarchar" Mode="In" />
+          <Parameter Name="checklname" Type="nvarchar" Mode="In" />
+          <Parameter Name="checkAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="checkEmail" Type="nvarchar" Mode="In" />
+          <Parameter Name="checkPhone" Type="nvarchar" Mode="In" />
+          <Parameter Name="checkDateSTART" Type="datetime" Mode="In" />
+          <Parameter Name="checkDateEXPIRE" Type="datetime" Mode="In" />
         </Function>
         <Function Name="sp_DELETEINSTRUCTOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="instructorId" Type="int" Mode="In" />
@@ -198,7 +165,6 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
           <EntitySet Name="TblInstructor" EntityType="Self.TblInstructor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblLocation" EntityType="Self.TblLocation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Training" EntityType="Self.Training" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Schedule" EntityType="Self.Schedule" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [Schedule].[scheduleId] AS [scheduleId], 
@@ -206,12 +172,6 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
 [Schedule].[day] AS [day], 
 [Schedule].[time] AS [time]
 FROM [dbo].[Schedule] AS [Schedule]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="TrainingType" EntityType="Self.TrainingType" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[TrainingType].[trainingtypeId] AS [trainingtypeId], 
-[TrainingType].[trainingDescription] AS [trainingDescription]
-FROM [dbo].[TrainingType] AS [TrainingType]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vw_InsTable" EntityType="Self.vw_InsTable" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -242,10 +202,6 @@ FROM [dbo].[vw_TrainingTable] AS [vw_TrainingTable]</DefiningQuery>
 [vw_UserTable].[Role] AS [Role]
 FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK_Training_TblLocation" Association="Self.FK_Training_TblLocation">
-            <End Role="TblLocation" EntitySet="TblLocation" />
-            <End Role="Training" EntitySet="Training" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -447,6 +403,16 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           <Parameter Name="instructorId" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="vw_InsTable" EntityType="AppointmentSystemModel.vw_InsTable" />
+          <FunctionImport Name="sp_checkoutBOOK">
+            <Parameter Name="checkid" Mode="In" Type="Int32" />
+            <Parameter Name="checkfname" Mode="In" Type="String" />
+            <Parameter Name="checklname" Mode="In" Type="String" />
+            <Parameter Name="checkAddress" Mode="In" Type="String" />
+            <Parameter Name="checkEmail" Mode="In" Type="String" />
+            <Parameter Name="checkPhone" Mode="In" Type="String" />
+            <Parameter Name="checkDateSTART" Mode="In" Type="DateTime" />
+            <Parameter Name="checkDateEXPIRE" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="vw_InsTable">
           <Key>
@@ -521,18 +487,6 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Training">
-            <EntityTypeMapping TypeName="AppointmentSystemModel.Training">
-              <MappingFragment StoreEntitySet="Training">
-                <ScalarProperty Name="trainingId" ColumnName="trainingId" />
-                <ScalarProperty Name="trainingType" ColumnName="trainingType" />
-                <ScalarProperty Name="locationId" ColumnName="locationId" />
-                <ScalarProperty Name="duration" ColumnName="duration" />
-                <ScalarProperty Name="instructorId" ColumnName="instructorId" />
-                <ScalarProperty Name="date" ColumnName="date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Schedule">
             <EntityTypeMapping TypeName="AppointmentSystemModel.Schedule">
               <MappingFragment StoreEntitySet="Schedule">
@@ -540,14 +494,6 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
                 <ScalarProperty Name="month" ColumnName="month" />
                 <ScalarProperty Name="day" ColumnName="day" />
                 <ScalarProperty Name="time" ColumnName="time" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TrainingType">
-            <EntityTypeMapping TypeName="AppointmentSystemModel.TrainingType">
-              <MappingFragment StoreEntitySet="TrainingType">
-                <ScalarProperty Name="trainingtypeId" ColumnName="trainingtypeId" />
-                <ScalarProperty Name="trainingDescription" ColumnName="trainingDescription" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -579,7 +525,6 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           <FunctionImportMapping FunctionImportName="sp_deleteUSER" FunctionName="AppointmentSystemModel.Store.sp_deleteUSER" />
           <FunctionImportMapping FunctionImportName="sp_InsertUser" FunctionName="AppointmentSystemModel.Store.sp_InsertUser" />
           <FunctionImportMapping FunctionImportName="sp_UPDATEUSER" FunctionName="AppointmentSystemModel.Store.sp_UPDATEUSER" />
-          <FunctionImportMapping FunctionImportName="sp_Add1" FunctionName="AppointmentSystemModel.Store.sp_Add1" />
           <FunctionImportMapping FunctionImportName="sp_addinstructor" FunctionName="AppointmentSystemModel.Store.sp_addinstructor" />
           <FunctionImportMapping FunctionImportName="sp_UpdateInstructor" FunctionName="AppointmentSystemModel.Store.sp_UpdateInstructor" />
           <FunctionImportMapping FunctionImportName="sp_DELETEINSTRUCTOR" FunctionName="AppointmentSystemModel.Store.sp_DELETEINSTRUCTOR" />
@@ -593,6 +538,7 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_checkoutBOOK" FunctionName="AppointmentSystemModel.Store.sp_checkoutBOOK" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

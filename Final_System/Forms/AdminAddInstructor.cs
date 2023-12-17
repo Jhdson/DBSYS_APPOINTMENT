@@ -48,7 +48,7 @@ namespace Final_System.Forms
         {
             using (var db = new AppointmentSystemEntities())
             {
-            
+
 
                 String strOutputMsg = "";
                 if (String.IsNullOrEmpty(TXTFIRSTNAME.Text))
@@ -135,7 +135,7 @@ namespace Final_System.Forms
                 TXTPHONE.Text = datagridADMIN.Rows[e.RowIndex].Cells["Phone_Number"].Value.ToString();
                 TXTUSERNAME.Text = datagridADMIN.Rows[e.RowIndex].Cells["Username"].Value.ToString();
                 TXTPASS.Text = datagridADMIN.Rows[e.RowIndex].Cells["Password"].Value.ToString();
-              
+
             }
             catch (Exception ex)
             {
@@ -188,11 +188,11 @@ namespace Final_System.Forms
             }
 
 
-          
-           ErrorCode retValue = userRepo.UpdateUserUsingStoredProf(userIDnumber, TXTFIRSTNAME.Text, TXTLASTNAME.Text, TXTMID.Text, TXTADDRESS.Text,
-                    TXTEMAIL.Text, TXTPHONE.Text, TXTUSERNAME.Text, TXTPASS.Text, ref strOutputMsg);
-                if (retValue != ErrorCode.Success)
-                {
+
+            ErrorCode retValue = userRepo.UpdateUserUsingStoredProf(userIDnumber, TXTFIRSTNAME.Text, TXTLASTNAME.Text, TXTMID.Text, TXTADDRESS.Text,
+                     TXTEMAIL.Text, TXTPHONE.Text, TXTUSERNAME.Text, TXTPASS.Text, ref strOutputMsg);
+            if (retValue != ErrorCode.Success)
+            {
 
 
                 MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -259,25 +259,25 @@ namespace Final_System.Forms
                 errorProviderCustom1.SetError(TXTPASS, "Empty field");
                 return;
             }
-            ErrorCode retValue =userRepo.DeleteUserUsingStoredProf(userIDnumber,ref strOutputMsg){
+            ErrorCode retValue = userRepo.DeleteUserUsingStoredProf(userIDnumber, ref strOutputMsg);
 
-            
-                 if (retValue != ErrorCode.Success)
+
+            if (retValue != ErrorCode.Success)
             {
                 MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadParticipants();
+                MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadParticipants();
 
-                    TXTFIRSTNAME.Clear();
-                    TXTLASTNAME.Clear();
-                    TXTMID.Clear();
-                    TXTADDRESS.Clear();
-                    TXTEMAIL.Clear();
-                    TXTPHONE.Clear();
-                    TXTUSERNAME.Clear();
+                TXTFIRSTNAME.Clear();
+                TXTLASTNAME.Clear();
+                TXTMID.Clear();
+                TXTADDRESS.Clear();
+                TXTEMAIL.Clear();
+                TXTPHONE.Clear();
+                TXTUSERNAME.Clear();
 
-                    TXTPASS.Clear();
-                    MessageBox.Show("Deleted Successfully!");
+                TXTPASS.Clear();
+                MessageBox.Show("Deleted Successfully!");
             }
             else
             {
@@ -290,7 +290,7 @@ namespace Final_System.Forms
 
 
 }
-}
+
 
 
 

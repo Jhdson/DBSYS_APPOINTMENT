@@ -27,6 +27,14 @@ namespace Final_System.Repositories
 
             }
         }
+
+        public List<vw_InsTable> ALLINSTRUCTOR()
+        {
+            using (db = new AppointmentSystemEntities())
+            {
+                return db.vw_InsTable.ToList();
+            }
+        }
         public List<vw_UserTable> UserTablesTable()
         {
             using (db = new AppointmentSystemEntities())
@@ -178,6 +186,23 @@ namespace Final_System.Repositories
                 }
             }
         }
-
+        public ErrorCode InsertCheckOUTUsingStoredProf(int?checkid, string checkfname,string checklname,string checkAddress,string checkEmail,string checkPhone,
+            DateTime checkDateSTART, DateTime checkdateexpire , ref String szResponse)
+         { 
+             using (db = new AppointmentSystemEntities())
+            {
+                try
+                {
+                    db.sp_checkoutBOOK(checkid, checkfname, checklname, checkAddress, checkEmail, checkPhone, checkDateSTART, checkdateexpire);
+                    szResponse = "Successful!";
+                    return ErrorCode.Success;
+                }
+                catch (Exception ex)
+                {
+    szResponse = ex.Message;
+    return ErrorCode.Error;
+}
+            }
+        }
     }
 }

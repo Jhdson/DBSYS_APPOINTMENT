@@ -263,5 +263,42 @@ namespace Final_System.AppData
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_DELETEINSTRUCTOR", instructorIdParameter);
         }
+    
+        public virtual int sp_checkoutBOOK(Nullable<int> checkid, string checkfname, string checklname, string checkAddress, string checkEmail, string checkPhone, Nullable<System.DateTime> checkDateSTART, Nullable<System.DateTime> checkDateEXPIRE)
+        {
+            var checkidParameter = checkid.HasValue ?
+                new ObjectParameter("checkid", checkid) :
+                new ObjectParameter("checkid", typeof(int));
+    
+            var checkfnameParameter = checkfname != null ?
+                new ObjectParameter("checkfname", checkfname) :
+                new ObjectParameter("checkfname", typeof(string));
+    
+            var checklnameParameter = checklname != null ?
+                new ObjectParameter("checklname", checklname) :
+                new ObjectParameter("checklname", typeof(string));
+    
+            var checkAddressParameter = checkAddress != null ?
+                new ObjectParameter("checkAddress", checkAddress) :
+                new ObjectParameter("checkAddress", typeof(string));
+    
+            var checkEmailParameter = checkEmail != null ?
+                new ObjectParameter("checkEmail", checkEmail) :
+                new ObjectParameter("checkEmail", typeof(string));
+    
+            var checkPhoneParameter = checkPhone != null ?
+                new ObjectParameter("checkPhone", checkPhone) :
+                new ObjectParameter("checkPhone", typeof(string));
+    
+            var checkDateSTARTParameter = checkDateSTART.HasValue ?
+                new ObjectParameter("checkDateSTART", checkDateSTART) :
+                new ObjectParameter("checkDateSTART", typeof(System.DateTime));
+    
+            var checkDateEXPIREParameter = checkDateEXPIRE.HasValue ?
+                new ObjectParameter("checkDateEXPIRE", checkDateEXPIRE) :
+                new ObjectParameter("checkDateEXPIRE", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_checkoutBOOK", checkidParameter, checkfnameParameter, checklnameParameter, checkAddressParameter, checkEmailParameter, checkPhoneParameter, checkDateSTARTParameter, checkDateEXPIREParameter);
+        }
     }
 }

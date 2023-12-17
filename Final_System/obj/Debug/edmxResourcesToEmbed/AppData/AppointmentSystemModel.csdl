@@ -196,6 +196,16 @@
       <Parameter Name="instructorId" Mode="In" Type="Int32" />
     </FunctionImport>
     <EntitySet Name="vw_InsTable" EntityType="AppointmentSystemModel.vw_InsTable" />
+    <FunctionImport Name="sp_checkoutBOOK">
+      <Parameter Name="checkid" Mode="In" Type="Int32" />
+      <Parameter Name="checkfname" Mode="In" Type="String" />
+      <Parameter Name="checklname" Mode="In" Type="String" />
+      <Parameter Name="checkAddress" Mode="In" Type="String" />
+      <Parameter Name="checkEmail" Mode="In" Type="String" />
+      <Parameter Name="checkPhone" Mode="In" Type="String" />
+      <Parameter Name="checkDateSTART" Mode="In" Type="DateTime" />
+      <Parameter Name="checkDateEXPIRE" Mode="In" Type="DateTime" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="vw_InsTable">
     <Key>
