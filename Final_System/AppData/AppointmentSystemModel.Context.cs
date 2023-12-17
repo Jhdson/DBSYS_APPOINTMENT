@@ -38,6 +38,7 @@ namespace Final_System.AppData
         public DbSet<TrainingType> TrainingType { get; set; }
         public DbSet<vw_TrainingTable> vw_TrainingTable { get; set; }
         public DbSet<vw_UserTable> vw_UserTable { get; set; }
+        public DbSet<vw_InsTable> vw_InsTable { get; set; }
     
         public virtual int sp_deleteUSER(Nullable<int> userID)
         {
@@ -48,15 +49,15 @@ namespace Final_System.AppData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_deleteUSER", userIDParameter);
         }
     
-        public virtual int sp_InsertUser(string userLastname, string userFirstname, string usermiddleIn, string userAddress, string userEmail, string userNumber, string uusername, string userpass, Nullable<int> roleID, string createdBY)
+        public virtual int sp_InsertUser(string userFirstname, string userLastname, string usermiddleIn, string userAddress, string userEmail, string userNumber, string uusername, string userpass)
         {
-            var userLastnameParameter = userLastname != null ?
-                new ObjectParameter("userLastname", userLastname) :
-                new ObjectParameter("userLastname", typeof(string));
-    
             var userFirstnameParameter = userFirstname != null ?
                 new ObjectParameter("userFirstname", userFirstname) :
                 new ObjectParameter("userFirstname", typeof(string));
+    
+            var userLastnameParameter = userLastname != null ?
+                new ObjectParameter("userLastname", userLastname) :
+                new ObjectParameter("userLastname", typeof(string));
     
             var usermiddleInParameter = usermiddleIn != null ?
                 new ObjectParameter("usermiddleIn", usermiddleIn) :
@@ -82,15 +83,7 @@ namespace Final_System.AppData
                 new ObjectParameter("userpass", userpass) :
                 new ObjectParameter("userpass", typeof(string));
     
-            var roleIDParameter = roleID.HasValue ?
-                new ObjectParameter("roleID", roleID) :
-                new ObjectParameter("roleID", typeof(int));
-    
-            var createdBYParameter = createdBY != null ?
-                new ObjectParameter("CreatedBY", createdBY) :
-                new ObjectParameter("CreatedBY", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertUser", userLastnameParameter, userFirstnameParameter, usermiddleInParameter, userAddressParameter, userEmailParameter, userNumberParameter, uusernameParameter, userpassParameter, roleIDParameter, createdBYParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertUser", userFirstnameParameter, userLastnameParameter, usermiddleInParameter, userAddressParameter, userEmailParameter, userNumberParameter, uusernameParameter, userpassParameter);
         }
     
         public virtual int sp_UPDATEUSER(Nullable<int> userID, string userLastname, string userFirstname, string usermiddleIn, string userAddress, string userEmail, string userNumber, string uusername, string userpass)
@@ -169,6 +162,106 @@ namespace Final_System.AppData
                 new ObjectParameter("userPass", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Add", userFirstnameParameter, userLastnameParameter, usermidParameter, userAddressParameter, userEmailParameter, userNumberParameter, userNameParameter, userPassParameter);
+        }
+    
+        public virtual int sp_Add1(Nullable<int> userId, string userFirstname, string userLastname, string usermid, string userAddress, string userEmail, string userNumber, string userName, string userPass)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            var userFirstnameParameter = userFirstname != null ?
+                new ObjectParameter("userFirstname", userFirstname) :
+                new ObjectParameter("userFirstname", typeof(string));
+    
+            var userLastnameParameter = userLastname != null ?
+                new ObjectParameter("userLastname", userLastname) :
+                new ObjectParameter("userLastname", typeof(string));
+    
+            var usermidParameter = usermid != null ?
+                new ObjectParameter("usermid", usermid) :
+                new ObjectParameter("usermid", typeof(string));
+    
+            var userAddressParameter = userAddress != null ?
+                new ObjectParameter("userAddress", userAddress) :
+                new ObjectParameter("userAddress", typeof(string));
+    
+            var userEmailParameter = userEmail != null ?
+                new ObjectParameter("userEmail", userEmail) :
+                new ObjectParameter("userEmail", typeof(string));
+    
+            var userNumberParameter = userNumber != null ?
+                new ObjectParameter("userNumber", userNumber) :
+                new ObjectParameter("userNumber", typeof(string));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("userName", userName) :
+                new ObjectParameter("userName", typeof(string));
+    
+            var userPassParameter = userPass != null ?
+                new ObjectParameter("userPass", userPass) :
+                new ObjectParameter("userPass", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Add1", userIdParameter, userFirstnameParameter, userLastnameParameter, usermidParameter, userAddressParameter, userEmailParameter, userNumberParameter, userNameParameter, userPassParameter);
+        }
+    
+        public virtual int sp_addinstructor(Nullable<int> instructorId, string instructorLName, string instructorFName, string expertise, string contactNo)
+        {
+            var instructorIdParameter = instructorId.HasValue ?
+                new ObjectParameter("instructorId", instructorId) :
+                new ObjectParameter("instructorId", typeof(int));
+    
+            var instructorLNameParameter = instructorLName != null ?
+                new ObjectParameter("instructorLName", instructorLName) :
+                new ObjectParameter("instructorLName", typeof(string));
+    
+            var instructorFNameParameter = instructorFName != null ?
+                new ObjectParameter("instructorFName", instructorFName) :
+                new ObjectParameter("instructorFName", typeof(string));
+    
+            var expertiseParameter = expertise != null ?
+                new ObjectParameter("expertise", expertise) :
+                new ObjectParameter("expertise", typeof(string));
+    
+            var contactNoParameter = contactNo != null ?
+                new ObjectParameter("contactNo", contactNo) :
+                new ObjectParameter("contactNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_addinstructor", instructorIdParameter, instructorLNameParameter, instructorFNameParameter, expertiseParameter, contactNoParameter);
+        }
+    
+        public virtual int sp_UpdateInstructor(Nullable<int> instructorId, string instructorLName, string instructorFName, string expertise, string contactNo)
+        {
+            var instructorIdParameter = instructorId.HasValue ?
+                new ObjectParameter("instructorId", instructorId) :
+                new ObjectParameter("instructorId", typeof(int));
+    
+            var instructorLNameParameter = instructorLName != null ?
+                new ObjectParameter("instructorLName", instructorLName) :
+                new ObjectParameter("instructorLName", typeof(string));
+    
+            var instructorFNameParameter = instructorFName != null ?
+                new ObjectParameter("instructorFName", instructorFName) :
+                new ObjectParameter("instructorFName", typeof(string));
+    
+            var expertiseParameter = expertise != null ?
+                new ObjectParameter("expertise", expertise) :
+                new ObjectParameter("expertise", typeof(string));
+    
+            var contactNoParameter = contactNo != null ?
+                new ObjectParameter("contactNo", contactNo) :
+                new ObjectParameter("contactNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdateInstructor", instructorIdParameter, instructorLNameParameter, instructorFNameParameter, expertiseParameter, contactNoParameter);
+        }
+    
+        public virtual int sp_DELETEINSTRUCTOR(Nullable<int> instructorId)
+        {
+            var instructorIdParameter = instructorId.HasValue ?
+                new ObjectParameter("instructorId", instructorId) :
+                new ObjectParameter("instructorId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_DELETEINSTRUCTOR", instructorIdParameter);
         }
     }
 }

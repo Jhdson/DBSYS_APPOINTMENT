@@ -92,6 +92,9 @@
     <Compile Include="AppData\TrainingType.cs">
       <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AppData\vw_InsTable.cs">
+      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="AppData\vw_TrainingTable.cs">
       <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
     </Compile>

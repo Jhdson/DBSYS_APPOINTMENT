@@ -137,16 +137,14 @@
       <Parameter Name="userID" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_InsertUser">
-      <Parameter Name="userLastname" Mode="In" Type="String" />
       <Parameter Name="userFirstname" Mode="In" Type="String" />
+      <Parameter Name="userLastname" Mode="In" Type="String" />
       <Parameter Name="usermiddleIn" Mode="In" Type="String" />
       <Parameter Name="userAddress" Mode="In" Type="String" />
       <Parameter Name="userEmail" Mode="In" Type="String" />
       <Parameter Name="userNumber" Mode="In" Type="String" />
       <Parameter Name="Uusername" Mode="In" Type="String" />
       <Parameter Name="userpass" Mode="In" Type="String" />
-      <Parameter Name="roleID" Mode="In" Type="Int32" />
-      <Parameter Name="CreatedBY" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_UPDATEUSER">
       <Parameter Name="userID" Mode="In" Type="Int32" />
@@ -169,5 +167,44 @@
       <Parameter Name="userName" Mode="In" Type="String" />
       <Parameter Name="userPass" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="sp_Add1">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+      <Parameter Name="userFirstname" Mode="In" Type="String" />
+      <Parameter Name="userLastname" Mode="In" Type="String" />
+      <Parameter Name="usermid" Mode="In" Type="String" />
+      <Parameter Name="userAddress" Mode="In" Type="String" />
+      <Parameter Name="userEmail" Mode="In" Type="String" />
+      <Parameter Name="userNumber" Mode="In" Type="String" />
+      <Parameter Name="userName" Mode="In" Type="String" />
+      <Parameter Name="userPass" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_addinstructor">
+      <Parameter Name="instructorId" Mode="In" Type="Int32" />
+      <Parameter Name="instructorLName" Mode="In" Type="String" />
+      <Parameter Name="instructorFName" Mode="In" Type="String" />
+      <Parameter Name="expertise" Mode="In" Type="String" />
+      <Parameter Name="contactNo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_UpdateInstructor">
+      <Parameter Name="instructorId" Mode="In" Type="Int32" />
+      <Parameter Name="instructorLName" Mode="In" Type="String" />
+      <Parameter Name="instructorFName" Mode="In" Type="String" />
+      <Parameter Name="expertise" Mode="In" Type="String" />
+      <Parameter Name="contactNo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DELETEINSTRUCTOR">
+      <Parameter Name="instructorId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="vw_InsTable" EntityType="AppointmentSystemModel.vw_InsTable" />
   </EntityContainer>
+  <EntityType Name="vw_InsTable">
+    <Key>
+      <PropertyRef Name="Instructor_Id" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Instructor_Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="257" FixedLength="false" Unicode="false" />
+    <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

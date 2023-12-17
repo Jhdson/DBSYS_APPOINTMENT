@@ -16,6 +16,7 @@
         <EntityTypeShape EntityType="AppointmentSystemModel.vw_TrainingTable" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AppointmentSystemModel.vw_UserTable" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
         <AssociationConnector Association="AppointmentSystemModel.FK_Training_TblLocation" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AppointmentSystemModel.vw_InsTable" Width="1.5" PointX="5.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

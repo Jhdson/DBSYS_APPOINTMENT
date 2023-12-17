@@ -55,7 +55,6 @@
           <ScalarProperty Name="userName" ColumnName="userName" />
           <ScalarProperty Name="userPass" ColumnName="userPass" />
           <ScalarProperty Name="roleID" ColumnName="roleID" />
-          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -117,6 +116,19 @@
     <FunctionImportMapping FunctionImportName="sp_deleteUSER" FunctionName="AppointmentSystemModel.Store.sp_deleteUSER" />
     <FunctionImportMapping FunctionImportName="sp_InsertUser" FunctionName="AppointmentSystemModel.Store.sp_InsertUser" />
     <FunctionImportMapping FunctionImportName="sp_UPDATEUSER" FunctionName="AppointmentSystemModel.Store.sp_UPDATEUSER" />
-    <FunctionImportMapping FunctionImportName="sp_Add" FunctionName="AppointmentSystemModel.Store.sp_Add" />
+    <FunctionImportMapping FunctionImportName="sp_Add1" FunctionName="AppointmentSystemModel.Store.sp_Add1" />
+    <FunctionImportMapping FunctionImportName="sp_addinstructor" FunctionName="AppointmentSystemModel.Store.sp_addinstructor" />
+    <FunctionImportMapping FunctionImportName="sp_UpdateInstructor" FunctionName="AppointmentSystemModel.Store.sp_UpdateInstructor" />
+    <FunctionImportMapping FunctionImportName="sp_DELETEINSTRUCTOR" FunctionName="AppointmentSystemModel.Store.sp_DELETEINSTRUCTOR" />
+    <EntitySetMapping Name="vw_InsTable">
+      <EntityTypeMapping TypeName="AppointmentSystemModel.vw_InsTable">
+        <MappingFragment StoreEntitySet="vw_InsTable">
+          <ScalarProperty Name="contactNo" ColumnName="contactNo" />
+          <ScalarProperty Name="expertise" ColumnName="expertise" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Instructor_Id" ColumnName="Instructor Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

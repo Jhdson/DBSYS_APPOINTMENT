@@ -67,7 +67,6 @@ warning 6002: The table/view 'AppointmentSystem.dbo.Schedule' does not have a pr
           <Property Name="userName" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="userPass" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="roleID" Type="int" />
-          <Property Name="createdBy" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <EntityType Name="Training">
           <Key>
@@ -88,6 +87,18 @@ warning 6002: The table/view 'AppointmentSystem.dbo.TrainingType' does not have 
           </Key>
           <Property Name="trainingtypeId" Type="int" Nullable="false" />
           <Property Name="trainingDescription" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AppointmentSystem.dbo.vw_InsTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_InsTable">
+          <Key>
+            <PropertyRef Name="Instructor Id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Instructor Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="257" Nullable="false" />
+          <Property Name="expertise" Type="varchar" MaxLength="128" />
+          <Property Name="contactNo" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'AppointmentSystem.dbo.vw_TrainingTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -129,7 +140,8 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="sp_Add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="sp_Add1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
           <Parameter Name="userFirstname" Type="nvarchar" Mode="In" />
           <Parameter Name="userLastname" Type="nvarchar" Mode="In" />
           <Parameter Name="usermid" Type="nvarchar" Mode="In" />
@@ -139,20 +151,35 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
           <Parameter Name="userName" Type="nvarchar" Mode="In" />
           <Parameter Name="userPass" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="sp_addinstructor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="instructorId" Type="int" Mode="In" />
+          <Parameter Name="instructorLName" Type="nvarchar" Mode="In" />
+          <Parameter Name="instructorFName" Type="nvarchar" Mode="In" />
+          <Parameter Name="expertise" Type="nvarchar" Mode="In" />
+          <Parameter Name="contactNo" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_DELETEINSTRUCTOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="instructorId" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_deleteUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userID" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_InsertUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="userLastname" Type="nvarchar" Mode="In" />
           <Parameter Name="userFirstname" Type="nvarchar" Mode="In" />
+          <Parameter Name="userLastname" Type="nvarchar" Mode="In" />
           <Parameter Name="usermiddleIn" Type="nvarchar" Mode="In" />
           <Parameter Name="userAddress" Type="nvarchar" Mode="In" />
           <Parameter Name="userEmail" Type="nvarchar" Mode="In" />
           <Parameter Name="userNumber" Type="nvarchar" Mode="In" />
           <Parameter Name="Uusername" Type="nvarchar" Mode="In" />
           <Parameter Name="userpass" Type="nvarchar" Mode="In" />
-          <Parameter Name="roleID" Type="int" Mode="In" />
-          <Parameter Name="CreatedBY" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateInstructor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="instructorId" Type="int" Mode="In" />
+          <Parameter Name="instructorLName" Type="nvarchar" Mode="In" />
+          <Parameter Name="instructorFName" Type="nvarchar" Mode="In" />
+          <Parameter Name="expertise" Type="nvarchar" Mode="In" />
+          <Parameter Name="contactNo" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_UPDATEUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userID" Type="int" Mode="In" />
@@ -185,6 +212,14 @@ FROM [dbo].[Schedule] AS [Schedule]</DefiningQuery>
 [TrainingType].[trainingtypeId] AS [trainingtypeId], 
 [TrainingType].[trainingDescription] AS [trainingDescription]
 FROM [dbo].[TrainingType] AS [TrainingType]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_InsTable" EntityType="Self.vw_InsTable" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_InsTable].[Instructor Id] AS [Instructor Id], 
+[vw_InsTable].[Name] AS [Name], 
+[vw_InsTable].[expertise] AS [expertise], 
+[vw_InsTable].[contactNo] AS [contactNo]
+FROM [dbo].[vw_InsTable] AS [vw_InsTable]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vw_TrainingTable" EntityType="Self.vw_TrainingTable" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -353,16 +388,14 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           <Parameter Name="userID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_InsertUser">
-            <Parameter Name="userLastname" Mode="In" Type="String" />
             <Parameter Name="userFirstname" Mode="In" Type="String" />
+            <Parameter Name="userLastname" Mode="In" Type="String" />
             <Parameter Name="usermiddleIn" Mode="In" Type="String" />
             <Parameter Name="userAddress" Mode="In" Type="String" />
             <Parameter Name="userEmail" Mode="In" Type="String" />
             <Parameter Name="userNumber" Mode="In" Type="String" />
             <Parameter Name="Uusername" Mode="In" Type="String" />
             <Parameter Name="userpass" Mode="In" Type="String" />
-            <Parameter Name="roleID" Mode="In" Type="Int32" />
-            <Parameter Name="CreatedBY" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_UPDATEUSER">
             <Parameter Name="userID" Mode="In" Type="Int32" />
@@ -385,7 +418,46 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
             <Parameter Name="userName" Mode="In" Type="String" />
             <Parameter Name="userPass" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_Add1">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="userFirstname" Mode="In" Type="String" />
+            <Parameter Name="userLastname" Mode="In" Type="String" />
+            <Parameter Name="usermid" Mode="In" Type="String" />
+            <Parameter Name="userAddress" Mode="In" Type="String" />
+            <Parameter Name="userEmail" Mode="In" Type="String" />
+            <Parameter Name="userNumber" Mode="In" Type="String" />
+            <Parameter Name="userName" Mode="In" Type="String" />
+            <Parameter Name="userPass" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_addinstructor">
+            <Parameter Name="instructorId" Mode="In" Type="Int32" />
+            <Parameter Name="instructorLName" Mode="In" Type="String" />
+            <Parameter Name="instructorFName" Mode="In" Type="String" />
+            <Parameter Name="expertise" Mode="In" Type="String" />
+            <Parameter Name="contactNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateInstructor">
+            <Parameter Name="instructorId" Mode="In" Type="Int32" />
+            <Parameter Name="instructorLName" Mode="In" Type="String" />
+            <Parameter Name="instructorFName" Mode="In" Type="String" />
+            <Parameter Name="expertise" Mode="In" Type="String" />
+            <Parameter Name="contactNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_DELETEINSTRUCTOR">
+          <Parameter Name="instructorId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="vw_InsTable" EntityType="AppointmentSystemModel.vw_InsTable" />
         </EntityContainer>
+        <EntityType Name="vw_InsTable">
+          <Key>
+            <PropertyRef Name="Instructor_Id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Instructor_Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="257" FixedLength="false" Unicode="false" />
+          <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -446,7 +518,6 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
                 <ScalarProperty Name="userName" ColumnName="userName" />
                 <ScalarProperty Name="userPass" ColumnName="userPass" />
                 <ScalarProperty Name="roleID" ColumnName="roleID" />
-                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -508,7 +579,20 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           <FunctionImportMapping FunctionImportName="sp_deleteUSER" FunctionName="AppointmentSystemModel.Store.sp_deleteUSER" />
           <FunctionImportMapping FunctionImportName="sp_InsertUser" FunctionName="AppointmentSystemModel.Store.sp_InsertUser" />
           <FunctionImportMapping FunctionImportName="sp_UPDATEUSER" FunctionName="AppointmentSystemModel.Store.sp_UPDATEUSER" />
-          <FunctionImportMapping FunctionImportName="sp_Add" FunctionName="AppointmentSystemModel.Store.sp_Add" />
+          <FunctionImportMapping FunctionImportName="sp_Add1" FunctionName="AppointmentSystemModel.Store.sp_Add1" />
+          <FunctionImportMapping FunctionImportName="sp_addinstructor" FunctionName="AppointmentSystemModel.Store.sp_addinstructor" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateInstructor" FunctionName="AppointmentSystemModel.Store.sp_UpdateInstructor" />
+          <FunctionImportMapping FunctionImportName="sp_DELETEINSTRUCTOR" FunctionName="AppointmentSystemModel.Store.sp_DELETEINSTRUCTOR" />
+          <EntitySetMapping Name="vw_InsTable">
+            <EntityTypeMapping TypeName="AppointmentSystemModel.vw_InsTable">
+              <MappingFragment StoreEntitySet="vw_InsTable">
+                <ScalarProperty Name="contactNo" ColumnName="contactNo" />
+                <ScalarProperty Name="expertise" ColumnName="expertise" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Instructor_Id" ColumnName="Instructor Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
