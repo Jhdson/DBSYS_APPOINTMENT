@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlInstructor = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -69,16 +70,17 @@
             this.label14 = new System.Windows.Forms.Label();
             this.TXTEMAIL = new System.Windows.Forms.TextBox();
             this.datagridADMIN = new System.Windows.Forms.DataGridView();
-            this.pbclose1 = new System.Windows.Forms.PictureBox();
             this.pbmini1 = new System.Windows.Forms.PictureBox();
+            this.pbclose1 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlInstructor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.pnlUsers.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridADMIN)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbclose1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbmini1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbclose1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlInstructor
@@ -238,9 +240,9 @@
             // 
             // btnUsers
             // 
-            this.btnUsers.Location = new System.Drawing.Point(21, 16);
+            this.btnUsers.Location = new System.Drawing.Point(21, 5);
             this.btnUsers.Name = "btnUsers";
-            this.btnUsers.Size = new System.Drawing.Size(75, 23);
+            this.btnUsers.Size = new System.Drawing.Size(75, 34);
             this.btnUsers.TabIndex = 1;
             this.btnUsers.Text = "Participant";
             this.btnUsers.UseVisualStyleBackColor = true;
@@ -248,9 +250,9 @@
             // 
             // btnInstructor
             // 
-            this.btnInstructor.Location = new System.Drawing.Point(111, 16);
+            this.btnInstructor.Location = new System.Drawing.Point(111, 5);
             this.btnInstructor.Name = "btnInstructor";
-            this.btnInstructor.Size = new System.Drawing.Size(75, 23);
+            this.btnInstructor.Size = new System.Drawing.Size(75, 34);
             this.btnInstructor.TabIndex = 2;
             this.btnInstructor.Text = "Instructor";
             this.btnInstructor.UseVisualStyleBackColor = true;
@@ -458,6 +460,16 @@
             this.datagridADMIN.Size = new System.Drawing.Size(455, 394);
             this.datagridADMIN.TabIndex = 15;
             // 
+            // pbmini1
+            // 
+            this.pbmini1.Image = global::Final_System.Properties.Resources.minimize_sign;
+            this.pbmini1.Location = new System.Drawing.Point(738, 12);
+            this.pbmini1.Name = "pbmini1";
+            this.pbmini1.Size = new System.Drawing.Size(26, 14);
+            this.pbmini1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbmini1.TabIndex = 25;
+            this.pbmini1.TabStop = false;
+            // 
             // pbclose1
             // 
             this.pbclose1.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -468,16 +480,8 @@
             this.pbclose1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbclose1.TabIndex = 24;
             this.pbclose1.TabStop = false;
-            // 
-            // pbmini1
-            // 
-            this.pbmini1.Image = global::Final_System.Properties.Resources.minimize_sign;
-            this.pbmini1.Location = new System.Drawing.Point(738, 12);
-            this.pbmini1.Name = "pbmini1";
-            this.pbmini1.Size = new System.Drawing.Size(26, 14);
-            this.pbmini1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbmini1.TabIndex = 25;
-            this.pbmini1.TabStop = false;
+            this.pbclose1.Click += new System.EventHandler(this.pbclose1_Click);
+            this.pbclose1.MouseHover += new System.EventHandler(this.pbclose1_MouseHover);
             // 
             // AdminAddInstructor
             // 
@@ -502,8 +506,8 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridADMIN)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbclose1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbmini1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbclose1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -554,5 +558,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtinsNumber;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

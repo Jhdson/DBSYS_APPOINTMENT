@@ -57,7 +57,7 @@ namespace Final_System
 
         private void pbmini1_Click(object sender, EventArgs e)
         {
-            
+            toolTip2.SetToolTip(pbmini1, "minize");
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -117,6 +117,16 @@ namespace Final_System
             {
                 MessageBox.Show("Username not found");
             }
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
 
         }
     }

@@ -52,20 +52,21 @@
             this.lblfirstname = new System.Windows.Forms.Label();
             this.txt_lastname = new System.Windows.Forms.TextBox();
             this.lbllastname = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pbminii2 = new System.Windows.Forms.PictureBox();
-            this.pbclose2 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.pbminii2 = new System.Windows.Forms.PictureBox();
+            this.pbclose2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbminii2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbclose2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.BurlyWood;
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btn_Register);
             this.panel1.Controls.Add(this.txt_confirmpass);
@@ -88,15 +89,15 @@
             this.panel1.Controls.Add(this.lblfirstname);
             this.panel1.Controls.Add(this.txt_lastname);
             this.panel1.Controls.Add(this.lbllastname);
-            this.panel1.Location = new System.Drawing.Point(192, 91);
+            this.panel1.Location = new System.Drawing.Point(127, 92);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(447, 375);
+            this.panel1.Size = new System.Drawing.Size(418, 371);
             this.panel1.TabIndex = 2;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(260, 336);
+            this.button1.Location = new System.Drawing.Point(220, 335);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(81, 25);
             this.button1.TabIndex = 30;
@@ -106,7 +107,7 @@
             // btn_Register
             // 
             this.btn_Register.BackColor = System.Drawing.Color.White;
-            this.btn_Register.Location = new System.Drawing.Point(347, 336);
+            this.btn_Register.Location = new System.Drawing.Point(307, 335);
             this.btn_Register.Name = "btn_Register";
             this.btn_Register.Size = new System.Drawing.Size(91, 26);
             this.btn_Register.TabIndex = 29;
@@ -287,16 +288,6 @@
             this.lbllastname.TabIndex = 0;
             this.lbllastname.Text = "Last Name";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Final_System.Properties.Resources.final_gym;
-            this.pictureBox1.Location = new System.Drawing.Point(-1, 33);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(810, 454);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
             // pbminii2
             // 
             this.pbminii2.Image = global::Final_System.Properties.Resources.minimize_sign;
@@ -322,11 +313,21 @@
             this.pbclose2.Click += new System.EventHandler(this.pbclose2_Click);
             this.pbclose2.MouseHover += new System.EventHandler(this.pbclose2_MouseHover);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Final_System.Properties.Resources.bababaer;
+            this.pictureBox1.Location = new System.Drawing.Point(-20, 33);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(829, 454);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // frm_register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.BurlyWood;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(807, 518);
             this.Controls.Add(this.pbminii2);
             this.Controls.Add(this.pbclose2);
@@ -338,9 +339,9 @@
             this.Text = "Register";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbminii2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbclose2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -376,5 +377,6 @@
         private System.Windows.Forms.PictureBox pbclose2;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.ToolTip toolTip3;
     }
 }

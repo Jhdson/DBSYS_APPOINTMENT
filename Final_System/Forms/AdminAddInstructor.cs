@@ -284,6 +284,17 @@ namespace Final_System.Forms
                 MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+
+        private void pbclose1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pbclose1_MouseHover(object sender, EventArgs e)
+        {
+       
+
+        }
     }
 
 

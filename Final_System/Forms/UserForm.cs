@@ -156,5 +156,40 @@ namespace Final_System.Forms
             
             }
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtChckFN_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtChcknUMBER_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBOOKFN_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pbclose1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pbclose1_MouseHover(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
