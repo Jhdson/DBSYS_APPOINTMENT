@@ -70,6 +70,64 @@
   </entityFramework>
 </configuration>
 
+Create procedure sp_Add(
+
+@userFirstname nvarchar(128),
+@userLastname nvarchar(128),
+@usermid nvarchar(128),
+@userAddress nvarchar(128),
+@userEmail nvarchar(128),
+@userNumber nvarchar(128),
+@userName nvarchar(128),
+@userPass nvarchar(128)
+)
+
+as begin insert into tblUser(userFirstname,userLastname,usermid,userAddress,userEmail,userNumber,userName,userPass)
+values(@userFirstname ,@userLastname ,@usermid, @userAddress,@userEmail,@userNumber,@userName,@userPass)
+end
+
+
+Select a.bookedId As 'Book Id', a.instructorId As 'Instructor Id', CONCAT(i.instructorFName, ' ', i.instructorLName) As 'Name', i.contactNo, i.expertise, a.userId, 
+CONCAT(u.userLastname, ', ', u.userFirstname, ' ', u.usermid) As 'Name', u.userAddress, u.userEmail, u.userNumber   From AppointmentTable As a
+Join tblUser As u On a.userId = u.userId
+Join TblInstructor As i On a.instructorId = i.instructorId
+
+create procedure sp_addinstructor(
+@instructorLName nvarchar(128),
+@instructorFName nvarchar(128),
+@expertise nvarchar(128),
+@contactNo nvarchar(128)
+
+)
+as begin insert into TblInstructor(instructorLName,instructorFName,expertise,contactNo) values 
+(@instructorLName,@instructorFName,@expertise,@contactNo)
+end
+
+create procedure sp_UpdateInstructor(
+
+@instructorId int,
+@instructorLName nvarchar(128),
+@instructorFName nvarchar(128),
+@expertise nvarchar(128),
+@contactNo nvarchar(128)
+)
+as begin update TblInstructor set   instructorLName = @instructorLName,
+instructorFName = @instructorFName, expertise = @expertise, contactNo = @contactNo where instructorId = @instructorId 
+end
+
+create procedure sp_DELETEINSTRUCTOR(
+@instructorId int
+)
+as begin delete from TblInstructor where instructorId = @instructorId
+end
+
+SELECT        u.userId AS [User Id], { fn CONCAT(u.userLastname, ', ', u.userFirstname, ' ', u.usermid) } AS Name, u.userAddress AS Address, u.userEmail AS Email, u.userNumber AS [Phone Number], u.userName, u.userPass AS Password, 
+                         r.roleName AS Role
+FROM            dbo.tblUser AS u INNER JOIN
+                         dbo.Role AS r ON u.roleID = r.roleId
+
+
+
 
 
 
