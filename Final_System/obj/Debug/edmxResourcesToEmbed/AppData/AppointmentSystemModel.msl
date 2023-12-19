@@ -106,5 +106,6 @@
     <FunctionImportMapping FunctionImportName="sp_INSERTUSERr" FunctionName="AppointmentSystemModel.Store.sp_INSERTUSERr" />
     <FunctionImportMapping FunctionImportName="sp_UpdateInstructor" FunctionName="AppointmentSystemModel.Store.sp_UpdateInstructor" />
     <FunctionImportMapping FunctionImportName="sp_UPDATEUSER" FunctionName="AppointmentSystemModel.Store.sp_UPDATEUSER" />
+    <FunctionImportMapping FunctionImportName="bookinsturtor" FunctionName="AppointmentSystemModel.Store.bookinsturtor" />
   </EntityContainerMapping>
 </Mapping>

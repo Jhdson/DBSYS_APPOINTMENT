@@ -149,6 +149,26 @@ namespace Final_System.Repositories
                 }
             }
         }
+        public ErrorCode BOOKInstructorUsingStoredProf(int? instructorId, String instructorLName, String instructorFName, String expertise, string contactNo,
+           ref String Response)
+        {
+            using (db = new AppointmentSystemEntities())
+            {
+                try
+                {
+
+                    db.bookinsturtor(instructorId, instructorLName, instructorFName, expertise, contactNo);
+                    Response = " Book Successfully";
+                    return ErrorCode.Success;
+                }
+                catch (Exception ex)
+                {
+                    Response = ex.Message;
+                    return ErrorCode.Error;
+                }
+            }
+        }
+
 
         public ErrorCode UpdateInstructorUsingStoredProf(int? instructorId, String instructorLName, String instructorFName, String expertise, string contactNo,
             ref String Response)

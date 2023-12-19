@@ -1,4 +1,5 @@
-﻿using Final_System.Repositories;
+﻿using Final_System.AppData;
+using Final_System.Repositories;
 using Final_System.Utils;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Final_System.Model;
 
 namespace Final_System.Forms
 {
@@ -21,7 +23,12 @@ namespace Final_System.Forms
             InitializeComponent();
             userRepo = new userRepository();
         }
-
+        public void loadgrid()
+        {
+            userRepository userRepo = new userRepository();
+            dataGridViewBOOKins.DataSource = userRepo.ALLINSTRUCTOR();
+        }
+        /*
         private void Book_Click(object sender, EventArgs e)
         {
             String strOutputMsg = "";
@@ -73,7 +80,7 @@ namespace Final_System.Forms
                 MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-
+        */
         private void label6_Click(object sender, EventArgs e)
         {
 
@@ -107,7 +114,7 @@ namespace Final_System.Forms
         {
             PNLCHECKOUT.BringToFront();
         }
-
+        /*
         private void button3_Click(object sender, EventArgs e)
         {
             UserDashboard ucerD = new UserDashboard();
@@ -130,7 +137,7 @@ namespace Final_System.Forms
         {
 
         }
-
+        --------------------------------------
         private void dataGridViewBOOKins_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -156,6 +163,7 @@ namespace Final_System.Forms
             
             }
         }
+        */
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -190,6 +198,100 @@ namespace Final_System.Forms
         private void pbclose1_MouseHover(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            String strOutputMsg = "";
+            using (AppointmentSystemEntities db = new AppointmentSystemEntities())
+            {
+                if (String.IsNullOrEmpty(txtBOOKID.Text))
+                {
+                     errorProviderCustom1.SetError(txtBOOKID, "Empty Field");
+                    return;
+                }
+                if (String.IsNullOrEmpty(txtBOOKFN.Text))
+                {
+                    errorProviderCustom1.SetError(txtBOOKFN, "Empty Field");
+                    return;
+                }
+                if (String.IsNullOrEmpty(txtBOOKLN.Text))
+                {
+                    errorProviderCustom1.SetError(txtBOOKLN, "Empty Field");
+                    return;
+                }
+                if (String.IsNullOrEmpty(txtBOOKexpert.Text))
+                {
+                    errorProviderCustom1.SetError(txtBOOKexpert, "Empty Field");
+                    return;
+                }
+                if (String.IsNullOrEmpty(txtBOOKContact.Text))
+                {
+                    errorProviderCustom1.SetError(txtBOOKContact, "Empty Field");
+                    return;
+                }
+                int createdBy = UserLogged.GetInstance().instrucTOR.instructorId;
+                ErrorCode retValue = userRepo.BOOKInstructorUsingStoredProf(Instuctorselectd, txtBOOKFN.Text, txtBOOKLN.Text, txtBOOKexpert.Text, txtBOOKContact.Text, ref strOutputMsg);
+                if (retValue != ErrorCode.Success)
+                {
+                    MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtBOOKID.Clear();
+                    txtBOOKFN.Clear();
+                    txtBOOKLN.Clear();
+                    txtBOOKexpert.Clear();
+                    txtBOOKContact.Clear();
+
+                    Instuctorselectd = 0;
+                }
+                else
+                {
+                    MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                db.SaveChanges();
+
+                //  TblInstructor bookINS = new TblInstructor();
+                // /  bookINS.instructorFName = txtBOOKID.Text;
+                //   bookINS.instructorFName = txtBOOKFN.Text;
+                //bookINS.instructorLName = txtBOOKLN.Text;
+                //   bookINS.expertise = txtBOOKexpert.Text;
+                //   bookINS.contactNo = txtBOOKContact.Text;
+
+                //  db.TblInstructors.Add(bookINS);
+                db.SaveChanges();
+
+              //  txtBOOKID.Clear();
+            //    txtBOOKFN.Clear();
+            //    txtBOOKLN.Clear();
+            //    txtBOOKexpert.Clear();
+           //     txtBOOKContact.Clear();
+           //     MessageBox.Show("BOOKED!");
+            }
+        }
+
+        private void dataGridViewBOOKins_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dataGridViewBOOKins.Rows[e.RowIndex].Cells[0].Value != null)
+                {
+                    Instuctorselectd = (Int32)dataGridViewBOOKins.Rows[e.RowIndex].Cells[0].Value;
+                    txtBOOKFN.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells["Instructor's First Name"].Value.ToString();
+                    txtBOOKLN.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells["Instructor's Last Name"].Value.ToString();
+                    txtBOOKexpert.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells["Instructor' Expertise"].Value.ToString();
+                    txtBOOKContact.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells["Instructor's Contact No."].Value.ToString();
+
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("1 INSTRUCTOR at a time!");
+                dataGridViewBOOKins.ClearSelection();
+                txtBOOKFN.Clear();
+                txtBOOKLN.Clear();
+                txtBOOKexpert.Clear();
+                txtBOOKContact.Clear();
+
+            }
         }
     }
 }

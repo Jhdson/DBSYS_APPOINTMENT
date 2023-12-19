@@ -41,7 +41,7 @@ namespace Final_System.Forms
 
         public void LoadParticipants()
         {
-            datagridADMIN.DataSource = userRepo.UserTablesTable();
+            dataGridViewPARTICIPANTS.DataSource = userRepo.UserTablesTable();
         }
         public void LoadInstructor()
         {
@@ -125,7 +125,7 @@ namespace Final_System.Forms
             }
         }
 
-
+/*
         private void datagridADMIN_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -146,7 +146,7 @@ namespace Final_System.Forms
                 throw ex;
             }
         }
-
+*/
         private void btnUPDATE_Click(object sender, EventArgs e)
         {
             String strOutputMsg = "";
@@ -409,7 +409,7 @@ namespace Final_System.Forms
             }
         }
 
-        private void dataGridView1ins_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1ins_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -426,6 +426,27 @@ namespace Final_System.Forms
             catch (Exception ex)
             {
 
+                throw ex;
+            }
+        }
+
+        private void dataGridViewPARTICIPANTS_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                userIDnumber = (Int32)dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells[0].Value;
+                TXTFIRSTNAME.Text = dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells["First_Name"].Value.ToString();
+                TXTLASTNAME.Text = dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells["Last_Name"].Value.ToString();
+                TXTMID.Text = dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells["Middle_Initial"].Value.ToString();
+                TXTADDRESS.Text = dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells["Address"].Value.ToString();
+                TXTEMAIL.Text = dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells["Email Address"].Value.ToString();
+                TXTPHONE.Text = dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells["Phone_Number"].Value.ToString();
+                TXTUSERNAME.Text = dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells["Username"].Value.ToString();
+                TXTPASS.Text = dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells["Password"].Value.ToString();
+
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }

@@ -260,5 +260,30 @@ namespace Final_System.AppData
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UPDATEUSER", userIDParameter, userLastnameParameter, userFirstnameParameter, usermiddleInParameter, userAddressParameter, userEmailParameter, userNumberParameter, uusernameParameter, userpassParameter);
         }
+    
+        public virtual int bookinsturtor(Nullable<int> insID, string insFN, string insLN, string insEXPER, string insPHONE)
+        {
+            var insIDParameter = insID.HasValue ?
+                new ObjectParameter("insID", insID) :
+                new ObjectParameter("insID", typeof(int));
+    
+            var insFNParameter = insFN != null ?
+                new ObjectParameter("insFN", insFN) :
+                new ObjectParameter("insFN", typeof(string));
+    
+            var insLNParameter = insLN != null ?
+                new ObjectParameter("insLN", insLN) :
+                new ObjectParameter("insLN", typeof(string));
+    
+            var insEXPERParameter = insEXPER != null ?
+                new ObjectParameter("insEXPER", insEXPER) :
+                new ObjectParameter("insEXPER", typeof(string));
+    
+            var insPHONEParameter = insPHONE != null ?
+                new ObjectParameter("insPHONE", insPHONE) :
+                new ObjectParameter("insPHONE", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("bookinsturtor", insIDParameter, insFNParameter, insLNParameter, insEXPERParameter, insPHONEParameter);
+        }
     }
 }

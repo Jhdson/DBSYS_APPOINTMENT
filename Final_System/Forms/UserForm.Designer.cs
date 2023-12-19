@@ -58,6 +58,7 @@
             this.btnBooking = new System.Windows.Forms.Button();
             this.btnCheckOUT = new System.Windows.Forms.Button();
             this.pnlINSTUCTOR = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtBOOKLN = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -68,10 +69,12 @@
             this.txtBOOKFN = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridViewBOOKins = new System.Windows.Forms.DataGridView();
-            this.label8 = new System.Windows.Forms.Label();
             this.pbclose1 = new System.Windows.Forms.PictureBox();
             this.pbmini1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtBOOKID = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.PNLCHECKOUT.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -97,7 +100,7 @@
             this.Book.TabIndex = 2;
             this.Book.Text = "Book";
             this.Book.UseVisualStyleBackColor = true;
-            this.Book.Click += new System.EventHandler(this.Book_Click);
+         
             // 
             // txtChckFN
             // 
@@ -255,7 +258,7 @@
             this.lblnum.Size = new System.Drawing.Size(37, 13);
             this.lblnum.TabIndex = 7;
             this.lblnum.Text = "lblnum";
-            this.lblnum.Click += new System.EventHandler(this.label20_Click);
+           
             // 
             // lblexp
             // 
@@ -352,6 +355,9 @@
             // pnlINSTUCTOR
             // 
             this.pnlINSTUCTOR.BackColor = System.Drawing.Color.SeaShell;
+            this.pnlINSTUCTOR.Controls.Add(this.label17);
+            this.pnlINSTUCTOR.Controls.Add(this.txtBOOKID);
+            this.pnlINSTUCTOR.Controls.Add(this.button1);
             this.pnlINSTUCTOR.Controls.Add(this.label8);
             this.pnlINSTUCTOR.Controls.Add(this.label10);
             this.pnlINSTUCTOR.Controls.Add(this.txtBOOKLN);
@@ -367,6 +373,16 @@
             this.pnlINSTUCTOR.Name = "pnlINSTUCTOR";
             this.pnlINSTUCTOR.Size = new System.Drawing.Size(759, 408);
             this.pnlINSTUCTOR.TabIndex = 20;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(583, 61);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(90, 19);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Instructors";
             // 
             // label10
             // 
@@ -437,13 +453,13 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(566, 284);
+            this.button3.Location = new System.Drawing.Point(439, 339);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(121, 31);
             this.button3.TabIndex = 2;
             this.button3.Text = "Book Now";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+        
             // 
             // dataGridViewBOOKins
             // 
@@ -452,16 +468,7 @@
             this.dataGridViewBOOKins.Name = "dataGridViewBOOKins";
             this.dataGridViewBOOKins.Size = new System.Drawing.Size(438, 325);
             this.dataGridViewBOOKins.TabIndex = 1;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(583, 61);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(90, 19);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "Instructors";
+            this.dataGridViewBOOKins.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBOOKins_CellClick_1);
             // 
             // pbclose1
             // 
@@ -485,6 +492,32 @@
             this.pbmini1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbmini1.TabIndex = 22;
             this.pbmini1.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(598, 267);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Book";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtBOOKID
+            // 
+            this.txtBOOKID.Location = new System.Drawing.Point(558, 88);
+            this.txtBOOKID.Name = "txtBOOKID";
+            this.txtBOOKID.Size = new System.Drawing.Size(189, 20);
+            this.txtBOOKID.TabIndex = 20;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(510, 88);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(18, 13);
+            this.label17.TabIndex = 21;
+            this.label17.Text = "ID";
             // 
             // UserDashboard
             // 
@@ -561,5 +594,8 @@
         private System.Windows.Forms.PictureBox pbclose1;
         private System.Windows.Forms.PictureBox pbmini1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtBOOKID;
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AppointmentSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AppointmentSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="checkoutBOOK">
           <Key>
             <PropertyRef Name="checkoutID" />
@@ -102,6 +102,13 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
           <Property Name="Password" Type="nvarchar" MaxLength="128" />
           <Property Name="Role" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Function Name="bookinsturtor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="insID" Type="int" Mode="In" />
+          <Parameter Name="insFN" Type="nvarchar" Mode="In" />
+          <Parameter Name="insLN" Type="nvarchar" Mode="In" />
+          <Parameter Name="insEXPER" Type="nvarchar" Mode="In" />
+          <Parameter Name="insPHONE" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="sp_addinstructor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="instructorId" Type="int" Mode="In" />
           <Parameter Name="instructorLName" Type="nvarchar" Mode="In" />
@@ -200,8 +207,7 @@ FROM [dbo].[vw_TrainingTable] AS [vw_TrainingTable]</DefiningQuery>
 FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AppointmentSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -323,10 +329,10 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
             <Parameter Name="checkDateEXPIRE" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="sp_DELETEINSTRUCTOR">
-            <Parameter Name="instructorId" Mode="In" Type="Int32" />
+          <Parameter Name="instructorId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_deleteUSER">
-            <Parameter Name="userID" Mode="In" Type="Int32" />
+          <Parameter Name="userID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_InsertUser">
             <Parameter Name="userFirstname" Mode="In" Type="String" />
@@ -366,6 +372,13 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
             <Parameter Name="userNumber" Mode="In" Type="String" />
             <Parameter Name="Uusername" Mode="In" Type="String" />
             <Parameter Name="userpass" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="bookinsturtor">
+            <Parameter Name="insID" Mode="In" Type="Int32" />
+            <Parameter Name="insFN" Mode="In" Type="String" />
+            <Parameter Name="insLN" Mode="In" Type="String" />
+            <Parameter Name="insEXPER" Mode="In" Type="String" />
+            <Parameter Name="insPHONE" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -479,6 +492,7 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           <FunctionImportMapping FunctionImportName="sp_INSERTUSERr" FunctionName="AppointmentSystemModel.Store.sp_INSERTUSERr" />
           <FunctionImportMapping FunctionImportName="sp_UpdateInstructor" FunctionName="AppointmentSystemModel.Store.sp_UpdateInstructor" />
           <FunctionImportMapping FunctionImportName="sp_UPDATEUSER" FunctionName="AppointmentSystemModel.Store.sp_UPDATEUSER" />
+          <FunctionImportMapping FunctionImportName="bookinsturtor" FunctionName="AppointmentSystemModel.Store.bookinsturtor" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

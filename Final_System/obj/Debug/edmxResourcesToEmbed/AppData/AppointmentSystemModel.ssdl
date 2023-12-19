@@ -97,6 +97,13 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
     <Property Name="Password" Type="nvarchar" MaxLength="128" />
     <Property Name="Role" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <Function Name="bookinsturtor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="insID" Type="int" Mode="In" />
+    <Parameter Name="insFN" Type="nvarchar" Mode="In" />
+    <Parameter Name="insLN" Type="nvarchar" Mode="In" />
+    <Parameter Name="insEXPER" Type="nvarchar" Mode="In" />
+    <Parameter Name="insPHONE" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="sp_addinstructor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="instructorId" Type="int" Mode="In" />
     <Parameter Name="instructorLName" Type="nvarchar" Mode="In" />

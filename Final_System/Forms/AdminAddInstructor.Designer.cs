@@ -48,6 +48,7 @@
             this.btnUsers = new System.Windows.Forms.Button();
             this.btnInstructor = new System.Windows.Forms.Button();
             this.pnlUsers = new System.Windows.Forms.Panel();
+            this.dataGridViewPARTICIPANTS = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.TXTPASS = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -68,7 +69,6 @@
             this.TXTLASTNAME = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.TXTEMAIL = new System.Windows.Forms.TextBox();
-            this.datagridADMIN = new System.Windows.Forms.DataGridView();
             this.pbmini1 = new System.Windows.Forms.PictureBox();
             this.pbclose1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -76,8 +76,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1ins)).BeginInit();
             this.panel2.SuspendLayout();
             this.pnlUsers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPARTICIPANTS)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datagridADMIN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbmini1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbclose1)).BeginInit();
             this.SuspendLayout();
@@ -100,7 +100,7 @@
             this.dataGridView1ins.Name = "dataGridView1ins";
             this.dataGridView1ins.Size = new System.Drawing.Size(455, 345);
             this.dataGridView1ins.TabIndex = 15;
-            this.dataGridView1ins.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1ins_CellContentClick);
+            this.dataGridView1ins.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1ins_CellClick);
             // 
             // panel2
             // 
@@ -258,12 +258,21 @@
             // pnlUsers
             // 
             this.pnlUsers.BackColor = System.Drawing.Color.SeaShell;
+            this.pnlUsers.Controls.Add(this.dataGridViewPARTICIPANTS);
             this.pnlUsers.Controls.Add(this.panel3);
-            this.pnlUsers.Controls.Add(this.datagridADMIN);
             this.pnlUsers.Location = new System.Drawing.Point(12, 45);
             this.pnlUsers.Name = "pnlUsers";
             this.pnlUsers.Size = new System.Drawing.Size(782, 461);
             this.pnlUsers.TabIndex = 16;
+            // 
+            // dataGridViewPARTICIPANTS
+            // 
+            this.dataGridViewPARTICIPANTS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPARTICIPANTS.Location = new System.Drawing.Point(9, 27);
+            this.dataGridViewPARTICIPANTS.Name = "dataGridViewPARTICIPANTS";
+            this.dataGridViewPARTICIPANTS.Size = new System.Drawing.Size(467, 407);
+            this.dataGridViewPARTICIPANTS.TabIndex = 15;
+            this.dataGridViewPARTICIPANTS.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPARTICIPANTS_CellClick);
             // 
             // panel3
             // 
@@ -449,14 +458,6 @@
             this.TXTEMAIL.Size = new System.Drawing.Size(175, 20);
             this.TXTEMAIL.TabIndex = 9;
             // 
-            // datagridADMIN
-            // 
-            this.datagridADMIN.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datagridADMIN.Location = new System.Drawing.Point(16, 28);
-            this.datagridADMIN.Name = "datagridADMIN";
-            this.datagridADMIN.Size = new System.Drawing.Size(455, 394);
-            this.datagridADMIN.TabIndex = 15;
-            // 
             // pbmini1
             // 
             this.pbmini1.Image = global::Final_System.Properties.Resources.minimize_sign;
@@ -490,8 +491,8 @@
             this.Controls.Add(this.pbclose1);
             this.Controls.Add(this.btnInstructor);
             this.Controls.Add(this.btnUsers);
-            this.Controls.Add(this.pnlInstructor);
             this.Controls.Add(this.pnlUsers);
+            this.Controls.Add(this.pnlInstructor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdminAddInstructor";
             this.Text = "AdminAddInstructor";
@@ -500,9 +501,9 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.pnlUsers.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPARTICIPANTS)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datagridADMIN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbmini1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbclose1)).EndInit();
             this.ResumeLayout(false);
@@ -532,7 +533,6 @@
         private System.Windows.Forms.Button btnDELETE;
         private System.Windows.Forms.Button btnUPDATE;
         private System.Windows.Forms.Button btnADD;
-        private System.Windows.Forms.DataGridView datagridADMIN;
         private System.Windows.Forms.TextBox TXTPASS;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox TXTUSERNAME;
@@ -555,5 +555,6 @@
         private System.Windows.Forms.TextBox txtinsNumber;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.DataGridView dataGridViewPARTICIPANTS;
     }
 }

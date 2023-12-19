@@ -162,5 +162,12 @@
       <Parameter Name="Uusername" Mode="In" Type="String" />
       <Parameter Name="userpass" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="bookinsturtor">
+      <Parameter Name="insID" Mode="In" Type="Int32" />
+      <Parameter Name="insFN" Mode="In" Type="String" />
+      <Parameter Name="insLN" Mode="In" Type="String" />
+      <Parameter Name="insEXPER" Mode="In" Type="String" />
+      <Parameter Name="insPHONE" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
 </Schema>

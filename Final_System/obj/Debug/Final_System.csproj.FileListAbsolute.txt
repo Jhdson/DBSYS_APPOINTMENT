@@ -73,6 +73,11 @@ C:\Users\User\OneDrive\Desktop\DBSYS_APPOINTMENT\Final_System\obj\Debug\Final_Sy
 C:\Users\User\OneDrive\Desktop\DBSYS_APPOINTMENT\Final_System\obj\Debug\Final_System.csproj.CopyComplete
 C:\Users\User\OneDrive\Desktop\DBSYS_APPOINTMENT\Final_System\obj\Debug\Final_System.exe
 C:\Users\User\OneDrive\Desktop\DBSYS_APPOINTMENT\Final_System\obj\Debug\Final_System.pdb
+C:\Users\jay hudson\Desktop\database\Final_System\bin\Debug\Final_System.exe.config
+C:\Users\jay hudson\Desktop\database\Final_System\bin\Debug\Final_System.exe
+C:\Users\jay hudson\Desktop\database\Final_System\bin\Debug\Final_System.pdb
+C:\Users\jay hudson\Desktop\database\Final_System\bin\Debug\EntityFramework.dll
+C:\Users\jay hudson\Desktop\database\Final_System\bin\Debug\EntityFramework.xml
 C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.csproj.AssemblyReference.cache
 C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.csproj.SuggestedBindingRedirects.cache
 C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.Forms.AdminAddInstructor.resources
@@ -83,11 +88,6 @@ C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.Forms.U
 C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.Properties.Resources.resources
 C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.csproj.GenerateResource.cache
 C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.csproj.CoreCompileInputs.cache
-C:\Users\jay hudson\Desktop\database\Final_System\bin\Debug\Final_System.exe.config
-C:\Users\jay hudson\Desktop\database\Final_System\bin\Debug\Final_System.exe
-C:\Users\jay hudson\Desktop\database\Final_System\bin\Debug\Final_System.pdb
-C:\Users\jay hudson\Desktop\database\Final_System\bin\Debug\EntityFramework.dll
-C:\Users\jay hudson\Desktop\database\Final_System\bin\Debug\EntityFramework.xml
 C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.csproj.CopyComplete
 C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.exe
 C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.pdb
