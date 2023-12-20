@@ -87,7 +87,7 @@ namespace Final_System.Forms
         {
             loadInstructor();
             loadallAppoint();
-            loadCheckOut();
+            //loadCheckOut();
         }
         private void loadInstructor()
         {
@@ -118,10 +118,11 @@ namespace Final_System.Forms
            // int appoint = UserLogged.GetInstance().User.userId;
             dgvDone.DataSource = userRepo.AllAPPOINTMENTS();
         }
-        private void loadCheckOut()
+     /*   private void loadCheckOut()
         {
             dgvDone.DataSource = userRepo.AllCheckOutTable();
-        }
+        }*/
+
         private void pbclose1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -319,6 +320,11 @@ namespace Final_System.Forms
             txtBOOKLN.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells["Last Name"].Value.ToString();
             txtBOOKexpert.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells[" Expertise"].Value.ToString();
             txtBOOKContact.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells[" Contact No."].Value.ToString();
+        }
+
+        private void dataGridViewBOOKins_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

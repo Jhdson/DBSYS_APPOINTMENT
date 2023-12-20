@@ -16,10 +16,10 @@ namespace Final_System.AppData
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class AppointmentSystemEntities : DbContext
+    public partial class AppointmentSystemEntities1 : DbContext
     {
-        public AppointmentSystemEntities()
-            : base("name=AppointmentSystemEntities")
+        public AppointmentSystemEntities1()
+            : base("name=AppointmentSystemEntities1")
         {
         }
     
@@ -33,12 +33,12 @@ namespace Final_System.AppData
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<TblInstructor> TblInstructor { get; set; }
         public DbSet<tblUser> tblUser { get; set; }
+        public DbSet<vw_adminUSER> vw_adminUSER { get; set; }
         public DbSet<vw_allAppointment> vw_allAppointment { get; set; }
         public DbSet<vw_InsTable> vw_InsTable { get; set; }
         public DbSet<vw_INstaffBook> vw_INstaffBook { get; set; }
         public DbSet<vw_TrainingTable> vw_TrainingTable { get; set; }
         public DbSet<vw_UserTable> vw_UserTable { get; set; }
-        public DbSet<vw_CheckOut> vw_CheckOut { get; set; }
     
         public virtual int bookinsturtor(Nullable<int> insID, string insFN, string insLN, string insEXPER, string insPHONE)
         {
@@ -141,7 +141,7 @@ namespace Final_System.AppData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_deleteUSER", userIDParameter);
         }
     
-        public virtual int sp_InsertUser(string userFirstname, string userLastname, string usermiddleIn, string userAddress, string userEmail, string userNumber, string uusername, string userpass)
+        public virtual int sp_InsertUser(string userFirstname, string userLastname, string userAddress, string userEmail, string userNumber, string uusername, string userpass)
         {
             var userFirstnameParameter = userFirstname != null ?
                 new ObjectParameter("userFirstname", userFirstname) :
@@ -150,10 +150,6 @@ namespace Final_System.AppData
             var userLastnameParameter = userLastname != null ?
                 new ObjectParameter("userLastname", userLastname) :
                 new ObjectParameter("userLastname", typeof(string));
-    
-            var usermiddleInParameter = usermiddleIn != null ?
-                new ObjectParameter("usermiddleIn", usermiddleIn) :
-                new ObjectParameter("usermiddleIn", typeof(string));
     
             var userAddressParameter = userAddress != null ?
                 new ObjectParameter("userAddress", userAddress) :
@@ -175,7 +171,7 @@ namespace Final_System.AppData
                 new ObjectParameter("userpass", userpass) :
                 new ObjectParameter("userpass", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertUser", userFirstnameParameter, userLastnameParameter, usermiddleInParameter, userAddressParameter, userEmailParameter, userNumberParameter, uusernameParameter, userpassParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertUser", userFirstnameParameter, userLastnameParameter, userAddressParameter, userEmailParameter, userNumberParameter, uusernameParameter, userpassParameter);
         }
     
         public virtual int sp_INSERTUSERr(Nullable<int> userId, string userFirstname, string userLastname, string usermiddleIn, string userAddress, string userEmail, string userNumber, string uusername, string userpass)
@@ -244,7 +240,7 @@ namespace Final_System.AppData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdateInstructor", instructorIdParameter, instructorLNameParameter, instructorFNameParameter, expertiseParameter, contactNoParameter);
         }
     
-        public virtual int sp_UPDATEUSER(Nullable<int> userID, string userLastname, string userFirstname, string usermiddleIn, string userAddress, string userEmail, string userNumber, string uusername, string userpass)
+        public virtual int sp_UPDATEUSER(Nullable<int> userID, string userLastname, string userFirstname, string userAddress, string userEmail, string userNumber, string uusername, string userpass)
         {
             var userIDParameter = userID.HasValue ?
                 new ObjectParameter("userID", userID) :
@@ -257,10 +253,6 @@ namespace Final_System.AppData
             var userFirstnameParameter = userFirstname != null ?
                 new ObjectParameter("userFirstname", userFirstname) :
                 new ObjectParameter("userFirstname", typeof(string));
-    
-            var usermiddleInParameter = usermiddleIn != null ?
-                new ObjectParameter("usermiddleIn", usermiddleIn) :
-                new ObjectParameter("usermiddleIn", typeof(string));
     
             var userAddressParameter = userAddress != null ?
                 new ObjectParameter("userAddress", userAddress) :
@@ -282,7 +274,7 @@ namespace Final_System.AppData
                 new ObjectParameter("userpass", userpass) :
                 new ObjectParameter("userpass", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UPDATEUSER", userIDParameter, userLastnameParameter, userFirstnameParameter, usermiddleInParameter, userAddressParameter, userEmailParameter, userNumberParameter, uusernameParameter, userpassParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UPDATEUSER", userIDParameter, userLastnameParameter, userFirstnameParameter, userAddressParameter, userEmailParameter, userNumberParameter, uusernameParameter, userpassParameter);
         }
     }
 }

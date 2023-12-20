@@ -52,7 +52,7 @@ namespace Final_System.Forms
         private void btnConfirm_Click(object sender, EventArgs e)
         {
 
-            using (AppointmentSystemEntities db = new AppointmentSystemEntities())
+            using (AppointmentSystemEntities1 db = new AppointmentSystemEntities1())
             {
                 if (String.IsNullOrEmpty(txtfnCONF.Text))
                 {

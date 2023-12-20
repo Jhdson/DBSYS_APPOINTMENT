@@ -15,8 +15,9 @@ namespace Final_System.AppData
     public partial class vw_InsTable
     {
         public int Instructor_Id { get; set; }
-        public string Name { get; set; }
-        public string expertise { get; set; }
-        public string contactNo { get; set; }
+        public string First_Name { get; set; }
+        public string Last_Name { get; set; }
+        public string Expertise { get; set; }
+        public string Contact_No { get; set; }
     }
 }

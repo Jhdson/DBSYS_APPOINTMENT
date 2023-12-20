@@ -12,16 +12,16 @@ namespace Final_System.AppData
     using System;
     using System.Collections.Generic;
     
-    public partial class vw_CheckOut
+    public partial class vw_adminUSER
     {
-        public int checkoutID { get; set; }
-        public string Cfname { get; set; }
-        public string Clname { get; set; }
-        public string Caddress { get; set; }
-        public string Cemail { get; set; }
-        public string Cphone { get; set; }
-        public Nullable<System.DateTime> Cdatestart { get; set; }
-        public Nullable<System.DateTime> Cdateexpire { get; set; }
-        public Nullable<int> Cpayment { get; set; }
+        public int User_Id { get; set; }
+        public string Last_Name { get; set; }
+        public string C_First_Name { get; set; }
+        public string Address { get; set; }
+        public string Email { get; set; }
+        public string Phone_Number { get; set; }
+        public string userName { get; set; }
+        public string Password { get; set; }
+        public string Role { get; set; }
     }
 }

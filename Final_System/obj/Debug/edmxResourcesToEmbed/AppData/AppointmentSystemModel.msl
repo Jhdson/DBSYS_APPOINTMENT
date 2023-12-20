@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="AppointmentSystemModelStoreContainer" CdmEntityContainer="AppointmentSystemEntities">
+  <EntityContainerMapping StorageEntityContainer="AppointmentSystemModelStoreContainer" CdmEntityContainer="AppointmentSystemEntities1">
     <EntitySetMapping Name="checkoutBOOK">
       <EntityTypeMapping TypeName="AppointmentSystemModel.checkoutBOOK">
         <MappingFragment StoreEntitySet="checkoutBOOK">
@@ -64,6 +64,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="vw_adminUSER">
+      <EntityTypeMapping TypeName="AppointmentSystemModel.vw_adminUSER">
+        <MappingFragment StoreEntitySet="vw_adminUSER">
+          <ScalarProperty Name="User_Id" ColumnName="User Id" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+          <ScalarProperty Name="C_First_Name" ColumnName=" First Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone Number" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="vw_allAppointment">
       <EntityTypeMapping TypeName="AppointmentSystemModel.vw_allAppointment">
         <MappingFragment StoreEntitySet="vw_allAppointment">
@@ -82,9 +97,10 @@
       <EntityTypeMapping TypeName="AppointmentSystemModel.vw_InsTable">
         <MappingFragment StoreEntitySet="vw_InsTable">
           <ScalarProperty Name="Instructor_Id" ColumnName="Instructor Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="expertise" ColumnName="expertise" />
-          <ScalarProperty Name="contactNo" ColumnName="contactNo" />
+          <ScalarProperty Name="First_Name" ColumnName="First Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+          <ScalarProperty Name="Expertise" ColumnName="Expertise" />
+          <ScalarProperty Name="Contact_No" ColumnName="Contact No" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -137,20 +153,5 @@
     <FunctionImportMapping FunctionImportName="sp_INSERTUSERr" FunctionName="AppointmentSystemModel.Store.sp_INSERTUSERr" />
     <FunctionImportMapping FunctionImportName="sp_UpdateInstructor" FunctionName="AppointmentSystemModel.Store.sp_UpdateInstructor" />
     <FunctionImportMapping FunctionImportName="sp_UPDATEUSER" FunctionName="AppointmentSystemModel.Store.sp_UPDATEUSER" />
-    <EntitySetMapping Name="vw_CheckOut">
-      <EntityTypeMapping TypeName="AppointmentSystemModel.vw_CheckOut">
-        <MappingFragment StoreEntitySet="vw_CheckOut">
-          <ScalarProperty Name="Cpayment" ColumnName="Cpayment" />
-          <ScalarProperty Name="Cdateexpire" ColumnName="Cdateexpire" />
-          <ScalarProperty Name="Cdatestart" ColumnName="Cdatestart" />
-          <ScalarProperty Name="Cphone" ColumnName="Cphone" />
-          <ScalarProperty Name="Cemail" ColumnName="Cemail" />
-          <ScalarProperty Name="Caddress" ColumnName="Caddress" />
-          <ScalarProperty Name="Clname" ColumnName="Clname" />
-          <ScalarProperty Name="Cfname" ColumnName="Cfname" />
-          <ScalarProperty Name="checkoutID" ColumnName="checkoutID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

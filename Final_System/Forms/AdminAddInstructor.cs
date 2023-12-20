@@ -18,7 +18,7 @@ namespace Final_System.Forms
     public partial class AdminAddInstructor : Form
     {
         userRepository userRepo;
-        AppointmentSystemEntities db;
+        AppointmentSystemEntities1 db;
 
         int? userIDnumber = null;
         int? instructorselId = null;
@@ -27,7 +27,7 @@ namespace Final_System.Forms
         {
             InitializeComponent();
             userRepo = new userRepository();
-            db = new AppointmentSystemEntities();
+            db = new AppointmentSystemEntities1();
         }
         private void AdminAddInstructor_Load(object sender, EventArgs e)
         {
@@ -52,7 +52,7 @@ namespace Final_System.Forms
 
         public void LoadParticipants()
         {
-            dataGridViewPARTICIPANTS.DataSource = userRepo.UserTablesTable();
+            dataGridViewPARTICIPANTS.DataSource = userRepo.adminUser();
         }
         public void LoadInstructor()
         {
@@ -61,7 +61,7 @@ namespace Final_System.Forms
 
         private void btnADD_Click(object sender, EventArgs e)
         {
-            using (var db = new AppointmentSystemEntities())
+            using (var db = new AppointmentSystemEntities1())
             {
 
 
@@ -76,11 +76,7 @@ namespace Final_System.Forms
                     errorProviderCustom1.SetError(TXTLASTNAME, "Empty field");
                     return;
                 }
-                if (String.IsNullOrEmpty(TXTMID.Text))
-                {
-                    errorProviderCustom1.SetError(TXTMID, "Empty field");
-                    return;
-                }
+             
                 if (String.IsNullOrEmpty(TXTADDRESS.Text))
                 {
                     errorProviderCustom1.SetError(TXTADDRESS, "Empty field");
@@ -109,7 +105,7 @@ namespace Final_System.Forms
 
 
 
-                ErrorCode retValue = userRepo.InsertUserUsingStoredProf(TXTFIRSTNAME.Text, TXTLASTNAME.Text, TXTMID.Text, TXTADDRESS.Text,
+                ErrorCode retValue = userRepo.InsertUserUsingStoredProf(TXTFIRSTNAME.Text, TXTLASTNAME.Text, TXTADDRESS.Text,
                     TXTEMAIL.Text, TXTPHONE.Text, TXTUSERNAME.Text, TXTPASS.Text, ref strOutputMsg);
                 if (retValue != ErrorCode.Success)
                 {
@@ -119,7 +115,7 @@ namespace Final_System.Forms
 
                     TXTFIRSTNAME.Clear();
                     TXTLASTNAME.Clear();
-                    TXTMID.Clear();
+                    
                     TXTADDRESS.Clear();
                     TXTEMAIL.Clear();
                     TXTPHONE.Clear();
@@ -171,11 +167,7 @@ namespace Final_System.Forms
                 errorProviderCustom1.SetError(TXTLASTNAME, "Empty field");
                 return;
             }
-            if (String.IsNullOrEmpty(TXTMID.Text))
-            {
-                errorProviderCustom1.SetError(TXTMID, "Empty field");
-                return;
-            }
+         
             if (String.IsNullOrEmpty(TXTADDRESS.Text))
             {
                 errorProviderCustom1.SetError(TXTADDRESS, "Empty field");
@@ -204,7 +196,7 @@ namespace Final_System.Forms
 
 
 
-            ErrorCode retValue = userRepo.UpdateUserUsingStoredProf(userIDnumber, TXTFIRSTNAME.Text, TXTLASTNAME.Text, TXTMID.Text, TXTADDRESS.Text,
+            ErrorCode retValue = userRepo.UpdateUserUsingStoredProf(userIDnumber, TXTFIRSTNAME.Text, TXTLASTNAME.Text, TXTADDRESS.Text,
                      TXTEMAIL.Text, TXTPHONE.Text, TXTUSERNAME.Text, TXTPASS.Text, ref strOutputMsg);
             if (retValue != ErrorCode.Success)
             {
@@ -215,7 +207,7 @@ namespace Final_System.Forms
 
                 TXTFIRSTNAME.Clear();
                 TXTLASTNAME.Clear();
-                TXTMID.Clear();
+          
                 TXTADDRESS.Clear();
                 TXTEMAIL.Clear();
                 TXTPHONE.Clear();
@@ -244,11 +236,7 @@ namespace Final_System.Forms
                 errorProviderCustom1.SetError(TXTLASTNAME, "Empty field");
                 return;
             }
-            if (String.IsNullOrEmpty(TXTMID.Text))
-            {
-                errorProviderCustom1.SetError(TXTMID, "Empty field");
-                return;
-            }
+           
             if (String.IsNullOrEmpty(TXTADDRESS.Text))
             {
                 errorProviderCustom1.SetError(TXTADDRESS, "Empty field");
@@ -285,7 +273,7 @@ namespace Final_System.Forms
 
                 TXTFIRSTNAME.Clear();
                 TXTLASTNAME.Clear();
-                TXTMID.Clear();
+             
                 TXTADDRESS.Clear();
                 TXTEMAIL.Clear();
                 TXTPHONE.Clear();
@@ -413,10 +401,10 @@ namespace Final_System.Forms
 
                     instructorselId = (Int32)dataGridView1ins.Rows[e.RowIndex].Cells[0].Value;
              
-                txtfnameins.Text = dataGridView1ins.Rows[e.RowIndex].Cells["Room_Number"].Value.ToString();
-                txtlnameins.Text = dataGridView1ins.Rows[e.RowIndex].Cells["Room_Type"].Value.ToString();
-                txtexins.Text = dataGridView1ins.Rows[e.RowIndex].Cells["Aircon"].Value.ToString();
-                txtcontactins.Text = dataGridView1ins.Rows[e.RowIndex].Cells["Minimum_Guest"].Value.ToString();
+                txtfnameins.Text = dataGridView1ins.Rows[e.RowIndex].Cells["First_Name"].Value.ToString();
+                txtlnameins.Text = dataGridView1ins.Rows[e.RowIndex].Cells["Last_Name"].Value.ToString();
+                txtexins.Text = dataGridView1ins.Rows[e.RowIndex].Cells["Expertise"].Value.ToString();
+                txtcontactins.Text = dataGridView1ins.Rows[e.RowIndex].Cells["Contact_No"].Value.ToString();
 
             }
             catch (Exception ex)
@@ -431,13 +419,13 @@ namespace Final_System.Forms
             try
             {
                 userIDnumber = (Int32)dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells[0].Value;
-                TXTFIRSTNAME.Text = dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells["First_Name"].Value.ToString();
                 TXTLASTNAME.Text = dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells["Last_Name"].Value.ToString();
-                TXTMID.Text = dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells["Middle_Initial"].Value.ToString();
+                TXTFIRSTNAME.Text = dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells["C_First_Name"].Value.ToString();
+            
                 TXTADDRESS.Text = dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells["Address"].Value.ToString();
-                TXTEMAIL.Text = dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells["Email Address"].Value.ToString();
+                TXTEMAIL.Text = dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells["Email"].Value.ToString();
                 TXTPHONE.Text = dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells["Phone_Number"].Value.ToString();
-                TXTUSERNAME.Text = dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells["Username"].Value.ToString();
+                TXTUSERNAME.Text = dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells["userName"].Value.ToString();
                 TXTPASS.Text = dataGridViewPARTICIPANTS.Rows[e.RowIndex].Cells["Password"].Value.ToString();
 
             }
@@ -445,7 +433,47 @@ namespace Final_System.Forms
             {
                 throw ex;
             }
-        }       
+        }
+
+        private void dataGridView1ins_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void TXTADDRESS_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void TXTPASS_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewPARTICIPANTS_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void TXTFIRSTNAME_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtfnameins_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

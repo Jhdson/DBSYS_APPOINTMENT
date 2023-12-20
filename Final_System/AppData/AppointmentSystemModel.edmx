@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="AppointmentSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AppointmentSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="checkoutBOOK">
           <Key>
             <PropertyRef Name="checkoutID" />
@@ -64,6 +64,37 @@
           <Property Name="roleID" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6013: The table/view 'AppointmentSystem.dbo.vw_adminINSt' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vw_adminINSt">
+          <Property Name="First Name" Type="varchar" MaxLength="128" />
+          <Property Name="Last Name" Type="varchar" MaxLength="128" />
+          <Property Name="expertise" Type="varchar" MaxLength="128" />
+          <Property Name="contactNo" Type="nvarchar" MaxLength="128" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AppointmentSystem.dbo.vw_adminUSER' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_adminUSER">
+          <Key>
+            <PropertyRef Name="User Id" />
+            <PropertyRef Name="Last Name" />
+            <PropertyRef Name=" First Name" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Phone Number" />
+            <PropertyRef Name="userName" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="User Id" Type="int" Nullable="false" />
+          <Property Name="Last Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name=" First Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Phone Number" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="userName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'AppointmentSystem.dbo.vw_allAppointment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vw_allAppointment">
           <Key>
@@ -84,32 +115,16 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_allAppointment' does not 
           <Property Name="userNumber" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'AppointmentSystem.dbo.vw_CheckOut' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vw_CheckOut">
-          <Key>
-            <PropertyRef Name="checkoutID" />
-          </Key>
-          <Property Name="checkoutID" Type="int" Nullable="false" />
-          <Property Name="Cfname" Type="nvarchar" MaxLength="128" />
-          <Property Name="Clname" Type="nvarchar" MaxLength="128" />
-          <Property Name="Caddress" Type="nvarchar" MaxLength="128" />
-          <Property Name="Cemail" Type="nvarchar" MaxLength="128" />
-          <Property Name="Cphone" Type="nvarchar" MaxLength="128" />
-          <Property Name="Cdatestart" Type="datetime" />
-          <Property Name="Cdateexpire" Type="datetime" />
-          <Property Name="Cpayment" Type="int" />
-        </EntityType>
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'AppointmentSystem.dbo.vw_InsTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vw_InsTable">
           <Key>
             <PropertyRef Name="Instructor Id" />
-            <PropertyRef Name="Name" />
           </Key>
           <Property Name="Instructor Id" Type="int" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="257" Nullable="false" />
-          <Property Name="expertise" Type="varchar" MaxLength="128" />
-          <Property Name="contactNo" Type="nvarchar" MaxLength="128" />
+          <Property Name="First Name" Type="varchar" MaxLength="128" />
+          <Property Name="Last Name" Type="varchar" MaxLength="128" />
+          <Property Name="Expertise" Type="varchar" MaxLength="128" />
+          <Property Name="Contact No" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'AppointmentSystem.dbo.vw_INstaffBook' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -200,7 +215,6 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
         <Function Name="sp_InsertUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userFirstname" Type="nvarchar" Mode="In" />
           <Parameter Name="userLastname" Type="nvarchar" Mode="In" />
-          <Parameter Name="usermiddleIn" Type="nvarchar" Mode="In" />
           <Parameter Name="userAddress" Type="nvarchar" Mode="In" />
           <Parameter Name="userEmail" Type="nvarchar" Mode="In" />
           <Parameter Name="userNumber" Type="nvarchar" Mode="In" />
@@ -229,7 +243,6 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
           <Parameter Name="userID" Type="int" Mode="In" />
           <Parameter Name="userLastname" Type="nvarchar" Mode="In" />
           <Parameter Name="userFirstname" Type="nvarchar" Mode="In" />
-          <Parameter Name="usermiddleIn" Type="nvarchar" Mode="In" />
           <Parameter Name="userAddress" Type="nvarchar" Mode="In" />
           <Parameter Name="userEmail" Type="nvarchar" Mode="In" />
           <Parameter Name="userNumber" Type="nvarchar" Mode="In" />
@@ -242,6 +255,19 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblInstructor" EntityType="Self.TblInstructor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_adminUSER" EntityType="Self.vw_adminUSER" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_adminUSER].[User Id] AS [User Id], 
+[vw_adminUSER].[Last Name] AS [Last Name], 
+[vw_adminUSER].[ First Name] AS [ First Name], 
+[vw_adminUSER].[Address] AS [Address], 
+[vw_adminUSER].[Email] AS [Email], 
+[vw_adminUSER].[Phone Number] AS [Phone Number], 
+[vw_adminUSER].[userName] AS [userName], 
+[vw_adminUSER].[Password] AS [Password], 
+[vw_adminUSER].[Role] AS [Role]
+FROM [dbo].[vw_adminUSER] AS [vw_adminUSER]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vw_allAppointment" EntityType="Self.vw_allAppointment" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [vw_allAppointment].[instructorId] AS [instructorId], 
@@ -254,25 +280,13 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
 [vw_allAppointment].[userNumber] AS [userNumber]
 FROM [dbo].[vw_allAppointment] AS [vw_allAppointment]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="vw_CheckOut" EntityType="Self.vw_CheckOut" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[vw_CheckOut].[checkoutID] AS [checkoutID], 
-[vw_CheckOut].[Cfname] AS [Cfname], 
-[vw_CheckOut].[Clname] AS [Clname], 
-[vw_CheckOut].[Caddress] AS [Caddress], 
-[vw_CheckOut].[Cemail] AS [Cemail], 
-[vw_CheckOut].[Cphone] AS [Cphone], 
-[vw_CheckOut].[Cdatestart] AS [Cdatestart], 
-[vw_CheckOut].[Cdateexpire] AS [Cdateexpire], 
-[vw_CheckOut].[Cpayment] AS [Cpayment]
-FROM [dbo].[vw_CheckOut] AS [vw_CheckOut]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="vw_InsTable" EntityType="Self.vw_InsTable" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [vw_InsTable].[Instructor Id] AS [Instructor Id], 
-[vw_InsTable].[Name] AS [Name], 
-[vw_InsTable].[expertise] AS [expertise], 
-[vw_InsTable].[contactNo] AS [contactNo]
+[vw_InsTable].[First Name] AS [First Name], 
+[vw_InsTable].[Last Name] AS [Last Name], 
+[vw_InsTable].[Expertise] AS [Expertise], 
+[vw_InsTable].[Contact No] AS [Contact No]
 FROM [dbo].[vw_InsTable] AS [vw_InsTable]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vw_INstaffBook" EntityType="Self.vw_INstaffBook" store:Type="Views" store:Schema="dbo">
@@ -314,7 +328,8 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
             <End Role="TblInstructor" EntitySet="TblInstructor" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AppointmentSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -378,6 +393,27 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           <Property Name="userPass" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="roleID" Type="Int32" />
         </EntityType>
+        <EntityType Name="vw_adminUSER">
+          <Key>
+            <PropertyRef Name="User_Id" />
+            <PropertyRef Name="Last_Name" />
+            <PropertyRef Name="C_First_Name" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Phone_Number" />
+            <PropertyRef Name="userName" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="User_Id" Type="Int32" Nullable="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_First_Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone_Number" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="vw_allAppointment">
           <Key>
             <PropertyRef Name="instructorId" />
@@ -399,12 +435,12 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
         <EntityType Name="vw_InsTable">
           <Key>
             <PropertyRef Name="Instructor_Id" />
-            <PropertyRef Name="Name" />
           </Key>
           <Property Name="Instructor_Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="257" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="First_Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Contact_No" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="vw_INstaffBook">
           <Key>
@@ -457,12 +493,13 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="AppointmentSystemEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AppointmentSystemEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="checkoutBOOK" EntityType="Self.checkoutBOOK" />
           <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TblInstructor" EntityType="Self.TblInstructor" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" />
+          <EntitySet Name="vw_adminUSER" EntityType="Self.vw_adminUSER" />
           <EntitySet Name="vw_allAppointment" EntityType="Self.vw_allAppointment" />
           <EntitySet Name="vw_InsTable" EntityType="Self.vw_InsTable" />
           <EntitySet Name="vw_INstaffBook" EntityType="Self.vw_INstaffBook" />
@@ -496,15 +533,14 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
             <Parameter Name="checkDateEXPIRE" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="sp_DELETEINSTRUCTOR">
-          <Parameter Name="instructorId" Mode="In" Type="Int32" />
+            <Parameter Name="instructorId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_deleteUSER">
-          <Parameter Name="userID" Mode="In" Type="Int32" />
+            <Parameter Name="userID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_InsertUser">
             <Parameter Name="userFirstname" Mode="In" Type="String" />
             <Parameter Name="userLastname" Mode="In" Type="String" />
-            <Parameter Name="usermiddleIn" Mode="In" Type="String" />
             <Parameter Name="userAddress" Mode="In" Type="String" />
             <Parameter Name="userEmail" Mode="In" Type="String" />
             <Parameter Name="userNumber" Mode="In" Type="String" />
@@ -533,35 +569,19 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
             <Parameter Name="userID" Mode="In" Type="Int32" />
             <Parameter Name="userLastname" Mode="In" Type="String" />
             <Parameter Name="userFirstname" Mode="In" Type="String" />
-            <Parameter Name="usermiddleIn" Mode="In" Type="String" />
             <Parameter Name="userAddress" Mode="In" Type="String" />
             <Parameter Name="userEmail" Mode="In" Type="String" />
             <Parameter Name="userNumber" Mode="In" Type="String" />
             <Parameter Name="Uusername" Mode="In" Type="String" />
             <Parameter Name="userpass" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="vw_CheckOut" EntityType="AppointmentSystemModel.vw_CheckOut" />
         </EntityContainer>
-        <EntityType Name="vw_CheckOut">
-          <Key>
-            <PropertyRef Name="checkoutID" />
-          </Key>
-          <Property Name="checkoutID" Type="Int32" Nullable="false" />
-          <Property Name="Cfname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Clname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Caddress" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Cemail" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Cphone" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Cdatestart" Type="DateTime" Precision="3" />
-          <Property Name="Cdateexpire" Type="DateTime" Precision="3" />
-          <Property Name="Cpayment" Type="Int32" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AppointmentSystemModelStoreContainer" CdmEntityContainer="AppointmentSystemEntities">
+        <EntityContainerMapping StorageEntityContainer="AppointmentSystemModelStoreContainer" CdmEntityContainer="AppointmentSystemEntities1">
           <EntitySetMapping Name="checkoutBOOK">
             <EntityTypeMapping TypeName="AppointmentSystemModel.checkoutBOOK">
               <MappingFragment StoreEntitySet="checkoutBOOK">
@@ -625,6 +645,21 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="vw_adminUSER">
+            <EntityTypeMapping TypeName="AppointmentSystemModel.vw_adminUSER">
+              <MappingFragment StoreEntitySet="vw_adminUSER">
+                <ScalarProperty Name="User_Id" ColumnName="User Id" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+                <ScalarProperty Name="C_First_Name" ColumnName=" First Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone Number" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="vw_allAppointment">
             <EntityTypeMapping TypeName="AppointmentSystemModel.vw_allAppointment">
               <MappingFragment StoreEntitySet="vw_allAppointment">
@@ -643,9 +678,10 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
             <EntityTypeMapping TypeName="AppointmentSystemModel.vw_InsTable">
               <MappingFragment StoreEntitySet="vw_InsTable">
                 <ScalarProperty Name="Instructor_Id" ColumnName="Instructor Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="expertise" ColumnName="expertise" />
-                <ScalarProperty Name="contactNo" ColumnName="contactNo" />
+                <ScalarProperty Name="First_Name" ColumnName="First Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+                <ScalarProperty Name="Expertise" ColumnName="Expertise" />
+                <ScalarProperty Name="Contact_No" ColumnName="Contact No" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -698,21 +734,6 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           <FunctionImportMapping FunctionImportName="sp_INSERTUSERr" FunctionName="AppointmentSystemModel.Store.sp_INSERTUSERr" />
           <FunctionImportMapping FunctionImportName="sp_UpdateInstructor" FunctionName="AppointmentSystemModel.Store.sp_UpdateInstructor" />
           <FunctionImportMapping FunctionImportName="sp_UPDATEUSER" FunctionName="AppointmentSystemModel.Store.sp_UPDATEUSER" />
-          <EntitySetMapping Name="vw_CheckOut">
-            <EntityTypeMapping TypeName="AppointmentSystemModel.vw_CheckOut">
-              <MappingFragment StoreEntitySet="vw_CheckOut">
-                <ScalarProperty Name="Cpayment" ColumnName="Cpayment" />
-                <ScalarProperty Name="Cdateexpire" ColumnName="Cdateexpire" />
-                <ScalarProperty Name="Cdatestart" ColumnName="Cdatestart" />
-                <ScalarProperty Name="Cphone" ColumnName="Cphone" />
-                <ScalarProperty Name="Cemail" ColumnName="Cemail" />
-                <ScalarProperty Name="Caddress" ColumnName="Caddress" />
-                <ScalarProperty Name="Clname" ColumnName="Clname" />
-                <ScalarProperty Name="Cfname" ColumnName="Cfname" />
-                <ScalarProperty Name="checkoutID" ColumnName="checkoutID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

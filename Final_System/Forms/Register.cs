@@ -13,11 +13,11 @@ namespace Final_System.Forms
 {
     public partial class frm_register : Form
     {
-        AppointmentSystemEntities db;
+        AppointmentSystemEntities1 db;
         public frm_register()
         {
             InitializeComponent();
-            db = new AppointmentSystemEntities();
+            db = new AppointmentSystemEntities1();
         }
 
         private void btn_Register_Click(object sender, EventArgs e)

@@ -60,6 +60,27 @@
     <Property Name="userPass" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="roleID" Type="Int32" />
   </EntityType>
+  <EntityType Name="vw_adminUSER">
+    <Key>
+      <PropertyRef Name="User_Id" />
+      <PropertyRef Name="Last_Name" />
+      <PropertyRef Name="C_First_Name" />
+      <PropertyRef Name="Address" />
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="Phone_Number" />
+      <PropertyRef Name="userName" />
+      <PropertyRef Name="Password" />
+    </Key>
+    <Property Name="User_Id" Type="Int32" Nullable="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C_First_Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone_Number" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
   <EntityType Name="vw_allAppointment">
     <Key>
       <PropertyRef Name="instructorId" />
@@ -81,12 +102,12 @@
   <EntityType Name="vw_InsTable">
     <Key>
       <PropertyRef Name="Instructor_Id" />
-      <PropertyRef Name="Name" />
     </Key>
     <Property Name="Instructor_Id" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="257" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-    <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="First_Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="Expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="Contact_No" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="vw_INstaffBook">
     <Key>
@@ -139,12 +160,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="AppointmentSystemEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="AppointmentSystemEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="checkoutBOOK" EntityType="Self.checkoutBOOK" />
     <EntitySet Name="Role" EntityType="Self.Role" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="TblInstructor" EntityType="Self.TblInstructor" />
     <EntitySet Name="tblUser" EntityType="Self.tblUser" />
+    <EntitySet Name="vw_adminUSER" EntityType="Self.vw_adminUSER" />
     <EntitySet Name="vw_allAppointment" EntityType="Self.vw_allAppointment" />
     <EntitySet Name="vw_InsTable" EntityType="Self.vw_InsTable" />
     <EntitySet Name="vw_INstaffBook" EntityType="Self.vw_INstaffBook" />
@@ -186,7 +208,6 @@
     <FunctionImport Name="sp_InsertUser">
       <Parameter Name="userFirstname" Mode="In" Type="String" />
       <Parameter Name="userLastname" Mode="In" Type="String" />
-      <Parameter Name="usermiddleIn" Mode="In" Type="String" />
       <Parameter Name="userAddress" Mode="In" Type="String" />
       <Parameter Name="userEmail" Mode="In" Type="String" />
       <Parameter Name="userNumber" Mode="In" Type="String" />
@@ -215,27 +236,11 @@
       <Parameter Name="userID" Mode="In" Type="Int32" />
       <Parameter Name="userLastname" Mode="In" Type="String" />
       <Parameter Name="userFirstname" Mode="In" Type="String" />
-      <Parameter Name="usermiddleIn" Mode="In" Type="String" />
       <Parameter Name="userAddress" Mode="In" Type="String" />
       <Parameter Name="userEmail" Mode="In" Type="String" />
       <Parameter Name="userNumber" Mode="In" Type="String" />
       <Parameter Name="Uusername" Mode="In" Type="String" />
       <Parameter Name="userpass" Mode="In" Type="String" />
     </FunctionImport>
-    <EntitySet Name="vw_CheckOut" EntityType="AppointmentSystemModel.vw_CheckOut" />
   </EntityContainer>
-  <EntityType Name="vw_CheckOut">
-    <Key>
-      <PropertyRef Name="checkoutID" />
-    </Key>
-    <Property Name="checkoutID" Type="Int32" Nullable="false" />
-    <Property Name="Cfname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Clname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Caddress" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Cemail" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Cphone" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Cdatestart" Type="DateTime" Precision="3" />
-    <Property Name="Cdateexpire" Type="DateTime" Precision="3" />
-    <Property Name="Cpayment" Type="Int32" />
-  </EntityType>
 </Schema>

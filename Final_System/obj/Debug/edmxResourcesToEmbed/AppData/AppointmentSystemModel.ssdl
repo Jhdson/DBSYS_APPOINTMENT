@@ -59,6 +59,37 @@
     <Property Name="roleID" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6013: The table/view 'AppointmentSystem.dbo.vw_adminINSt' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vw_adminINSt">
+          <Property Name="First Name" Type="varchar" MaxLength="128" />
+          <Property Name="Last Name" Type="varchar" MaxLength="128" />
+          <Property Name="expertise" Type="varchar" MaxLength="128" />
+          <Property Name="contactNo" Type="nvarchar" MaxLength="128" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AppointmentSystem.dbo.vw_adminUSER' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_adminUSER">
+    <Key>
+      <PropertyRef Name="User Id" />
+      <PropertyRef Name="Last Name" />
+      <PropertyRef Name=" First Name" />
+      <PropertyRef Name="Address" />
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="Phone Number" />
+      <PropertyRef Name="userName" />
+      <PropertyRef Name="Password" />
+    </Key>
+    <Property Name="User Id" Type="int" Nullable="false" />
+    <Property Name="Last Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name=" First Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Phone Number" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="userName" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Role" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'AppointmentSystem.dbo.vw_allAppointment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vw_allAppointment">
     <Key>
@@ -79,32 +110,16 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_allAppointment' does not 
     <Property Name="userNumber" Type="nvarchar" MaxLength="128" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'AppointmentSystem.dbo.vw_CheckOut' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="vw_CheckOut">
-    <Key>
-      <PropertyRef Name="checkoutID" />
-    </Key>
-    <Property Name="checkoutID" Type="int" Nullable="false" />
-    <Property Name="Cfname" Type="nvarchar" MaxLength="128" />
-    <Property Name="Clname" Type="nvarchar" MaxLength="128" />
-    <Property Name="Caddress" Type="nvarchar" MaxLength="128" />
-    <Property Name="Cemail" Type="nvarchar" MaxLength="128" />
-    <Property Name="Cphone" Type="nvarchar" MaxLength="128" />
-    <Property Name="Cdatestart" Type="datetime" />
-    <Property Name="Cdateexpire" Type="datetime" />
-    <Property Name="Cpayment" Type="int" />
-  </EntityType>
-  <!--Errors Found During Generation:
 warning 6002: The table/view 'AppointmentSystem.dbo.vw_InsTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vw_InsTable">
     <Key>
       <PropertyRef Name="Instructor Id" />
-      <PropertyRef Name="Name" />
     </Key>
     <Property Name="Instructor Id" Type="int" Nullable="false" />
-    <Property Name="Name" Type="varchar" MaxLength="257" Nullable="false" />
-    <Property Name="expertise" Type="varchar" MaxLength="128" />
-    <Property Name="contactNo" Type="nvarchar" MaxLength="128" />
+    <Property Name="First Name" Type="varchar" MaxLength="128" />
+    <Property Name="Last Name" Type="varchar" MaxLength="128" />
+    <Property Name="Expertise" Type="varchar" MaxLength="128" />
+    <Property Name="Contact No" Type="nvarchar" MaxLength="128" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'AppointmentSystem.dbo.vw_INstaffBook' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -195,7 +210,6 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
   <Function Name="sp_InsertUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="userFirstname" Type="nvarchar" Mode="In" />
     <Parameter Name="userLastname" Type="nvarchar" Mode="In" />
-    <Parameter Name="usermiddleIn" Type="nvarchar" Mode="In" />
     <Parameter Name="userAddress" Type="nvarchar" Mode="In" />
     <Parameter Name="userEmail" Type="nvarchar" Mode="In" />
     <Parameter Name="userNumber" Type="nvarchar" Mode="In" />
@@ -224,7 +238,6 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
     <Parameter Name="userID" Type="int" Mode="In" />
     <Parameter Name="userLastname" Type="nvarchar" Mode="In" />
     <Parameter Name="userFirstname" Type="nvarchar" Mode="In" />
-    <Parameter Name="usermiddleIn" Type="nvarchar" Mode="In" />
     <Parameter Name="userAddress" Type="nvarchar" Mode="In" />
     <Parameter Name="userEmail" Type="nvarchar" Mode="In" />
     <Parameter Name="userNumber" Type="nvarchar" Mode="In" />
@@ -237,6 +250,19 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblInstructor" EntityType="Self.TblInstructor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vw_adminUSER" EntityType="Self.vw_adminUSER" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_adminUSER].[User Id] AS [User Id], 
+[vw_adminUSER].[Last Name] AS [Last Name], 
+[vw_adminUSER].[ First Name] AS [ First Name], 
+[vw_adminUSER].[Address] AS [Address], 
+[vw_adminUSER].[Email] AS [Email], 
+[vw_adminUSER].[Phone Number] AS [Phone Number], 
+[vw_adminUSER].[userName] AS [userName], 
+[vw_adminUSER].[Password] AS [Password], 
+[vw_adminUSER].[Role] AS [Role]
+FROM [dbo].[vw_adminUSER] AS [vw_adminUSER]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="vw_allAppointment" EntityType="Self.vw_allAppointment" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [vw_allAppointment].[instructorId] AS [instructorId], 
@@ -249,25 +275,13 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
 [vw_allAppointment].[userNumber] AS [userNumber]
 FROM [dbo].[vw_allAppointment] AS [vw_allAppointment]</DefiningQuery>
     </EntitySet>
-    <EntitySet Name="vw_CheckOut" EntityType="Self.vw_CheckOut" store:Type="Views" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-[vw_CheckOut].[checkoutID] AS [checkoutID], 
-[vw_CheckOut].[Cfname] AS [Cfname], 
-[vw_CheckOut].[Clname] AS [Clname], 
-[vw_CheckOut].[Caddress] AS [Caddress], 
-[vw_CheckOut].[Cemail] AS [Cemail], 
-[vw_CheckOut].[Cphone] AS [Cphone], 
-[vw_CheckOut].[Cdatestart] AS [Cdatestart], 
-[vw_CheckOut].[Cdateexpire] AS [Cdateexpire], 
-[vw_CheckOut].[Cpayment] AS [Cpayment]
-FROM [dbo].[vw_CheckOut] AS [vw_CheckOut]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="vw_InsTable" EntityType="Self.vw_InsTable" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [vw_InsTable].[Instructor Id] AS [Instructor Id], 
-[vw_InsTable].[Name] AS [Name], 
-[vw_InsTable].[expertise] AS [expertise], 
-[vw_InsTable].[contactNo] AS [contactNo]
+[vw_InsTable].[First Name] AS [First Name], 
+[vw_InsTable].[Last Name] AS [Last Name], 
+[vw_InsTable].[Expertise] AS [Expertise], 
+[vw_InsTable].[Contact No] AS [Contact No]
 FROM [dbo].[vw_InsTable] AS [vw_InsTable]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="vw_INstaffBook" EntityType="Self.vw_INstaffBook" store:Type="Views" store:Schema="dbo">

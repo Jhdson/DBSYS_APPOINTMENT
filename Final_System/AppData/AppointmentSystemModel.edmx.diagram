@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6afebbdc1aa7492ba61dfb3836958c33" Name="Diagram1">
+      <Diagram DiagramId="863cb6f7a979480fa761ff449d07debc" Name="Diagram1" ZoomLevel="39">
         <EntityTypeShape EntityType="AppointmentSystemModel.checkoutBOOK" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="AppointmentSystemModel.Role" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AppointmentSystemModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AppointmentSystemModel.TblInstructor" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="AppointmentSystemModel.tblUser" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AppointmentSystemModel.vw_allAppointment" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AppointmentSystemModel.vw_InsTable" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AppointmentSystemModel.vw_INstaffBook" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AppointmentSystemModel.vw_TrainingTable" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AppointmentSystemModel.vw_UserTable" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppointmentSystemModel.vw_adminUSER" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppointmentSystemModel.vw_allAppointment" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppointmentSystemModel.vw_InsTable" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppointmentSystemModel.vw_INstaffBook" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppointmentSystemModel.vw_TrainingTable" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppointmentSystemModel.vw_UserTable" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="AppointmentSystemModel.FK_TblInstructor_checkoutBOOK" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="AppointmentSystemModel.vw_CheckOut" Width="1.5" PointX="3.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
