@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Final_System.Utils;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using Final_System.Model;
+
 
 namespace Final_System.Repositories
 {
@@ -23,7 +25,7 @@ namespace Final_System.Repositories
         {
             using (db = new AppointmentSystemEntities())
             {
-                return db.tblUsers.Where(m => m.userName == username).FirstOrDefault();
+                return db.tblUser.Where(m => m.userName == username).FirstOrDefault();
 
             }
         }
@@ -40,6 +42,13 @@ namespace Final_System.Repositories
             using (db = new AppointmentSystemEntities())
             {
                 return db.vw_InsTable.ToList();
+            }
+        }
+        public List<vw_CheckOut> AllCheckOutTable()
+        {
+            using (db = new AppointmentSystemEntities())
+            { 
+                return db.vw_CheckOut.ToList();
             }
         }
         public List<vw_INstaffBook> Allstafff()

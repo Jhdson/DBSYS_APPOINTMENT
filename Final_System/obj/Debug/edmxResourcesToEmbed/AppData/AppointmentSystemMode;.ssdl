@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppointmentSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="checkoutBOOK">
+    <Key>
+      <PropertyRef Name="checkoutID" />
+    </Key>
+    <Property Name="checkoutID" Type="int" Nullable="false" />
+    <Property Name="Cfname" Type="nvarchar" MaxLength="128" />
+    <Property Name="Clname" Type="nvarchar" MaxLength="128" />
+    <Property Name="Caddress" Type="nvarchar" MaxLength="128" />
+    <Property Name="Cemail" Type="nvarchar" MaxLength="128" />
+    <Property Name="Cphone" Type="nvarchar" MaxLength="128" />
+    <Property Name="Cdatestart" Type="datetime" />
+    <Property Name="Cdateexpire" Type="datetime" />
+    <Property Name="Cpayment" Type="int" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="roleId" />
+    </Key>
+    <Property Name="roleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="roleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="roleDescription" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TblInstructor">
+    <Key>
+      <PropertyRef Name="instructorId" />
+    </Key>
+    <Property Name="instructorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="instructorLName" Type="varchar" MaxLength="128" />
+    <Property Name="instructorFName" Type="varchar" MaxLength="128" />
+    <Property Name="expertise" Type="varchar" MaxLength="128" />
+    <Property Name="contactNo" Type="nvarchar" MaxLength="128" />
+    <Property Name="checkoutID" Type="int" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userLastname" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="userFirstname" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="usermid" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="userAddress" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="userEmail" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="userNumber" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="userName" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="userPass" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="roleID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AppointmentSystem.dbo.vw_allAppointment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_allAppointment">
+    <Key>
+      <PropertyRef Name="instructorId" />
+      <PropertyRef Name="Instructors Name" />
+      <PropertyRef Name="Participants Name" />
+      <PropertyRef Name="userAddress" />
+      <PropertyRef Name="userEmail" />
+      <PropertyRef Name="userNumber" />
+    </Key>
+    <Property Name="instructorId" Type="int" Nullable="false" />
+    <Property Name="Instructors Name" Type="varchar" MaxLength="258" Nullable="false" />
+    <Property Name="expertise" Type="varchar" MaxLength="128" />
+    <Property Name="contactNo" Type="nvarchar" MaxLength="128" />
+    <Property Name="Participants Name" Type="nvarchar" MaxLength="258" Nullable="false" />
+    <Property Name="userAddress" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="userEmail" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="userNumber" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AppointmentSystem.dbo.vw_InsTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_InsTable">
+    <Key>
+      <PropertyRef Name="Instructor Id" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Instructor Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="257" Nullable="false" />
+    <Property Name="expertise" Type="varchar" MaxLength="128" />
+    <Property Name="contactNo" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AppointmentSystem.dbo.vw_INstaffBook' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_INstaffBook">
+    <Key>
+      <PropertyRef Name="Instructor Name" />
+      <PropertyRef Name="Participant Name" />
+    </Key>
+    <Property Name="Instructor Name" Type="varchar" MaxLength="258" Nullable="false" />
+    <Property Name="Experties" Type="varchar" MaxLength="128" />
+    <Property Name="Contact No." Type="nvarchar" MaxLength="128" />
+    <Property Name="Participant Name" Type="nvarchar" MaxLength="258" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="128" />
+    <Property Name="Email Add" Type="nvarchar" MaxLength="128" />
+    <Property Name="Phone no." Type="nvarchar" MaxLength="128" />
+    <Property Name="Date Started" Type="datetime" />
+    <Property Name="Date Expiry" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AppointmentSystem.dbo.vw_TrainingTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_TrainingTable">
+    <Key>
+      <PropertyRef Name="Training Id" />
+    </Key>
+    <Property Name="Training Id" Type="int" Nullable="false" />
+    <Property Name="Training Type" Type="nvarchar" MaxLength="255" />
+    <Property Name="Location Id " Type="int" />
+    <Property Name="Duration Time" Type="int" />
+    <Property Name="DATE" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_UserTable">
+    <Key>
+      <PropertyRef Name="User Id" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="User Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="387" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="128" />
+    <Property Name="Email" Type="nvarchar" MaxLength="128" />
+    <Property Name="Phone Number" Type="nvarchar" MaxLength="128" />
+    <Property Name="Username" Type="nvarchar" MaxLength="128" />
+    <Property Name="Password" Type="nvarchar" MaxLength="128" />
+    <Property Name="Role" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_TblInstructor_checkoutBOOK">
+    <End Role="checkoutBOOK" Type="Self.checkoutBOOK" Multiplicity="0..1" />
+    <End Role="TblInstructor" Type="Self.TblInstructor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="checkoutBOOK">
+        <PropertyRef Name="checkoutID" />
+      </Principal>
+      <Dependent Role="TblInstructor">
+        <PropertyRef Name="checkoutID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="bookinsturtor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="insID" Type="int" Mode="In" />
+    <Parameter Name="insFN" Type="nvarchar" Mode="In" />
+    <Parameter Name="insLN" Type="nvarchar" Mode="In" />
+    <Parameter Name="insEXPER" Type="nvarchar" Mode="In" />
+    <Parameter Name="insPHONE" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_addinstructor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="instructorLName" Type="nvarchar" Mode="In" />
+    <Parameter Name="instructorFName" Type="nvarchar" Mode="In" />
+    <Parameter Name="expertise" Type="nvarchar" Mode="In" />
+    <Parameter Name="contactNo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_checkoutBOOK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="checkid" Type="int" Mode="In" />
+    <Parameter Name="checkfname" Type="nvarchar" Mode="In" />
+    <Parameter Name="checklname" Type="nvarchar" Mode="In" />
+    <Parameter Name="checkAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="checkEmail" Type="nvarchar" Mode="In" />
+    <Parameter Name="checkPhone" Type="nvarchar" Mode="In" />
+    <Parameter Name="checkDateSTART" Type="datetime" Mode="In" />
+    <Parameter Name="checkDateEXPIRE" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_DELETEINSTRUCTOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="instructorId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_deleteUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_InsertUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userFirstname" Type="nvarchar" Mode="In" />
+    <Parameter Name="userLastname" Type="nvarchar" Mode="In" />
+    <Parameter Name="usermiddleIn" Type="nvarchar" Mode="In" />
+    <Parameter Name="userAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="userEmail" Type="nvarchar" Mode="In" />
+    <Parameter Name="userNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="Uusername" Type="nvarchar" Mode="In" />
+    <Parameter Name="userpass" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_INSERTUSERr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="userFirstname" Type="nvarchar" Mode="In" />
+    <Parameter Name="userLastname" Type="nvarchar" Mode="In" />
+    <Parameter Name="usermiddleIn" Type="nvarchar" Mode="In" />
+    <Parameter Name="userAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="userEmail" Type="nvarchar" Mode="In" />
+    <Parameter Name="userNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="Uusername" Type="nvarchar" Mode="In" />
+    <Parameter Name="userpass" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_UpdateInstructor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="instructorId" Type="int" Mode="In" />
+    <Parameter Name="instructorLName" Type="nvarchar" Mode="In" />
+    <Parameter Name="instructorFName" Type="nvarchar" Mode="In" />
+    <Parameter Name="expertise" Type="nvarchar" Mode="In" />
+    <Parameter Name="contactNo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_UPDATEUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userID" Type="int" Mode="In" />
+    <Parameter Name="userLastname" Type="nvarchar" Mode="In" />
+    <Parameter Name="userFirstname" Type="nvarchar" Mode="In" />
+    <Parameter Name="usermiddleIn" Type="nvarchar" Mode="In" />
+    <Parameter Name="userAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="userEmail" Type="nvarchar" Mode="In" />
+    <Parameter Name="userNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="Uusername" Type="nvarchar" Mode="In" />
+    <Parameter Name="userpass" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="AppointmentSystemModelStoreContainer">
+    <EntitySet Name="checkoutBOOK" EntityType="Self.checkoutBOOK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblInstructor" EntityType="Self.TblInstructor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vw_allAppointment" EntityType="Self.vw_allAppointment" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_allAppointment].[instructorId] AS [instructorId], 
+[vw_allAppointment].[Instructors Name] AS [Instructors Name], 
+[vw_allAppointment].[expertise] AS [expertise], 
+[vw_allAppointment].[contactNo] AS [contactNo], 
+[vw_allAppointment].[Participants Name] AS [Participants Name], 
+[vw_allAppointment].[userAddress] AS [userAddress], 
+[vw_allAppointment].[userEmail] AS [userEmail], 
+[vw_allAppointment].[userNumber] AS [userNumber]
+FROM [dbo].[vw_allAppointment] AS [vw_allAppointment]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_InsTable" EntityType="Self.vw_InsTable" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_InsTable].[Instructor Id] AS [Instructor Id], 
+[vw_InsTable].[Name] AS [Name], 
+[vw_InsTable].[expertise] AS [expertise], 
+[vw_InsTable].[contactNo] AS [contactNo]
+FROM [dbo].[vw_InsTable] AS [vw_InsTable]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_INstaffBook" EntityType="Self.vw_INstaffBook" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_INstaffBook].[Instructor Name] AS [Instructor Name], 
+[vw_INstaffBook].[Experties] AS [Experties], 
+[vw_INstaffBook].[Contact No.] AS [Contact No.], 
+[vw_INstaffBook].[Participant Name] AS [Participant Name], 
+[vw_INstaffBook].[Address] AS [Address], 
+[vw_INstaffBook].[Email Add] AS [Email Add], 
+[vw_INstaffBook].[Phone no.] AS [Phone no.], 
+[vw_INstaffBook].[Date Started] AS [Date Started], 
+[vw_INstaffBook].[Date Expiry] AS [Date Expiry]
+FROM [dbo].[vw_INstaffBook] AS [vw_INstaffBook]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_TrainingTable" EntityType="Self.vw_TrainingTable" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_TrainingTable].[Training Id] AS [Training Id], 
+[vw_TrainingTable].[Training Type] AS [Training Type], 
+[vw_TrainingTable].[Location Id ] AS [Location Id ], 
+[vw_TrainingTable].[Duration Time] AS [Duration Time], 
+[vw_TrainingTable].[DATE] AS [DATE]
+FROM [dbo].[vw_TrainingTable] AS [vw_TrainingTable]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_UserTable" EntityType="Self.vw_UserTable" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_UserTable].[User Id] AS [User Id], 
+[vw_UserTable].[Name] AS [Name], 
+[vw_UserTable].[Address] AS [Address], 
+[vw_UserTable].[Email] AS [Email], 
+[vw_UserTable].[Phone Number] AS [Phone Number], 
+[vw_UserTable].[Username] AS [Username], 
+[vw_UserTable].[Password] AS [Password], 
+[vw_UserTable].[Role] AS [Role]
+FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_TblInstructor_checkoutBOOK" Association="Self.FK_TblInstructor_checkoutBOOK">
+      <End Role="checkoutBOOK" EntitySet="checkoutBOOK" />
+      <End Role="TblInstructor" EntitySet="TblInstructor" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

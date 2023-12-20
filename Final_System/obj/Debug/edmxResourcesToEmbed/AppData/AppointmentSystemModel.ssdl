@@ -79,6 +79,22 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_allAppointment' does not 
     <Property Name="userNumber" Type="nvarchar" MaxLength="128" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'AppointmentSystem.dbo.vw_CheckOut' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_CheckOut">
+    <Key>
+      <PropertyRef Name="checkoutID" />
+    </Key>
+    <Property Name="checkoutID" Type="int" Nullable="false" />
+    <Property Name="Cfname" Type="nvarchar" MaxLength="128" />
+    <Property Name="Clname" Type="nvarchar" MaxLength="128" />
+    <Property Name="Caddress" Type="nvarchar" MaxLength="128" />
+    <Property Name="Cemail" Type="nvarchar" MaxLength="128" />
+    <Property Name="Cphone" Type="nvarchar" MaxLength="128" />
+    <Property Name="Cdatestart" Type="datetime" />
+    <Property Name="Cdateexpire" Type="datetime" />
+    <Property Name="Cpayment" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'AppointmentSystem.dbo.vw_InsTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vw_InsTable">
     <Key>
@@ -232,6 +248,19 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
 [vw_allAppointment].[userEmail] AS [userEmail], 
 [vw_allAppointment].[userNumber] AS [userNumber]
 FROM [dbo].[vw_allAppointment] AS [vw_allAppointment]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_CheckOut" EntityType="Self.vw_CheckOut" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_CheckOut].[checkoutID] AS [checkoutID], 
+[vw_CheckOut].[Cfname] AS [Cfname], 
+[vw_CheckOut].[Clname] AS [Clname], 
+[vw_CheckOut].[Caddress] AS [Caddress], 
+[vw_CheckOut].[Cemail] AS [Cemail], 
+[vw_CheckOut].[Cphone] AS [Cphone], 
+[vw_CheckOut].[Cdatestart] AS [Cdatestart], 
+[vw_CheckOut].[Cdateexpire] AS [Cdateexpire], 
+[vw_CheckOut].[Cpayment] AS [Cpayment]
+FROM [dbo].[vw_CheckOut] AS [vw_CheckOut]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="vw_InsTable" EntityType="Self.vw_InsTable" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 

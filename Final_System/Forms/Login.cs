@@ -145,6 +145,27 @@ namespace Final_System
             { 
                 textPASSWORD.UseSystemPasswordChar = true;
             }
+            
+        }
+        private Boolean showPassword;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            showPassword = !showPassword;
+
+
+            if (showPassword)
+            {
+                textPASSWORD.PasswordChar = '\0';
+            }
+            else
+            {
+                textPASSWORD.PasswordChar = '*';
+            }
+        }
+
+        private void textPASSWORD_TextChanged(object sender, EventArgs e)
+        {
+            textPASSWORD.PasswordChar = '*';
         }
     }
 }

@@ -91,3 +91,20 @@ C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.csproj.
 C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.csproj.CopyComplete
 C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.exe
 C:\Users\jay hudson\Desktop\database\Final_System\obj\Debug\Final_System.pdb
+C:\Temp\DBSYS_APPOINTMENT\Final_System\bin\Debug\Final_System.exe.config
+C:\Temp\DBSYS_APPOINTMENT\Final_System\bin\Debug\Final_System.exe
+C:\Temp\DBSYS_APPOINTMENT\Final_System\bin\Debug\Final_System.pdb
+C:\Temp\DBSYS_APPOINTMENT\Final_System\bin\Debug\EntityFramework.dll
+C:\Temp\DBSYS_APPOINTMENT\Final_System\bin\Debug\EntityFramework.xml
+C:\Temp\DBSYS_APPOINTMENT\Final_System\obj\Debug\Final_System.csproj.AssemblyReference.cache
+C:\Temp\DBSYS_APPOINTMENT\Final_System\obj\Debug\Final_System.Forms.AdminAddInstructor.resources
+C:\Temp\DBSYS_APPOINTMENT\Final_System\obj\Debug\Final_System.Login_form.resources
+C:\Temp\DBSYS_APPOINTMENT\Final_System\obj\Debug\Final_System.Forms.Staff_Dashboard.resources
+C:\Temp\DBSYS_APPOINTMENT\Final_System\obj\Debug\Final_System.Forms.frm_register.resources
+C:\Temp\DBSYS_APPOINTMENT\Final_System\obj\Debug\Final_System.Forms.UserDashboard.resources
+C:\Temp\DBSYS_APPOINTMENT\Final_System\obj\Debug\Final_System.Properties.Resources.resources
+C:\Temp\DBSYS_APPOINTMENT\Final_System\obj\Debug\Final_System.csproj.GenerateResource.cache
+C:\Temp\DBSYS_APPOINTMENT\Final_System\obj\Debug\Final_System.csproj.CoreCompileInputs.cache
+C:\Temp\DBSYS_APPOINTMENT\Final_System\obj\Debug\Final_System.csproj.CopyComplete
+C:\Temp\DBSYS_APPOINTMENT\Final_System\obj\Debug\Final_System.exe
+C:\Temp\DBSYS_APPOINTMENT\Final_System\obj\Debug\Final_System.pdb

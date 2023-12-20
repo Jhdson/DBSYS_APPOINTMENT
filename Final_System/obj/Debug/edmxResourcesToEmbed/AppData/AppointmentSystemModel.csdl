@@ -13,7 +13,7 @@
     <Property Name="Cdatestart" Type="DateTime" Precision="3" />
     <Property Name="Cdateexpire" Type="DateTime" Precision="3" />
     <Property Name="Cpayment" Type="Int32" />
-    <NavigationProperty Name="TblInstructor" Relationship="AppointmentSystemModel.FK_TblInstructor_checkoutBOOK" FromRole="checkoutBOOK" ToRole="TblInstructor" />
+    <NavigationProperty Name="TblInstructor" Relationship="Self.FK_TblInstructor_checkoutBOOK" FromRole="checkoutBOOK" ToRole="TblInstructor" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -23,7 +23,7 @@
     <Property Name="roleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="roleDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="sysdiagram">
+  <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
     </Key>
@@ -43,7 +43,7 @@
     <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
     <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="checkoutID" Type="Int32" />
-    <NavigationProperty Name="checkoutBOOK" Relationship="AppointmentSystemModel.FK_TblInstructor_checkoutBOOK" FromRole="TblInstructor" ToRole="checkoutBOOK" />
+    <NavigationProperty Name="checkoutBOOK" Relationship="Self.FK_TblInstructor_checkoutBOOK" FromRole="TblInstructor" ToRole="checkoutBOOK" />
   </EntityType>
   <EntityType Name="tblUser">
     <Key>
@@ -60,6 +60,24 @@
     <Property Name="userPass" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="roleID" Type="Int32" />
   </EntityType>
+  <EntityType Name="vw_allAppointment">
+    <Key>
+      <PropertyRef Name="instructorId" />
+      <PropertyRef Name="Instructors_Name" />
+      <PropertyRef Name="Participants_Name" />
+      <PropertyRef Name="userAddress" />
+      <PropertyRef Name="userEmail" />
+      <PropertyRef Name="userNumber" />
+    </Key>
+    <Property Name="instructorId" Type="Int32" Nullable="false" />
+    <Property Name="Instructors_Name" Type="String" MaxLength="258" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Participants_Name" Type="String" MaxLength="258" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userAddress" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userEmail" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userNumber" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
   <EntityType Name="vw_InsTable">
     <Key>
       <PropertyRef Name="Instructor_Id" />
@@ -69,6 +87,21 @@
     <Property Name="Name" Type="String" MaxLength="257" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
     <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vw_INstaffBook">
+    <Key>
+      <PropertyRef Name="Instructor_Name" />
+      <PropertyRef Name="Participant_Name" />
+    </Key>
+    <Property Name="Instructor_Name" Type="String" MaxLength="258" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Experties" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="Contact_No_" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Participant_Name" Type="String" MaxLength="258" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email_Add" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Phone_no_" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Date_Started" Type="DateTime" Precision="3" />
+    <Property Name="Date_Expiry" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="vw_TrainingTable">
     <Key>
@@ -94,15 +127,40 @@
     <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
+  <Association Name="FK_TblInstructor_checkoutBOOK">
+    <End Role="checkoutBOOK" Type="Self.checkoutBOOK" Multiplicity="0..1" />
+    <End Role="TblInstructor" Type="Self.TblInstructor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="checkoutBOOK">
+        <PropertyRef Name="checkoutID" />
+      </Principal>
+      <Dependent Role="TblInstructor">
+        <PropertyRef Name="checkoutID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="AppointmentSystemEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="checkoutBOOKs" EntityType="Self.checkoutBOOK" />
-    <EntitySet Name="Roles" EntityType="Self.Role" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-    <EntitySet Name="TblInstructors" EntityType="Self.TblInstructor" />
-    <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+    <EntitySet Name="checkoutBOOK" EntityType="Self.checkoutBOOK" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TblInstructor" EntityType="Self.TblInstructor" />
+    <EntitySet Name="tblUser" EntityType="Self.tblUser" />
+    <EntitySet Name="vw_allAppointment" EntityType="Self.vw_allAppointment" />
     <EntitySet Name="vw_InsTable" EntityType="Self.vw_InsTable" />
+    <EntitySet Name="vw_INstaffBook" EntityType="Self.vw_INstaffBook" />
     <EntitySet Name="vw_TrainingTable" EntityType="Self.vw_TrainingTable" />
     <EntitySet Name="vw_UserTable" EntityType="Self.vw_UserTable" />
+    <AssociationSet Name="FK_TblInstructor_checkoutBOOK" Association="Self.FK_TblInstructor_checkoutBOOK">
+      <End Role="checkoutBOOK" EntitySet="checkoutBOOK" />
+      <End Role="TblInstructor" EntitySet="TblInstructor" />
+    </AssociationSet>
+    <FunctionImport Name="bookinsturtor">
+      <Parameter Name="insID" Mode="In" Type="Int32" />
+      <Parameter Name="insFN" Mode="In" Type="String" />
+      <Parameter Name="insLN" Mode="In" Type="String" />
+      <Parameter Name="insEXPER" Mode="In" Type="String" />
+      <Parameter Name="insPHONE" Mode="In" Type="String" />
+    </FunctionImport>
     <FunctionImport Name="sp_addinstructor">
       <Parameter Name="instructorLName" Mode="In" Type="String" />
       <Parameter Name="instructorFName" Mode="In" Type="String" />
@@ -164,63 +222,20 @@
       <Parameter Name="Uusername" Mode="In" Type="String" />
       <Parameter Name="userpass" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="bookinsturtor">
-      <Parameter Name="insID" Mode="In" Type="Int32" />
-      <Parameter Name="insFN" Mode="In" Type="String" />
-      <Parameter Name="insLN" Mode="In" Type="String" />
-      <Parameter Name="insEXPER" Mode="In" Type="String" />
-      <Parameter Name="insPHONE" Mode="In" Type="String" />
-    </FunctionImport>
-    <EntitySet Name="vw_allAppointment" EntityType="AppointmentSystemModel.vw_allAppointment" />
-    <EntitySet Name="vw_INstaffBook" EntityType="AppointmentSystemModel.vw_INstaffBook" />
-    <AssociationSet Name="FK_TblInstructor_checkoutBOOK" Association="AppointmentSystemModel.FK_TblInstructor_checkoutBOOK">
-      <End Role="checkoutBOOK" EntitySet="checkoutBOOKs" />
-      <End Role="TblInstructor" EntitySet="TblInstructors" />
-    </AssociationSet>
+    <EntitySet Name="vw_CheckOut" EntityType="AppointmentSystemModel.vw_CheckOut" />
   </EntityContainer>
-  <EntityType Name="vw_allAppointment">
+  <EntityType Name="vw_CheckOut">
     <Key>
-      <PropertyRef Name="instructorId" />
-      <PropertyRef Name="Instructors_Name" />
-      <PropertyRef Name="Participants_Name" />
-      <PropertyRef Name="userAddress" />
-      <PropertyRef Name="userEmail" />
-      <PropertyRef Name="userNumber" />
+      <PropertyRef Name="checkoutID" />
     </Key>
-    <Property Name="instructorId" Type="Int32" Nullable="false" />
-    <Property Name="Instructors_Name" Type="String" Nullable="false" MaxLength="258" FixedLength="false" Unicode="false" />
-    <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-    <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Participants_Name" Type="String" Nullable="false" MaxLength="258" FixedLength="false" Unicode="true" />
-    <Property Name="userAddress" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="userEmail" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="userNumber" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="checkoutID" Type="Int32" Nullable="false" />
+    <Property Name="Cfname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Clname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Caddress" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Cemail" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Cphone" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Cdatestart" Type="DateTime" Precision="3" />
+    <Property Name="Cdateexpire" Type="DateTime" Precision="3" />
+    <Property Name="Cpayment" Type="Int32" />
   </EntityType>
-  <EntityType Name="vw_INstaffBook">
-    <Key>
-      <PropertyRef Name="Instructor_Name" />
-      <PropertyRef Name="Participant_Name" />
-    </Key>
-    <Property Name="Instructor_Name" Type="String" Nullable="false" MaxLength="258" FixedLength="false" Unicode="false" />
-    <Property Name="Experties" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-    <Property Name="Contact_No_" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Participant_Name" Type="String" Nullable="false" MaxLength="258" FixedLength="false" Unicode="true" />
-    <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Email_Add" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Phone_no_" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Date_Started" Type="DateTime" Precision="3" />
-    <Property Name="Date_Expiry" Type="DateTime" Precision="3" />
-  </EntityType>
-  <Association Name="FK_TblInstructor_checkoutBOOK">
-    <End Type="AppointmentSystemModel.checkoutBOOK" Role="checkoutBOOK" Multiplicity="0..1" />
-    <End Type="AppointmentSystemModel.TblInstructor" Role="TblInstructor" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="checkoutBOOK">
-        <PropertyRef Name="checkoutID" />
-      </Principal>
-      <Dependent Role="TblInstructor">
-        <PropertyRef Name="checkoutID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

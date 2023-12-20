@@ -96,7 +96,7 @@ namespace Final_System.Forms
                 book.userEmail = txtEmailCONF.Text;
                 book.userNumber = txtPhoneCONF.Text;
 
-                db.tblUsers.Add(book);
+                db.tblUser.Add(book);
                 db.SaveChanges();
 
                 txtfnCONF.Clear();

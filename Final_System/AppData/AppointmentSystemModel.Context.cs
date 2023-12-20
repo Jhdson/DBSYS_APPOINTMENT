@@ -28,16 +28,42 @@ namespace Final_System.AppData
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<checkoutBOOK> checkoutBOOKs { get; set; }
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<sysdiagram> sysdiagrams { get; set; }
-        public DbSet<TblInstructor> TblInstructors { get; set; }
-        public DbSet<tblUser> tblUsers { get; set; }
+        public DbSet<checkoutBOOK> checkoutBOOK { get; set; }
+        public DbSet<Role> Role { get; set; }
+        public DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public DbSet<TblInstructor> TblInstructor { get; set; }
+        public DbSet<tblUser> tblUser { get; set; }
+        public DbSet<vw_allAppointment> vw_allAppointment { get; set; }
         public DbSet<vw_InsTable> vw_InsTable { get; set; }
+        public DbSet<vw_INstaffBook> vw_INstaffBook { get; set; }
         public DbSet<vw_TrainingTable> vw_TrainingTable { get; set; }
         public DbSet<vw_UserTable> vw_UserTable { get; set; }
-        public DbSet<vw_allAppointment> vw_allAppointment { get; set; }
-        public DbSet<vw_INstaffBook> vw_INstaffBook { get; set; }
+        public DbSet<vw_CheckOut> vw_CheckOut { get; set; }
+    
+        public virtual int bookinsturtor(Nullable<int> insID, string insFN, string insLN, string insEXPER, string insPHONE)
+        {
+            var insIDParameter = insID.HasValue ?
+                new ObjectParameter("insID", insID) :
+                new ObjectParameter("insID", typeof(int));
+    
+            var insFNParameter = insFN != null ?
+                new ObjectParameter("insFN", insFN) :
+                new ObjectParameter("insFN", typeof(string));
+    
+            var insLNParameter = insLN != null ?
+                new ObjectParameter("insLN", insLN) :
+                new ObjectParameter("insLN", typeof(string));
+    
+            var insEXPERParameter = insEXPER != null ?
+                new ObjectParameter("insEXPER", insEXPER) :
+                new ObjectParameter("insEXPER", typeof(string));
+    
+            var insPHONEParameter = insPHONE != null ?
+                new ObjectParameter("insPHONE", insPHONE) :
+                new ObjectParameter("insPHONE", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("bookinsturtor", insIDParameter, insFNParameter, insLNParameter, insEXPERParameter, insPHONEParameter);
+        }
     
         public virtual int sp_addinstructor(string instructorLName, string instructorFName, string expertise, string contactNo)
         {
@@ -257,31 +283,6 @@ namespace Final_System.AppData
                 new ObjectParameter("userpass", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UPDATEUSER", userIDParameter, userLastnameParameter, userFirstnameParameter, usermiddleInParameter, userAddressParameter, userEmailParameter, userNumberParameter, uusernameParameter, userpassParameter);
-        }
-    
-        public virtual int bookinsturtor(Nullable<int> insID, string insFN, string insLN, string insEXPER, string insPHONE)
-        {
-            var insIDParameter = insID.HasValue ?
-                new ObjectParameter("insID", insID) :
-                new ObjectParameter("insID", typeof(int));
-    
-            var insFNParameter = insFN != null ?
-                new ObjectParameter("insFN", insFN) :
-                new ObjectParameter("insFN", typeof(string));
-    
-            var insLNParameter = insLN != null ?
-                new ObjectParameter("insLN", insLN) :
-                new ObjectParameter("insLN", typeof(string));
-    
-            var insEXPERParameter = insEXPER != null ?
-                new ObjectParameter("insEXPER", insEXPER) :
-                new ObjectParameter("insEXPER", typeof(string));
-    
-            var insPHONEParameter = insPHONE != null ?
-                new ObjectParameter("insPHONE", insPHONE) :
-                new ObjectParameter("insPHONE", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("bookinsturtor", insIDParameter, insFNParameter, insLNParameter, insEXPERParameter, insPHONEParameter);
         }
     }
 }

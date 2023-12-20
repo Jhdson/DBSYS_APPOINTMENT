@@ -26,6 +26,7 @@ namespace Final_System.Forms
         public AdminAddInstructor()
         {
             InitializeComponent();
+            userRepo = new userRepository();
             db = new AppointmentSystemEntities();
         }
         private void AdminAddInstructor_Load(object sender, EventArgs e)
@@ -33,6 +34,11 @@ namespace Final_System.Forms
 
             LoadParticipants();
             LoadInstructor();
+        }
+        private void AdminAddInstructor_Load_1(object sender, EventArgs e)
+        {
+            LoadInstructor();
+            LoadParticipants();
         }
         private void btnInstructor_Click(object sender, EventArgs e)
         {
@@ -50,7 +56,7 @@ namespace Final_System.Forms
         }
         public void LoadInstructor()
         {
-            dataGridView1ins.DataSource = userRepo.InstructorTABLE();
+            dataGridView1ins.DataSource = userRepo.ALLINSTRUCTOR();
         }
 
         private void btnADD_Click(object sender, EventArgs e)
@@ -439,7 +445,7 @@ namespace Final_System.Forms
             {
                 throw ex;
             }
-        }
+        }       
     }
 
 }

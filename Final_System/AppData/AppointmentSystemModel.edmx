@@ -84,6 +84,22 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_allAppointment' does not 
           <Property Name="userNumber" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'AppointmentSystem.dbo.vw_CheckOut' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_CheckOut">
+          <Key>
+            <PropertyRef Name="checkoutID" />
+          </Key>
+          <Property Name="checkoutID" Type="int" Nullable="false" />
+          <Property Name="Cfname" Type="nvarchar" MaxLength="128" />
+          <Property Name="Clname" Type="nvarchar" MaxLength="128" />
+          <Property Name="Caddress" Type="nvarchar" MaxLength="128" />
+          <Property Name="Cemail" Type="nvarchar" MaxLength="128" />
+          <Property Name="Cphone" Type="nvarchar" MaxLength="128" />
+          <Property Name="Cdatestart" Type="datetime" />
+          <Property Name="Cdateexpire" Type="datetime" />
+          <Property Name="Cpayment" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'AppointmentSystem.dbo.vw_InsTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vw_InsTable">
           <Key>
@@ -238,6 +254,19 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
 [vw_allAppointment].[userNumber] AS [userNumber]
 FROM [dbo].[vw_allAppointment] AS [vw_allAppointment]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vw_CheckOut" EntityType="Self.vw_CheckOut" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_CheckOut].[checkoutID] AS [checkoutID], 
+[vw_CheckOut].[Cfname] AS [Cfname], 
+[vw_CheckOut].[Clname] AS [Clname], 
+[vw_CheckOut].[Caddress] AS [Caddress], 
+[vw_CheckOut].[Cemail] AS [Cemail], 
+[vw_CheckOut].[Cphone] AS [Cphone], 
+[vw_CheckOut].[Cdatestart] AS [Cdatestart], 
+[vw_CheckOut].[Cdateexpire] AS [Cdateexpire], 
+[vw_CheckOut].[Cpayment] AS [Cpayment]
+FROM [dbo].[vw_CheckOut] AS [vw_CheckOut]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vw_InsTable" EntityType="Self.vw_InsTable" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [vw_InsTable].[Instructor Id] AS [Instructor Id], 
@@ -302,7 +331,7 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           <Property Name="Cdatestart" Type="DateTime" Precision="3" />
           <Property Name="Cdateexpire" Type="DateTime" Precision="3" />
           <Property Name="Cpayment" Type="Int32" />
-          <NavigationProperty Name="TblInstructor" Relationship="AppointmentSystemModel.FK_TblInstructor_checkoutBOOK" FromRole="checkoutBOOK" ToRole="TblInstructor" />
+          <NavigationProperty Name="TblInstructor" Relationship="Self.FK_TblInstructor_checkoutBOOK" FromRole="checkoutBOOK" ToRole="TblInstructor" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -312,7 +341,7 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           <Property Name="roleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="roleDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="sysdiagram">
+        <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
@@ -332,7 +361,7 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="checkoutID" Type="Int32" />
-          <NavigationProperty Name="checkoutBOOK" Relationship="AppointmentSystemModel.FK_TblInstructor_checkoutBOOK" FromRole="TblInstructor" ToRole="checkoutBOOK" />
+          <NavigationProperty Name="checkoutBOOK" Relationship="Self.FK_TblInstructor_checkoutBOOK" FromRole="TblInstructor" ToRole="checkoutBOOK" />
         </EntityType>
         <EntityType Name="tblUser">
           <Key>
@@ -349,6 +378,24 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           <Property Name="userPass" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="roleID" Type="Int32" />
         </EntityType>
+        <EntityType Name="vw_allAppointment">
+          <Key>
+            <PropertyRef Name="instructorId" />
+            <PropertyRef Name="Instructors_Name" />
+            <PropertyRef Name="Participants_Name" />
+            <PropertyRef Name="userAddress" />
+            <PropertyRef Name="userEmail" />
+            <PropertyRef Name="userNumber" />
+          </Key>
+          <Property Name="instructorId" Type="Int32" Nullable="false" />
+          <Property Name="Instructors_Name" Type="String" MaxLength="258" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Participants_Name" Type="String" MaxLength="258" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userAddress" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userEmail" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userNumber" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <EntityType Name="vw_InsTable">
           <Key>
             <PropertyRef Name="Instructor_Id" />
@@ -358,6 +405,21 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           <Property Name="Name" Type="String" MaxLength="257" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vw_INstaffBook">
+          <Key>
+            <PropertyRef Name="Instructor_Name" />
+            <PropertyRef Name="Participant_Name" />
+          </Key>
+          <Property Name="Instructor_Name" Type="String" MaxLength="258" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Experties" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Contact_No_" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Participant_Name" Type="String" MaxLength="258" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email_Add" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Phone_no_" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Started" Type="DateTime" Precision="3" />
+          <Property Name="Date_Expiry" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="vw_TrainingTable">
           <Key>
@@ -383,15 +445,40 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <Association Name="FK_TblInstructor_checkoutBOOK">
+          <End Role="checkoutBOOK" Type="Self.checkoutBOOK" Multiplicity="0..1" />
+          <End Role="TblInstructor" Type="Self.TblInstructor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="checkoutBOOK">
+              <PropertyRef Name="checkoutID" />
+            </Principal>
+            <Dependent Role="TblInstructor">
+              <PropertyRef Name="checkoutID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="AppointmentSystemEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="checkoutBOOKs" EntityType="Self.checkoutBOOK" />
-          <EntitySet Name="Roles" EntityType="Self.Role" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="TblInstructors" EntityType="Self.TblInstructor" />
-          <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+          <EntitySet Name="checkoutBOOK" EntityType="Self.checkoutBOOK" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TblInstructor" EntityType="Self.TblInstructor" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" />
+          <EntitySet Name="vw_allAppointment" EntityType="Self.vw_allAppointment" />
           <EntitySet Name="vw_InsTable" EntityType="Self.vw_InsTable" />
+          <EntitySet Name="vw_INstaffBook" EntityType="Self.vw_INstaffBook" />
           <EntitySet Name="vw_TrainingTable" EntityType="Self.vw_TrainingTable" />
           <EntitySet Name="vw_UserTable" EntityType="Self.vw_UserTable" />
+          <AssociationSet Name="FK_TblInstructor_checkoutBOOK" Association="Self.FK_TblInstructor_checkoutBOOK">
+            <End Role="checkoutBOOK" EntitySet="checkoutBOOK" />
+            <End Role="TblInstructor" EntitySet="TblInstructor" />
+          </AssociationSet>
+          <FunctionImport Name="bookinsturtor">
+            <Parameter Name="insID" Mode="In" Type="Int32" />
+            <Parameter Name="insFN" Mode="In" Type="String" />
+            <Parameter Name="insLN" Mode="In" Type="String" />
+            <Parameter Name="insEXPER" Mode="In" Type="String" />
+            <Parameter Name="insPHONE" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="sp_addinstructor">
             <Parameter Name="instructorLName" Mode="In" Type="String" />
             <Parameter Name="instructorFName" Mode="In" Type="String" />
@@ -453,72 +540,29 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
             <Parameter Name="Uusername" Mode="In" Type="String" />
             <Parameter Name="userpass" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="bookinsturtor">
-            <Parameter Name="insID" Mode="In" Type="Int32" />
-            <Parameter Name="insFN" Mode="In" Type="String" />
-            <Parameter Name="insLN" Mode="In" Type="String" />
-            <Parameter Name="insEXPER" Mode="In" Type="String" />
-            <Parameter Name="insPHONE" Mode="In" Type="String" />
-          </FunctionImport>
-          <EntitySet Name="vw_allAppointment" EntityType="AppointmentSystemModel.vw_allAppointment" />
-          <EntitySet Name="vw_INstaffBook" EntityType="AppointmentSystemModel.vw_INstaffBook" />
-          <AssociationSet Name="FK_TblInstructor_checkoutBOOK" Association="AppointmentSystemModel.FK_TblInstructor_checkoutBOOK">
-            <End Role="checkoutBOOK" EntitySet="checkoutBOOKs" />
-            <End Role="TblInstructor" EntitySet="TblInstructors" />
-          </AssociationSet>
+          <EntitySet Name="vw_CheckOut" EntityType="AppointmentSystemModel.vw_CheckOut" />
         </EntityContainer>
-        <EntityType Name="vw_allAppointment">
+        <EntityType Name="vw_CheckOut">
           <Key>
-            <PropertyRef Name="instructorId" />
-            <PropertyRef Name="Instructors_Name" />
-            <PropertyRef Name="Participants_Name" />
-            <PropertyRef Name="userAddress" />
-            <PropertyRef Name="userEmail" />
-            <PropertyRef Name="userNumber" />
+            <PropertyRef Name="checkoutID" />
           </Key>
-          <Property Name="instructorId" Type="Int32" Nullable="false" />
-          <Property Name="Instructors_Name" Type="String" Nullable="false" MaxLength="258" FixedLength="false" Unicode="false" />
-          <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Participants_Name" Type="String" Nullable="false" MaxLength="258" FixedLength="false" Unicode="true" />
-          <Property Name="userAddress" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="userEmail" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="userNumber" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="checkoutID" Type="Int32" Nullable="false" />
+          <Property Name="Cfname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Clname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Caddress" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Cemail" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Cphone" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Cdatestart" Type="DateTime" Precision="3" />
+          <Property Name="Cdateexpire" Type="DateTime" Precision="3" />
+          <Property Name="Cpayment" Type="Int32" />
         </EntityType>
-        <EntityType Name="vw_INstaffBook">
-          <Key>
-            <PropertyRef Name="Instructor_Name" />
-            <PropertyRef Name="Participant_Name" />
-          </Key>
-          <Property Name="Instructor_Name" Type="String" Nullable="false" MaxLength="258" FixedLength="false" Unicode="false" />
-          <Property Name="Experties" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="Contact_No_" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Participant_Name" Type="String" Nullable="false" MaxLength="258" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Email_Add" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Phone_no_" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Date_Started" Type="DateTime" Precision="3" />
-          <Property Name="Date_Expiry" Type="DateTime" Precision="3" />
-        </EntityType>
-        <Association Name="FK_TblInstructor_checkoutBOOK">
-          <End Type="AppointmentSystemModel.checkoutBOOK" Role="checkoutBOOK" Multiplicity="0..1" />
-          <End Type="AppointmentSystemModel.TblInstructor" Role="TblInstructor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="checkoutBOOK">
-              <PropertyRef Name="checkoutID" />
-            </Principal>
-            <Dependent Role="TblInstructor">
-              <PropertyRef Name="checkoutID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="AppointmentSystemModelStoreContainer" CdmEntityContainer="AppointmentSystemEntities">
-          <EntitySetMapping Name="checkoutBOOKs">
+          <EntitySetMapping Name="checkoutBOOK">
             <EntityTypeMapping TypeName="AppointmentSystemModel.checkoutBOOK">
               <MappingFragment StoreEntitySet="checkoutBOOK">
                 <ScalarProperty Name="checkoutID" ColumnName="checkoutID" />
@@ -533,7 +577,7 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Roles">
+          <EntitySetMapping Name="Role">
             <EntityTypeMapping TypeName="AppointmentSystemModel.Role">
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="roleId" ColumnName="roleId" />
@@ -543,7 +587,7 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="AppointmentSystemModel.sysdiagram">
+            <EntityTypeMapping TypeName="AppointmentSystemModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -553,19 +597,19 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TblInstructors">
+          <EntitySetMapping Name="TblInstructor">
             <EntityTypeMapping TypeName="AppointmentSystemModel.TblInstructor">
               <MappingFragment StoreEntitySet="TblInstructor">
-                <ScalarProperty Name="checkoutID" ColumnName="checkoutID" />
                 <ScalarProperty Name="instructorId" ColumnName="instructorId" />
                 <ScalarProperty Name="instructorLName" ColumnName="instructorLName" />
                 <ScalarProperty Name="instructorFName" ColumnName="instructorFName" />
                 <ScalarProperty Name="expertise" ColumnName="expertise" />
                 <ScalarProperty Name="contactNo" ColumnName="contactNo" />
+                <ScalarProperty Name="checkoutID" ColumnName="checkoutID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblUsers">
+          <EntitySetMapping Name="tblUser">
             <EntityTypeMapping TypeName="AppointmentSystemModel.tblUser">
               <MappingFragment StoreEntitySet="tblUser">
                 <ScalarProperty Name="userId" ColumnName="userId" />
@@ -581,6 +625,20 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="vw_allAppointment">
+            <EntityTypeMapping TypeName="AppointmentSystemModel.vw_allAppointment">
+              <MappingFragment StoreEntitySet="vw_allAppointment">
+                <ScalarProperty Name="instructorId" ColumnName="instructorId" />
+                <ScalarProperty Name="Instructors_Name" ColumnName="Instructors Name" />
+                <ScalarProperty Name="expertise" ColumnName="expertise" />
+                <ScalarProperty Name="contactNo" ColumnName="contactNo" />
+                <ScalarProperty Name="Participants_Name" ColumnName="Participants Name" />
+                <ScalarProperty Name="userAddress" ColumnName="userAddress" />
+                <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+                <ScalarProperty Name="userNumber" ColumnName="userNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="vw_InsTable">
             <EntityTypeMapping TypeName="AppointmentSystemModel.vw_InsTable">
               <MappingFragment StoreEntitySet="vw_InsTable">
@@ -588,6 +646,21 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="expertise" ColumnName="expertise" />
                 <ScalarProperty Name="contactNo" ColumnName="contactNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_INstaffBook">
+            <EntityTypeMapping TypeName="AppointmentSystemModel.vw_INstaffBook">
+              <MappingFragment StoreEntitySet="vw_INstaffBook">
+                <ScalarProperty Name="Instructor_Name" ColumnName="Instructor Name" />
+                <ScalarProperty Name="Experties" ColumnName="Experties" />
+                <ScalarProperty Name="Contact_No_" ColumnName="Contact No." />
+                <ScalarProperty Name="Participant_Name" ColumnName="Participant Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email_Add" ColumnName="Email Add" />
+                <ScalarProperty Name="Phone_no_" ColumnName="Phone no." />
+                <ScalarProperty Name="Date_Started" ColumnName="Date Started" />
+                <ScalarProperty Name="Date_Expiry" ColumnName="Date Expiry" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -616,6 +689,7 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="bookinsturtor" FunctionName="AppointmentSystemModel.Store.bookinsturtor" />
           <FunctionImportMapping FunctionImportName="sp_addinstructor" FunctionName="AppointmentSystemModel.Store.sp_addinstructor" />
           <FunctionImportMapping FunctionImportName="sp_checkoutBOOK" FunctionName="AppointmentSystemModel.Store.sp_checkoutBOOK" />
           <FunctionImportMapping FunctionImportName="sp_DELETEINSTRUCTOR" FunctionName="AppointmentSystemModel.Store.sp_DELETEINSTRUCTOR" />
@@ -624,33 +698,18 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           <FunctionImportMapping FunctionImportName="sp_INSERTUSERr" FunctionName="AppointmentSystemModel.Store.sp_INSERTUSERr" />
           <FunctionImportMapping FunctionImportName="sp_UpdateInstructor" FunctionName="AppointmentSystemModel.Store.sp_UpdateInstructor" />
           <FunctionImportMapping FunctionImportName="sp_UPDATEUSER" FunctionName="AppointmentSystemModel.Store.sp_UPDATEUSER" />
-          <FunctionImportMapping FunctionImportName="bookinsturtor" FunctionName="AppointmentSystemModel.Store.bookinsturtor" />
-          <EntitySetMapping Name="vw_allAppointment">
-            <EntityTypeMapping TypeName="AppointmentSystemModel.vw_allAppointment">
-              <MappingFragment StoreEntitySet="vw_allAppointment">
-                <ScalarProperty Name="userNumber" ColumnName="userNumber" />
-                <ScalarProperty Name="userEmail" ColumnName="userEmail" />
-                <ScalarProperty Name="userAddress" ColumnName="userAddress" />
-                <ScalarProperty Name="Participants_Name" ColumnName="Participants Name" />
-                <ScalarProperty Name="contactNo" ColumnName="contactNo" />
-                <ScalarProperty Name="expertise" ColumnName="expertise" />
-                <ScalarProperty Name="Instructors_Name" ColumnName="Instructors Name" />
-                <ScalarProperty Name="instructorId" ColumnName="instructorId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vw_INstaffBook">
-            <EntityTypeMapping TypeName="AppointmentSystemModel.vw_INstaffBook">
-              <MappingFragment StoreEntitySet="vw_INstaffBook">
-                <ScalarProperty Name="Date_Expiry" ColumnName="Date Expiry" />
-                <ScalarProperty Name="Date_Started" ColumnName="Date Started" />
-                <ScalarProperty Name="Phone_no_" ColumnName="Phone no." />
-                <ScalarProperty Name="Email_Add" ColumnName="Email Add" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Participant_Name" ColumnName="Participant Name" />
-                <ScalarProperty Name="Contact_No_" ColumnName="Contact No." />
-                <ScalarProperty Name="Experties" ColumnName="Experties" />
-                <ScalarProperty Name="Instructor_Name" ColumnName="Instructor Name" />
+          <EntitySetMapping Name="vw_CheckOut">
+            <EntityTypeMapping TypeName="AppointmentSystemModel.vw_CheckOut">
+              <MappingFragment StoreEntitySet="vw_CheckOut">
+                <ScalarProperty Name="Cpayment" ColumnName="Cpayment" />
+                <ScalarProperty Name="Cdateexpire" ColumnName="Cdateexpire" />
+                <ScalarProperty Name="Cdatestart" ColumnName="Cdatestart" />
+                <ScalarProperty Name="Cphone" ColumnName="Cphone" />
+                <ScalarProperty Name="Cemail" ColumnName="Cemail" />
+                <ScalarProperty Name="Caddress" ColumnName="Caddress" />
+                <ScalarProperty Name="Clname" ColumnName="Clname" />
+                <ScalarProperty Name="Cfname" ColumnName="Cfname" />
+                <ScalarProperty Name="checkoutID" ColumnName="checkoutID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -668,7 +727,7 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="true" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

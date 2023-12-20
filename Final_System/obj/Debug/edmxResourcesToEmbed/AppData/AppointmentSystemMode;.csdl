@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppointmentSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="checkoutBOOK">
+    <Key>
+      <PropertyRef Name="checkoutID" />
+    </Key>
+    <Property Name="checkoutID" Type="Int32" Nullable="false" />
+    <Property Name="Cfname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Clname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Caddress" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Cemail" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Cphone" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Cdatestart" Type="DateTime" />
+    <Property Name="Cdateexpire" Type="DateTime" />
+    <Property Name="Cpayment" Type="Int32" />
+    <NavigationProperty Name="TblInstructor" Relationship="Self.FK_TblInstructor_checkoutBOOK" FromRole="checkoutBOOK" ToRole="TblInstructor" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="roleId" />
+    </Key>
+    <Property Name="roleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="roleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="roleDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TblInstructor">
+    <Key>
+      <PropertyRef Name="instructorId" />
+    </Key>
+    <Property Name="instructorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="instructorLName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="instructorFName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="checkoutID" Type="Int32" />
+    <NavigationProperty Name="checkoutBOOK" Relationship="Self.FK_TblInstructor_checkoutBOOK" FromRole="TblInstructor" ToRole="checkoutBOOK" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userLastname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userFirstname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="usermid" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userAddress" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userEmail" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userNumber" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userPass" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="roleID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vw_allAppointment">
+    <Key>
+      <PropertyRef Name="instructorId" />
+      <PropertyRef Name="Instructors_Name" />
+      <PropertyRef Name="Participants_Name" />
+      <PropertyRef Name="userAddress" />
+      <PropertyRef Name="userEmail" />
+      <PropertyRef Name="userNumber" />
+    </Key>
+    <Property Name="instructorId" Type="Int32" Nullable="false" />
+    <Property Name="Instructors_Name" Type="String" MaxLength="258" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Participants_Name" Type="String" MaxLength="258" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userAddress" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userEmail" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userNumber" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_InsTable">
+    <Key>
+      <PropertyRef Name="Instructor_Id" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Instructor_Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="257" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vw_INstaffBook">
+    <Key>
+      <PropertyRef Name="Instructor_Name" />
+      <PropertyRef Name="Participant_Name" />
+    </Key>
+    <Property Name="Instructor_Name" Type="String" MaxLength="258" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Experties" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="Contact_No_" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Participant_Name" Type="String" MaxLength="258" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email_Add" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Phone_no_" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Date_Started" Type="DateTime" />
+    <Property Name="Date_Expiry" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="vw_TrainingTable">
+    <Key>
+      <PropertyRef Name="Training_Id" />
+    </Key>
+    <Property Name="Training_Id" Type="Int32" Nullable="false" />
+    <Property Name="Training_Type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Location_Id_" Type="Int32" />
+    <Property Name="Duration_Time" Type="Int32" />
+    <Property Name="DATE" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="vw_UserTable">
+    <Key>
+      <PropertyRef Name="User_Id" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="User_Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="387" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Phone_Number" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Username" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_TblInstructor_checkoutBOOK">
+    <End Role="checkoutBOOK" Type="Self.checkoutBOOK" Multiplicity="0..1" />
+    <End Role="TblInstructor" Type="Self.TblInstructor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="checkoutBOOK">
+        <PropertyRef Name="checkoutID" />
+      </Principal>
+      <Dependent Role="TblInstructor">
+        <PropertyRef Name="checkoutID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AppointmentSystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="checkoutBOOK" EntityType="Self.checkoutBOOK" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TblInstructor" EntityType="Self.TblInstructor" />
+    <EntitySet Name="tblUser" EntityType="Self.tblUser" />
+    <EntitySet Name="vw_allAppointment" EntityType="Self.vw_allAppointment" />
+    <EntitySet Name="vw_InsTable" EntityType="Self.vw_InsTable" />
+    <EntitySet Name="vw_INstaffBook" EntityType="Self.vw_INstaffBook" />
+    <EntitySet Name="vw_TrainingTable" EntityType="Self.vw_TrainingTable" />
+    <EntitySet Name="vw_UserTable" EntityType="Self.vw_UserTable" />
+    <AssociationSet Name="FK_TblInstructor_checkoutBOOK" Association="Self.FK_TblInstructor_checkoutBOOK">
+      <End Role="checkoutBOOK" EntitySet="checkoutBOOK" />
+      <End Role="TblInstructor" EntitySet="TblInstructor" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

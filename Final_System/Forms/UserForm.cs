@@ -87,6 +87,7 @@ namespace Final_System.Forms
         {
             loadInstructor();
             loadallAppoint();
+            loadCheckOut();
         }
         private void loadInstructor()
         {
@@ -115,7 +116,11 @@ namespace Final_System.Forms
         private void loadallAppoint()
         {
            // int appoint = UserLogged.GetInstance().User.userId;
-            dataGridViewDoneAPPOINTMENT.DataSource = userRepo.AllAPPOINTMENTS();
+            dgvDone.DataSource = userRepo.AllAPPOINTMENTS();
+        }
+        private void loadCheckOut()
+        {
+            dgvDone.DataSource = userRepo.AllCheckOutTable();
         }
         private void pbclose1_Click(object sender, EventArgs e)
         {
@@ -150,29 +155,12 @@ namespace Final_System.Forms
 
         private void dataGridViewBOOKins_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                if (dataGridViewBOOKins.Rows[e.RowIndex].Cells[0].Value != null)
-                {
-                    Instuctorselectd = (Int32)dataGridViewBOOKins.Rows[e.RowIndex].Cells[0].Value;
-                    txtBOOKID.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells["Instructor's ID"].Value.ToString();
-                    txtBOOKFN.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells[" First Name"].Value.ToString();
-                    txtBOOKLN.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells["Last Name"].Value.ToString();
-                    txtBOOKexpert.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells[" Expertise"].Value.ToString();
-                    txtBOOKContact.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells[" Contact No."].Value.ToString();
-
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("1 INSTRUCTOR at a time!");
-                dataGridViewBOOKins.ClearSelection();
-                txtBOOKFN.Clear();
-                txtBOOKLN.Clear();
-                txtBOOKexpert.Clear();
-                txtBOOKContact.Clear();
-
-            }
+            Instuctorselectd = (Int32)dataGridViewBOOKins.Rows[e.RowIndex].Cells[0].Value;
+            txtBOOKID.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txtBOOKFN.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells["Name"].Value.ToString();
+            txtBOOKLN.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells["Name"].Value.ToString();
+            txtBOOKexpert.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells["expertise"].Value.ToString();
+            txtBOOKContact.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells["contactNo"].Value.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -321,6 +309,16 @@ namespace Final_System.Forms
         private void PNLconfirmbooking_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void dataGridViewDoneAPPOINTMENT_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Instuctorselectd = (Int32)dataGridViewBOOKins.Rows[e.RowIndex].Cells[0].Value;
+            txtBOOKID.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells["Instructor's ID"].Value.ToString();
+            txtBOOKFN.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells[" First Name"].Value.ToString();
+            txtBOOKLN.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells["Last Name"].Value.ToString();
+            txtBOOKexpert.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells[" Expertise"].Value.ToString();
+            txtBOOKContact.Text = dataGridViewBOOKins.Rows[e.RowIndex].Cells[" Contact No."].Value.ToString();
         }
     }
 }

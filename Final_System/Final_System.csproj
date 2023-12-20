@@ -74,7 +74,7 @@
     <Compile Include="AppData\Role.cs">
       <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppData\sysdiagram.cs">
+    <Compile Include="AppData\sysdiagrams.cs">
       <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\TblInstructor.cs">
@@ -84,6 +84,9 @@
       <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\vw_allAppointment.cs">
+      <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\vw_CheckOut.cs">
       <DependentUpon>AppointmentSystemModel.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\vw_InsTable.cs">
