@@ -14,6 +14,11 @@ namespace Final_System.AppData
     
     public partial class checkoutBOOK
     {
+        public checkoutBOOK()
+        {
+            this.TblInstructor = new HashSet<TblInstructor>();
+        }
+    
         public int checkoutID { get; set; }
         public string Cfname { get; set; }
         public string Clname { get; set; }
@@ -23,5 +28,7 @@ namespace Final_System.AppData
         public Nullable<System.DateTime> Cdatestart { get; set; }
         public Nullable<System.DateTime> Cdateexpire { get; set; }
         public Nullable<int> Cpayment { get; set; }
+    
+        public virtual ICollection<TblInstructor> TblInstructor { get; set; }
     }
 }

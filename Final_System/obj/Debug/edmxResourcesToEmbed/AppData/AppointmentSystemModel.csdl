@@ -13,6 +13,7 @@
     <Property Name="Cdatestart" Type="DateTime" Precision="3" />
     <Property Name="Cdateexpire" Type="DateTime" Precision="3" />
     <Property Name="Cpayment" Type="Int32" />
+    <NavigationProperty Name="TblInstructor" Relationship="AppointmentSystemModel.FK_TblInstructor_checkoutBOOK" FromRole="checkoutBOOK" ToRole="TblInstructor" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -41,6 +42,8 @@
     <Property Name="instructorFName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
     <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
     <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="checkoutID" Type="Int32" />
+    <NavigationProperty Name="checkoutBOOK" Relationship="AppointmentSystemModel.FK_TblInstructor_checkoutBOOK" FromRole="TblInstructor" ToRole="checkoutBOOK" />
   </EntityType>
   <EntityType Name="tblUser">
     <Key>
@@ -169,6 +172,11 @@
       <Parameter Name="insPHONE" Mode="In" Type="String" />
     </FunctionImport>
     <EntitySet Name="vw_allAppointment" EntityType="AppointmentSystemModel.vw_allAppointment" />
+    <EntitySet Name="vw_INstaffBook" EntityType="AppointmentSystemModel.vw_INstaffBook" />
+    <AssociationSet Name="FK_TblInstructor_checkoutBOOK" Association="AppointmentSystemModel.FK_TblInstructor_checkoutBOOK">
+      <End Role="checkoutBOOK" EntitySet="checkoutBOOKs" />
+      <End Role="TblInstructor" EntitySet="TblInstructors" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="vw_allAppointment">
     <Key>
@@ -188,4 +196,31 @@
     <Property Name="userEmail" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="userNumber" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
   </EntityType>
+  <EntityType Name="vw_INstaffBook">
+    <Key>
+      <PropertyRef Name="Instructor_Name" />
+      <PropertyRef Name="Participant_Name" />
+    </Key>
+    <Property Name="Instructor_Name" Type="String" Nullable="false" MaxLength="258" FixedLength="false" Unicode="false" />
+    <Property Name="Experties" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="Contact_No_" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Participant_Name" Type="String" Nullable="false" MaxLength="258" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email_Add" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Phone_no_" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Date_Started" Type="DateTime" Precision="3" />
+    <Property Name="Date_Expiry" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="FK_TblInstructor_checkoutBOOK">
+    <End Type="AppointmentSystemModel.checkoutBOOK" Role="checkoutBOOK" Multiplicity="0..1" />
+    <End Type="AppointmentSystemModel.TblInstructor" Role="TblInstructor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="checkoutBOOK">
+        <PropertyRef Name="checkoutID" />
+      </Principal>
+      <Dependent Role="TblInstructor">
+        <PropertyRef Name="checkoutID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

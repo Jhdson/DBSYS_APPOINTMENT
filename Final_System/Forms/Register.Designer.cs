@@ -87,7 +87,7 @@
             this.panel1.Controls.Add(this.lblfirstname);
             this.panel1.Controls.Add(this.txt_lastname);
             this.panel1.Controls.Add(this.lbllastname);
-            this.panel1.Location = new System.Drawing.Point(127, 92);
+            this.panel1.Location = new System.Drawing.Point(174, 78);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(418, 371);
             this.panel1.TabIndex = 2;

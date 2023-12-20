@@ -129,5 +129,22 @@ namespace Final_System
         {
 
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void rbtnSHOW_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtnSHOW.Checked == false)
+            {
+                textPASSWORD.UseSystemPasswordChar = false;
+            }
+            else
+            { 
+                textPASSWORD.UseSystemPasswordChar = true;
+            }
+        }
     }
 }

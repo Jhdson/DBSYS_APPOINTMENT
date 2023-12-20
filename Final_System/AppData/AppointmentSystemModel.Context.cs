@@ -37,6 +37,7 @@ namespace Final_System.AppData
         public DbSet<vw_TrainingTable> vw_TrainingTable { get; set; }
         public DbSet<vw_UserTable> vw_UserTable { get; set; }
         public DbSet<vw_allAppointment> vw_allAppointment { get; set; }
+        public DbSet<vw_INstaffBook> vw_INstaffBook { get; set; }
     
         public virtual int sp_addinstructor(string instructorLName, string instructorFName, string expertise, string contactNo)
         {

@@ -41,6 +41,7 @@
     <Property Name="instructorFName" Type="varchar" MaxLength="128" />
     <Property Name="expertise" Type="varchar" MaxLength="128" />
     <Property Name="contactNo" Type="nvarchar" MaxLength="128" />
+    <Property Name="checkoutID" Type="int" />
   </EntityType>
   <EntityType Name="tblUser">
     <Key>
@@ -90,6 +91,23 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_InsTable' does not have a
     <Property Name="contactNo" Type="nvarchar" MaxLength="128" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'AppointmentSystem.dbo.vw_INstaffBook' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_INstaffBook">
+    <Key>
+      <PropertyRef Name="Instructor Name" />
+      <PropertyRef Name="Participant Name" />
+    </Key>
+    <Property Name="Instructor Name" Type="varchar" MaxLength="258" Nullable="false" />
+    <Property Name="Experties" Type="varchar" MaxLength="128" />
+    <Property Name="Contact No." Type="nvarchar" MaxLength="128" />
+    <Property Name="Participant Name" Type="nvarchar" MaxLength="258" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="128" />
+    <Property Name="Email Add" Type="nvarchar" MaxLength="128" />
+    <Property Name="Phone no." Type="nvarchar" MaxLength="128" />
+    <Property Name="Date Started" Type="datetime" />
+    <Property Name="Date Expiry" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'AppointmentSystem.dbo.vw_TrainingTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vw_TrainingTable">
     <Key>
@@ -117,6 +135,18 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
     <Property Name="Password" Type="nvarchar" MaxLength="128" />
     <Property Name="Role" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <Association Name="FK_TblInstructor_checkoutBOOK">
+    <End Role="checkoutBOOK" Type="Self.checkoutBOOK" Multiplicity="0..1" />
+    <End Role="TblInstructor" Type="Self.TblInstructor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="checkoutBOOK">
+        <PropertyRef Name="checkoutID" />
+      </Principal>
+      <Dependent Role="TblInstructor">
+        <PropertyRef Name="checkoutID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Function Name="bookinsturtor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="insID" Type="int" Mode="In" />
     <Parameter Name="insFN" Type="nvarchar" Mode="In" />
@@ -211,6 +241,19 @@ FROM [dbo].[vw_allAppointment] AS [vw_allAppointment]</DefiningQuery>
 [vw_InsTable].[contactNo] AS [contactNo]
 FROM [dbo].[vw_InsTable] AS [vw_InsTable]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="vw_INstaffBook" EntityType="Self.vw_INstaffBook" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_INstaffBook].[Instructor Name] AS [Instructor Name], 
+[vw_INstaffBook].[Experties] AS [Experties], 
+[vw_INstaffBook].[Contact No.] AS [Contact No.], 
+[vw_INstaffBook].[Participant Name] AS [Participant Name], 
+[vw_INstaffBook].[Address] AS [Address], 
+[vw_INstaffBook].[Email Add] AS [Email Add], 
+[vw_INstaffBook].[Phone no.] AS [Phone no.], 
+[vw_INstaffBook].[Date Started] AS [Date Started], 
+[vw_INstaffBook].[Date Expiry] AS [Date Expiry]
+FROM [dbo].[vw_INstaffBook] AS [vw_INstaffBook]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="vw_TrainingTable" EntityType="Self.vw_TrainingTable" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [vw_TrainingTable].[Training Id] AS [Training Id], 
@@ -232,5 +275,9 @@ FROM [dbo].[vw_TrainingTable] AS [vw_TrainingTable]</DefiningQuery>
 [vw_UserTable].[Role] AS [Role]
 FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK_TblInstructor_checkoutBOOK" Association="Self.FK_TblInstructor_checkoutBOOK">
+      <End Role="checkoutBOOK" EntitySet="checkoutBOOK" />
+      <End Role="TblInstructor" EntitySet="TblInstructor" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

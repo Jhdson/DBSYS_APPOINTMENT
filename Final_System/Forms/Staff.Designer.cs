@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtIDCONF = new System.Windows.Forms.TextBox();
             this.txtPhoneCONF = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -45,17 +47,15 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.datagridBOOKING = new System.Windows.Forms.DataGridView();
+            this.datagridBOOKINGstaff = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.pbclose1 = new System.Windows.Forms.PictureBox();
             this.pbmini1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
-            this.txtIDCONF = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datagridBOOKING)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridBOOKINGstaff)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbclose1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbmini1)).BeginInit();
             this.SuspendLayout();
@@ -78,12 +78,27 @@
             this.panel1.Controls.Add(this.txtLnCONF);
             this.panel1.Controls.Add(this.txtfnCONF);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.datagridBOOKING);
+            this.panel1.Controls.Add(this.datagridBOOKINGstaff);
             this.panel1.Location = new System.Drawing.Point(12, 79);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(783, 428);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(564, 36);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(18, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "ID";
+            // 
+            // txtIDCONF
+            // 
+            this.txtIDCONF.Location = new System.Drawing.Point(599, 33);
+            this.txtIDCONF.Name = "txtIDCONF";
+            this.txtIDCONF.Size = new System.Drawing.Size(175, 20);
+            this.txtIDCONF.TabIndex = 14;
             // 
             // txtPhoneCONF
             // 
@@ -109,7 +124,6 @@
             this.label5.Size = new System.Drawing.Size(54, 13);
             this.label5.TabIndex = 11;
             this.label5.Text = "Email Add";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
@@ -137,7 +151,6 @@
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 8;
             this.label2.Text = "Last Name";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -154,7 +167,6 @@
             this.txtEmailCONF.Name = "txtEmailCONF";
             this.txtEmailCONF.Size = new System.Drawing.Size(175, 20);
             this.txtEmailCONF.TabIndex = 6;
-            this.txtEmailCONF.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // txtADDresCONF
             // 
@@ -214,15 +226,15 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
-            // datagridBOOKING
+            // datagridBOOKINGstaff
             // 
-            this.datagridBOOKING.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datagridBOOKING.Location = new System.Drawing.Point(12, 18);
-            this.datagridBOOKING.Name = "datagridBOOKING";
-            this.datagridBOOKING.Size = new System.Drawing.Size(495, 390);
-            this.datagridBOOKING.TabIndex = 0;
-            this.datagridBOOKING.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridBOOKING_CellClick);
-            this.datagridBOOKING.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.datagridBOOKINGstaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagridBOOKINGstaff.Location = new System.Drawing.Point(12, 18);
+            this.datagridBOOKINGstaff.Name = "datagridBOOKINGstaff";
+            this.datagridBOOKINGstaff.Size = new System.Drawing.Size(495, 390);
+            this.datagridBOOKINGstaff.TabIndex = 0;
+            this.datagridBOOKINGstaff.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridBOOKING_CellClick);
+            this.datagridBOOKINGstaff.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridBOOKINGstaff_CellContentClick);
             // 
             // button1
             // 
@@ -259,22 +271,6 @@
             this.pbmini1.Click += new System.EventHandler(this.pbclose2_Click);
             this.pbmini1.MouseHover += new System.EventHandler(this.pbclose2_Click);
             // 
-            // txtIDCONF
-            // 
-            this.txtIDCONF.Location = new System.Drawing.Point(599, 33);
-            this.txtIDCONF.Name = "txtIDCONF";
-            this.txtIDCONF.Size = new System.Drawing.Size(175, 20);
-            this.txtIDCONF.TabIndex = 14;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(564, 36);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(18, 13);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "ID";
-            // 
             // Staff_Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -292,7 +288,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.datagridBOOKING)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridBOOKINGstaff)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbclose1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbmini1)).EndInit();
             this.ResumeLayout(false);
@@ -303,7 +299,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView datagridBOOKING;
+        private System.Windows.Forms.DataGridView datagridBOOKINGstaff;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;

@@ -12,15 +12,16 @@ namespace Final_System.AppData
     using System;
     using System.Collections.Generic;
     
-    public partial class TblInstructor
+    public partial class vw_INstaffBook
     {
-        public int instructorId { get; set; }
-        public string instructorLName { get; set; }
-        public string instructorFName { get; set; }
-        public string expertise { get; set; }
-        public string contactNo { get; set; }
-        public Nullable<int> checkoutID { get; set; }
-    
-        public virtual checkoutBOOK checkoutBOOK { get; set; }
+        public string Instructor_Name { get; set; }
+        public string Experties { get; set; }
+        public string Contact_No_ { get; set; }
+        public string Participant_Name { get; set; }
+        public string Address { get; set; }
+        public string Email_Add { get; set; }
+        public string Phone_no_ { get; set; }
+        public Nullable<System.DateTime> Date_Started { get; set; }
+        public Nullable<System.DateTime> Date_Expiry { get; set; }
     }
 }

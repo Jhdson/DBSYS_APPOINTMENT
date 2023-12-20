@@ -42,6 +42,13 @@ namespace Final_System.Repositories
                 return db.vw_InsTable.ToList();
             }
         }
+        public List<vw_INstaffBook> Allstafff()
+        {
+            using (db = new AppointmentSystemEntities())
+            {
+                return db.vw_INstaffBook.ToList();
+            }
+        }
         public List<vw_UserTable> UserTablesTable()
         {
             using (db = new AppointmentSystemEntities())

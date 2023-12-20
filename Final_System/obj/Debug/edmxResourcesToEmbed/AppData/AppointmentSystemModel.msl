@@ -39,6 +39,7 @@
     <EntitySetMapping Name="TblInstructors">
       <EntityTypeMapping TypeName="AppointmentSystemModel.TblInstructor">
         <MappingFragment StoreEntitySet="TblInstructor">
+          <ScalarProperty Name="checkoutID" ColumnName="checkoutID" />
           <ScalarProperty Name="instructorId" ColumnName="instructorId" />
           <ScalarProperty Name="instructorLName" ColumnName="instructorLName" />
           <ScalarProperty Name="instructorFName" ColumnName="instructorFName" />
@@ -118,6 +119,21 @@
           <ScalarProperty Name="expertise" ColumnName="expertise" />
           <ScalarProperty Name="Instructors_Name" ColumnName="Instructors Name" />
           <ScalarProperty Name="instructorId" ColumnName="instructorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_INstaffBook">
+      <EntityTypeMapping TypeName="AppointmentSystemModel.vw_INstaffBook">
+        <MappingFragment StoreEntitySet="vw_INstaffBook">
+          <ScalarProperty Name="Date_Expiry" ColumnName="Date Expiry" />
+          <ScalarProperty Name="Date_Started" ColumnName="Date Started" />
+          <ScalarProperty Name="Phone_no_" ColumnName="Phone no." />
+          <ScalarProperty Name="Email_Add" ColumnName="Email Add" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Participant_Name" ColumnName="Participant Name" />
+          <ScalarProperty Name="Contact_No_" ColumnName="Contact No." />
+          <ScalarProperty Name="Experties" ColumnName="Experties" />
+          <ScalarProperty Name="Instructor_Name" ColumnName="Instructor Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

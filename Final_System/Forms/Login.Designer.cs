@@ -35,23 +35,23 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textUSERNAME = new System.Windows.Forms.TextBox();
             this.btn_register = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pbmini1 = new System.Windows.Forms.PictureBox();
             this.pbclose1 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.rbtnSHOW = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbmini1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbclose1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
@@ -127,22 +127,11 @@
             this.btn_register.UseVisualStyleBackColor = false;
             this.btn_register.Click += new System.EventHandler(this.btn_register_Click_1);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(86, 278);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 12);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Forgot Password?";
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DarkGray;
+            this.panel1.Controls.Add(this.rbtnSHOW);
             this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.btn_register);
             this.panel1.Controls.Add(this.textUSERNAME);
             this.panel1.Controls.Add(this.label2);
@@ -153,6 +142,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(385, 455);
             this.panel1.TabIndex = 1;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Final_System.Properties.Resources.Screenshot_2023_12_03_084310_removebg_preview;
+            this.pictureBox2.Location = new System.Drawing.Point(55, 80);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(280, 84);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
             // 
             // pictureBox3
             // 
@@ -200,16 +199,6 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Final_System.Properties.Resources.Screenshot_2023_12_03_084310_removebg_preview;
-            this.pictureBox2.Location = new System.Drawing.Point(55, 80);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(280, 84);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 9;
-            this.pictureBox2.TabStop = false;
-            // 
             // pictureBox6
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Black;
@@ -233,6 +222,18 @@
             this.pictureBox7.TabStop = false;
             this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
             // 
+            // rbtnSHOW
+            // 
+            this.rbtnSHOW.AutoSize = true;
+            this.rbtnSHOW.Location = new System.Drawing.Point(72, 276);
+            this.rbtnSHOW.Name = "rbtnSHOW";
+            this.rbtnSHOW.Size = new System.Drawing.Size(101, 17);
+            this.rbtnSHOW.TabIndex = 12;
+            this.rbtnSHOW.TabStop = true;
+            this.rbtnSHOW.Text = "Show Password";
+            this.rbtnSHOW.UseVisualStyleBackColor = true;
+            this.rbtnSHOW.CheckedChanged += new System.EventHandler(this.rbtnSHOW_CheckedChanged);
+            // 
             // Login_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -251,11 +252,11 @@
             this.Text = "log in ";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbmini1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbclose1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
@@ -269,7 +270,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textUSERNAME;
         private System.Windows.Forms.Button btn_register;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pbclose1;
@@ -281,6 +281,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.RadioButton rbtnSHOW;
     }
 }
 

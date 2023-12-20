@@ -108,7 +108,7 @@ namespace Final_System.Forms
         {
             pnlINSTUCTOR.SendToBack();
             PNLconfirmbooking.BringToFront();
-            pnlFORLBL.BringToFront();
+         
         }
 
       
@@ -124,7 +124,7 @@ namespace Final_System.Forms
 
         private void pbclose1_MouseHover(object sender, EventArgs e)
         {
-            this.Close();
+            
         }
 
                 // AppointmentSystemEntities db = new AppointmentSystemEntities;
@@ -187,12 +187,7 @@ namespace Final_System.Forms
             }
 
             book.Instuctorselectd = Instuctorselectd;
-            book.lblIDNUMBER.Text = txtBOOKID.Text;
-            book.lblfn.Text = txtBOOKFN.Text;
-            book.lblln.Text = txtBOOKLN.Text;
-            book.lblexp.Text = txtBOOKexpert.Text;
-            book.lblnum.Text = txtBOOKContact.Text;
-
+       
             showBook(book);
         }
 
@@ -269,6 +264,61 @@ namespace Final_System.Forms
         }
 
         private void lblIDNUMBER_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtChckFN_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtChckLN_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtChckADD_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtChckEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PNLconfirmbooking_Paint(object sender, PaintEventArgs e)
         {
 
         }

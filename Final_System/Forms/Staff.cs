@@ -28,9 +28,17 @@ namespace Final_System.Forms
         public void loadgrid()
         {
             userRepository userREpo = new userRepository();
-            datagridBOOKING.DataSource = userREpo.UserTablesTable();
+            datagridBOOKINGstaff.DataSource = userREpo.Allstafff();
         }
-      
+        private void Staff_Dashboard_Load(object sender, EventArgs e)
+        {
+            loadgrid();
+
+        }
+
+
+
+
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -88,13 +96,6 @@ namespace Final_System.Forms
                 book.userEmail = txtEmailCONF.Text;
                 book.userNumber = txtPhoneCONF.Text;
 
-
-
-
-        
-
-
-
                 db.tblUsers.Add(book);
                 db.SaveChanges();
 
@@ -115,22 +116,7 @@ namespace Final_System.Forms
 
         }
 
-        private void Staff_Dashboard_Load(object sender, EventArgs e)
-        {
-            loadgrid();
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+      
         private void pbclose2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -138,35 +124,21 @@ namespace Final_System.Forms
 
         private void pbclose1_Click(object sender, EventArgs e)
         {
-            this.Close();
+        
         }
 
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
+   
         private void datagridBOOKING_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                txtIDCONF.Text = datagridBOOKING.Rows[e.RowIndex].Cells["ID"].Value.ToString();
-                txtfnCONF.Text = datagridBOOKING.Rows[e.RowIndex].Cells["First_Name"].Value.ToString();
-                txtLnCONF.Text = datagridBOOKING.Rows[e.RowIndex].Cells["Last_Name"].Value.ToString();
-                txtMidCONF.Text = datagridBOOKING.Rows[e.RowIndex].Cells["Middle_Initial"].Value.ToString();
-                txtADDresCONF.Text = datagridBOOKING.Rows[e.RowIndex].Cells["Address"].Value.ToString();
-                txtEmailCONF.Text = datagridBOOKING.Rows[e.RowIndex].Cells["Email Address"].Value.ToString();
-                txtPhoneCONF.Text = datagridBOOKING.Rows[e.RowIndex].Cells["Phone_Number"].Value.ToString();
+                txtIDCONF.Text = datagridBOOKINGstaff.Rows[e.RowIndex].Cells["ID"].Value.ToString();
+                txtfnCONF.Text = datagridBOOKINGstaff.Rows[e.RowIndex].Cells["First_Name"].Value.ToString();
+                txtLnCONF.Text = datagridBOOKINGstaff.Rows[e.RowIndex].Cells["Last_Name"].Value.ToString();
+                txtMidCONF.Text = datagridBOOKINGstaff.Rows[e.RowIndex].Cells["Middle_Initial"].Value.ToString();
+                txtADDresCONF.Text = datagridBOOKINGstaff.Rows[e.RowIndex].Cells["Address"].Value.ToString();
+                txtEmailCONF.Text = datagridBOOKINGstaff.Rows[e.RowIndex].Cells["Email Address"].Value.ToString();
+                txtPhoneCONF.Text = datagridBOOKINGstaff.Rows[e.RowIndex].Cells["Phone_Number"].Value.ToString();
                
 
             }
@@ -174,6 +146,11 @@ namespace Final_System.Forms
             {
                 throw ex;
             }
+        }
+
+        private void datagridBOOKINGstaff_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
