@@ -27,6 +27,13 @@ namespace Final_System.Repositories
 
             }
         }
+        public List<vw_allAppointment> AllAPPOINTMENTS()
+        {
+            using (db = new AppointmentSystemEntities())
+            {
+                return db.vw_allAppointment.ToList();
+            }
+        }
 
         public List<vw_InsTable> ALLINSTRUCTOR()
         {
@@ -130,7 +137,7 @@ namespace Final_System.Repositories
             }
         }
 
-        public ErrorCode AddInstructorUsingStoredProf(int? instructorId, String instructorLName, String instructorFName,String expertise, string contactNo,
+        public ErrorCode AddInstructorUsingStoredProf( String instructorLName, String instructorFName,String expertise, string contactNo,
             ref String Response)
         {
             using (db = new AppointmentSystemEntities())
@@ -138,7 +145,7 @@ namespace Final_System.Repositories
                 try
                 {
 
-                    db.sp_addinstructor(instructorId,instructorLName, instructorFName, expertise, contactNo);
+                    db.sp_addinstructor(instructorLName, instructorFName, expertise, contactNo);
                     Response = " Added Successfully";
                     return ErrorCode.Success;
                 }

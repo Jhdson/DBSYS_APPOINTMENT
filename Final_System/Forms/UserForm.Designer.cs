@@ -44,8 +44,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtChckLN = new System.Windows.Forms.TextBox();
-            this.PNLCHECKOUT = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.PNLconfirmbooking = new System.Windows.Forms.Panel();
+            this.pnlFORLBL = new System.Windows.Forms.Panel();
+            this.lblIDNUMBER = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.lblnum = new System.Windows.Forms.Label();
             this.lblexp = new System.Windows.Forms.Label();
             this.lblln = new System.Windows.Forms.Label();
@@ -58,6 +60,10 @@
             this.btnBooking = new System.Windows.Forms.Button();
             this.btnCheckOUT = new System.Windows.Forms.Button();
             this.pnlINSTUCTOR = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtBOOKID = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtBOOKLN = new System.Windows.Forms.TextBox();
@@ -72,25 +78,27 @@
             this.pbclose1 = new System.Windows.Forms.PictureBox();
             this.pbmini1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.txtBOOKID = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
+            this.dataGridViewDoneAPPOINTMENT = new System.Windows.Forms.DataGridView();
+            this.panelDONEappoint = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.PNLCHECKOUT.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.PNLconfirmbooking.SuspendLayout();
+            this.pnlFORLBL.SuspendLayout();
             this.pnlINSTUCTOR.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBOOKins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbclose1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbmini1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDoneAPPOINTMENT)).BeginInit();
+            this.panelDONEappoint.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(12, 45);
+            this.dataGridView2.Location = new System.Drawing.Point(12, 42);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(438, 325);
+            this.dataGridView2.Size = new System.Drawing.Size(457, 325);
             this.dataGridView2.TabIndex = 1;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // Book
             // 
@@ -100,7 +108,7 @@
             this.Book.TabIndex = 2;
             this.Book.Text = "Book";
             this.Book.UseVisualStyleBackColor = true;
-         
+            this.Book.Click += new System.EventHandler(this.Book_Click);
             // 
             // txtChckFN
             // 
@@ -108,7 +116,6 @@
             this.txtChckFN.Name = "txtChckFN";
             this.txtChckFN.Size = new System.Drawing.Size(189, 20);
             this.txtChckFN.TabIndex = 4;
-            this.txtChckFN.TextChanged += new System.EventHandler(this.txtChckFN_TextChanged);
             // 
             // txtChckADD
             // 
@@ -145,7 +152,6 @@
             this.dtpexpire.Name = "dtpexpire";
             this.dtpexpire.Size = new System.Drawing.Size(210, 20);
             this.dtpexpire.TabIndex = 9;
-            this.dtpexpire.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // label1
             // 
@@ -164,7 +170,6 @@
             this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 11;
             this.label2.Text = "Address";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -178,7 +183,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(465, 260);
+            this.label4.Location = new System.Drawing.Point(469, 260);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 13);
             this.label4.TabIndex = 13;
@@ -201,7 +206,6 @@
             this.label6.Size = new System.Drawing.Size(55, 13);
             this.label6.TabIndex = 15;
             this.label6.Text = "LastName";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // txtChckLN
             // 
@@ -210,60 +214,80 @@
             this.txtChckLN.Size = new System.Drawing.Size(189, 20);
             this.txtChckLN.TabIndex = 16;
             // 
-            // PNLCHECKOUT
+            // PNLconfirmbooking
             // 
-            this.PNLCHECKOUT.Controls.Add(this.panel3);
-            this.PNLCHECKOUT.Controls.Add(this.label7);
-            this.PNLCHECKOUT.Controls.Add(this.txtChckLN);
-            this.PNLCHECKOUT.Controls.Add(this.label6);
-            this.PNLCHECKOUT.Controls.Add(this.label5);
-            this.PNLCHECKOUT.Controls.Add(this.label4);
-            this.PNLCHECKOUT.Controls.Add(this.label3);
-            this.PNLCHECKOUT.Controls.Add(this.label2);
-            this.PNLCHECKOUT.Controls.Add(this.label1);
-            this.PNLCHECKOUT.Controls.Add(this.dtpexpire);
-            this.PNLCHECKOUT.Controls.Add(this.dtpstart);
-            this.PNLCHECKOUT.Controls.Add(this.txtChcknUMBER);
-            this.PNLCHECKOUT.Controls.Add(this.txtChckEmail);
-            this.PNLCHECKOUT.Controls.Add(this.txtChckADD);
-            this.PNLCHECKOUT.Controls.Add(this.txtChckFN);
-            this.PNLCHECKOUT.Controls.Add(this.Book);
-            this.PNLCHECKOUT.Controls.Add(this.dataGridView2);
-            this.PNLCHECKOUT.Location = new System.Drawing.Point(12, 60);
-            this.PNLCHECKOUT.Name = "PNLCHECKOUT";
-            this.PNLCHECKOUT.Size = new System.Drawing.Size(759, 408);
-            this.PNLCHECKOUT.TabIndex = 17;
+            this.PNLconfirmbooking.Controls.Add(this.pnlFORLBL);
+            this.PNLconfirmbooking.Controls.Add(this.label7);
+            this.PNLconfirmbooking.Controls.Add(this.txtChckLN);
+            this.PNLconfirmbooking.Controls.Add(this.label6);
+            this.PNLconfirmbooking.Controls.Add(this.label5);
+            this.PNLconfirmbooking.Controls.Add(this.label4);
+            this.PNLconfirmbooking.Controls.Add(this.label3);
+            this.PNLconfirmbooking.Controls.Add(this.label2);
+            this.PNLconfirmbooking.Controls.Add(this.label1);
+            this.PNLconfirmbooking.Controls.Add(this.dtpexpire);
+            this.PNLconfirmbooking.Controls.Add(this.dtpstart);
+            this.PNLconfirmbooking.Controls.Add(this.txtChcknUMBER);
+            this.PNLconfirmbooking.Controls.Add(this.txtChckEmail);
+            this.PNLconfirmbooking.Controls.Add(this.txtChckADD);
+            this.PNLconfirmbooking.Controls.Add(this.txtChckFN);
+            this.PNLconfirmbooking.Controls.Add(this.Book);
+            this.PNLconfirmbooking.Controls.Add(this.dataGridView2);
+            this.PNLconfirmbooking.Location = new System.Drawing.Point(12, 60);
+            this.PNLconfirmbooking.Name = "PNLconfirmbooking";
+            this.PNLconfirmbooking.Size = new System.Drawing.Size(759, 408);
+            this.PNLconfirmbooking.TabIndex = 17;
             // 
-            // panel3
+            // pnlFORLBL
             // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.lblnum);
-            this.panel3.Controls.Add(this.lblexp);
-            this.panel3.Controls.Add(this.lblln);
-            this.panel3.Controls.Add(this.lblfn);
-            this.panel3.Controls.Add(this.label14);
-            this.panel3.Controls.Add(this.label13);
-            this.panel3.Controls.Add(this.label12);
-            this.panel3.Controls.Add(this.label9);
-            this.panel3.Location = new System.Drawing.Point(30, 59);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(395, 49);
-            this.panel3.TabIndex = 22;
+            this.pnlFORLBL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlFORLBL.Controls.Add(this.lblIDNUMBER);
+            this.pnlFORLBL.Controls.Add(this.label18);
+            this.pnlFORLBL.Controls.Add(this.lblnum);
+            this.pnlFORLBL.Controls.Add(this.lblexp);
+            this.pnlFORLBL.Controls.Add(this.lblln);
+            this.pnlFORLBL.Controls.Add(this.lblfn);
+            this.pnlFORLBL.Controls.Add(this.label14);
+            this.pnlFORLBL.Controls.Add(this.label13);
+            this.pnlFORLBL.Controls.Add(this.label12);
+            this.pnlFORLBL.Controls.Add(this.label9);
+            this.pnlFORLBL.Location = new System.Drawing.Point(12, 57);
+            this.pnlFORLBL.Name = "pnlFORLBL";
+            this.pnlFORLBL.Size = new System.Drawing.Size(452, 49);
+            this.pnlFORLBL.TabIndex = 22;
+            // 
+            // lblIDNUMBER
+            // 
+            this.lblIDNUMBER.AutoSize = true;
+            this.lblIDNUMBER.Location = new System.Drawing.Point(3, 28);
+            this.lblIDNUMBER.Name = "lblIDNUMBER";
+            this.lblIDNUMBER.Size = new System.Drawing.Size(10, 13);
+            this.lblIDNUMBER.TabIndex = 9;
+            this.lblIDNUMBER.Text = ".";
+            this.lblIDNUMBER.Click += new System.EventHandler(this.lblIDNUMBER_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(3, 7);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(36, 13);
+            this.label18.TabIndex = 8;
+            this.label18.Text = "ID no.";
             // 
             // lblnum
             // 
             this.lblnum.AutoSize = true;
-            this.lblnum.Location = new System.Drawing.Point(310, 28);
+            this.lblnum.Location = new System.Drawing.Point(373, 28);
             this.lblnum.Name = "lblnum";
             this.lblnum.Size = new System.Drawing.Size(37, 13);
             this.lblnum.TabIndex = 7;
             this.lblnum.Text = "lblnum";
-           
             // 
             // lblexp
             // 
             this.lblexp.AutoSize = true;
-            this.lblexp.Location = new System.Drawing.Point(220, 28);
+            this.lblexp.Location = new System.Drawing.Point(277, 28);
             this.lblexp.Name = "lblexp";
             this.lblexp.Size = new System.Drawing.Size(41, 13);
             this.lblexp.TabIndex = 6;
@@ -272,7 +296,7 @@
             // lblln
             // 
             this.lblln.AutoSize = true;
-            this.lblln.Location = new System.Drawing.Point(111, 31);
+            this.lblln.Location = new System.Drawing.Point(166, 28);
             this.lblln.Name = "lblln";
             this.lblln.Size = new System.Drawing.Size(41, 13);
             this.lblln.TabIndex = 5;
@@ -281,7 +305,7 @@
             // lblfn
             // 
             this.lblfn.AutoSize = true;
-            this.lblfn.Location = new System.Drawing.Point(19, 28);
+            this.lblfn.Location = new System.Drawing.Point(84, 28);
             this.lblfn.Name = "lblfn";
             this.lblfn.Size = new System.Drawing.Size(26, 13);
             this.lblfn.TabIndex = 4;
@@ -290,7 +314,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(310, 5);
+            this.label14.Location = new System.Drawing.Point(373, 5);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(64, 13);
             this.label14.TabIndex = 3;
@@ -299,7 +323,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(211, 5);
+            this.label13.Location = new System.Drawing.Point(277, 5);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(50, 13);
             this.label13.TabIndex = 2;
@@ -308,7 +332,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(111, 5);
+            this.label12.Location = new System.Drawing.Point(166, 3);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(58, 13);
             this.label12.TabIndex = 1;
@@ -317,7 +341,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(19, 5);
+            this.label9.Location = new System.Drawing.Point(84, 5);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(57, 13);
             this.label9.TabIndex = 0;
@@ -348,13 +372,14 @@
             this.btnCheckOUT.Name = "btnCheckOUT";
             this.btnCheckOUT.Size = new System.Drawing.Size(83, 33);
             this.btnCheckOUT.TabIndex = 19;
-            this.btnCheckOUT.Text = "Check Out";
+            this.btnCheckOUT.Text = "Appointments";
             this.btnCheckOUT.UseVisualStyleBackColor = true;
             this.btnCheckOUT.Click += new System.EventHandler(this.btnCheckOUT_Click);
             // 
             // pnlINSTUCTOR
             // 
             this.pnlINSTUCTOR.BackColor = System.Drawing.Color.SeaShell;
+            this.pnlINSTUCTOR.Controls.Add(this.button2);
             this.pnlINSTUCTOR.Controls.Add(this.label17);
             this.pnlINSTUCTOR.Controls.Add(this.txtBOOKID);
             this.pnlINSTUCTOR.Controls.Add(this.button1);
@@ -369,10 +394,45 @@
             this.pnlINSTUCTOR.Controls.Add(this.txtBOOKFN);
             this.pnlINSTUCTOR.Controls.Add(this.button3);
             this.pnlINSTUCTOR.Controls.Add(this.dataGridViewBOOKins);
-            this.pnlINSTUCTOR.Location = new System.Drawing.Point(12, 60);
+            this.pnlINSTUCTOR.Location = new System.Drawing.Point(12, 63);
             this.pnlINSTUCTOR.Name = "pnlINSTUCTOR";
-            this.pnlINSTUCTOR.Size = new System.Drawing.Size(759, 408);
+            this.pnlINSTUCTOR.Size = new System.Drawing.Size(755, 408);
             this.pnlINSTUCTOR.TabIndex = 20;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(609, 272);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 22;
+            this.button2.Text = "Next ";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(510, 88);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(18, 13);
+            this.label17.TabIndex = 21;
+            this.label17.Text = "ID";
+            // 
+            // txtBOOKID
+            // 
+            this.txtBOOKID.Location = new System.Drawing.Point(558, 88);
+            this.txtBOOKID.Name = "txtBOOKID";
+            this.txtBOOKID.Size = new System.Drawing.Size(189, 20);
+            this.txtBOOKID.TabIndex = 20;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(587, 347);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Book";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -408,7 +468,6 @@
             this.label11.Size = new System.Drawing.Size(55, 13);
             this.label11.TabIndex = 15;
             this.label11.Text = "LastName";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label15
             // 
@@ -448,25 +507,23 @@
             this.txtBOOKFN.Name = "txtBOOKFN";
             this.txtBOOKFN.Size = new System.Drawing.Size(189, 20);
             this.txtBOOKFN.TabIndex = 4;
-            this.txtBOOKFN.TextChanged += new System.EventHandler(this.txtBOOKFN_TextChanged);
             // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(439, 339);
+            this.button3.Location = new System.Drawing.Point(365, 370);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(121, 31);
             this.button3.TabIndex = 2;
             this.button3.Text = "Book Now";
             this.button3.UseVisualStyleBackColor = true;
-        
             // 
             // dataGridViewBOOKins
             // 
             this.dataGridViewBOOKins.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewBOOKins.Location = new System.Drawing.Point(12, 39);
+            this.dataGridViewBOOKins.Location = new System.Drawing.Point(8, 39);
             this.dataGridViewBOOKins.Name = "dataGridViewBOOKins";
-            this.dataGridViewBOOKins.Size = new System.Drawing.Size(438, 325);
+            this.dataGridViewBOOKins.Size = new System.Drawing.Size(460, 325);
             this.dataGridViewBOOKins.TabIndex = 1;
             this.dataGridViewBOOKins.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBOOKins_CellClick_1);
             // 
@@ -493,31 +550,23 @@
             this.pbmini1.TabIndex = 22;
             this.pbmini1.TabStop = false;
             // 
-            // button1
+            // dataGridViewDoneAPPOINTMENT
             // 
-            this.button1.Location = new System.Drawing.Point(598, 267);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Book";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.dataGridViewDoneAPPOINTMENT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewDoneAPPOINTMENT.Location = new System.Drawing.Point(16, 17);
+            this.dataGridViewDoneAPPOINTMENT.Name = "dataGridViewDoneAPPOINTMENT";
+            this.dataGridViewDoneAPPOINTMENT.Size = new System.Drawing.Size(733, 387);
+            this.dataGridViewDoneAPPOINTMENT.TabIndex = 23;
+            this.dataGridViewDoneAPPOINTMENT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDoneAPPOINTMENT_CellContentClick);
             // 
-            // txtBOOKID
+            // panelDONEappoint
             // 
-            this.txtBOOKID.Location = new System.Drawing.Point(558, 88);
-            this.txtBOOKID.Name = "txtBOOKID";
-            this.txtBOOKID.Size = new System.Drawing.Size(189, 20);
-            this.txtBOOKID.TabIndex = 20;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(510, 88);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(18, 13);
-            this.label17.TabIndex = 21;
-            this.label17.Text = "ID";
+            this.panelDONEappoint.Controls.Add(this.dataGridViewDoneAPPOINTMENT);
+            this.panelDONEappoint.Location = new System.Drawing.Point(8, 60);
+            this.panelDONEappoint.Name = "panelDONEappoint";
+            this.panelDONEappoint.Size = new System.Drawing.Size(756, 411);
+            this.panelDONEappoint.TabIndex = 24;
+            this.panelDONEappoint.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // UserDashboard
             // 
@@ -528,22 +577,25 @@
             this.Controls.Add(this.pbclose1);
             this.Controls.Add(this.btnCheckOUT);
             this.Controls.Add(this.btnBooking);
+            this.Controls.Add(this.PNLconfirmbooking);
             this.Controls.Add(this.pnlINSTUCTOR);
-            this.Controls.Add(this.PNLCHECKOUT);
+            this.Controls.Add(this.panelDONEappoint);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UserDashboard";
             this.Text = "UserForm";
             this.Load += new System.EventHandler(this.UserDashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.PNLCHECKOUT.ResumeLayout(false);
-            this.PNLCHECKOUT.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.PNLconfirmbooking.ResumeLayout(false);
+            this.PNLconfirmbooking.PerformLayout();
+            this.pnlFORLBL.ResumeLayout(false);
+            this.pnlFORLBL.PerformLayout();
             this.pnlINSTUCTOR.ResumeLayout(false);
             this.pnlINSTUCTOR.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBOOKins)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbclose1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbmini1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDoneAPPOINTMENT)).EndInit();
+            this.panelDONEappoint.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -566,7 +618,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtChckLN;
         private System.Windows.Forms.ErrorProvider errorProviderCustom1;
-        private System.Windows.Forms.Panel PNLCHECKOUT;
+        private System.Windows.Forms.Panel PNLconfirmbooking;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnBooking;
         private System.Windows.Forms.Button btnCheckOUT;
@@ -581,7 +633,7 @@
         private System.Windows.Forms.TextBox txtBOOKFN;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridView dataGridViewBOOKins;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnlFORLBL;
         private System.Windows.Forms.Label lblnum;
         private System.Windows.Forms.Label lblexp;
         private System.Windows.Forms.Label lblln;
@@ -597,5 +649,10 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtBOOKID;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label lblIDNUMBER;
+        private System.Windows.Forms.DataGridView dataGridViewDoneAPPOINTMENT;
+        private System.Windows.Forms.Panel panelDONEappoint;
     }
 }

@@ -28,7 +28,12 @@ namespace Final_System.Forms
             InitializeComponent();
             db = new AppointmentSystemEntities();
         }
+        private void AdminAddInstructor_Load(object sender, EventArgs e)
+        {
 
+            LoadParticipants();
+            LoadInstructor();
+        }
         private void btnInstructor_Click(object sender, EventArgs e)
         {
             pnlInstructor.BringToFront();
@@ -322,23 +327,18 @@ namespace Final_System.Forms
 
         private void btnAddINS_Click(object sender, EventArgs e)
         {
-            String instructorID = txtinsNumber.Text;
+           
             String strOutputMsg = "";
-            // Validation not allow empty or null value
-            if (String.IsNullOrEmpty(instructorID))
-            {
-                errorProviderCustom1.SetError(txtinsNumber, "Empty Field!");
-                return;
-            }
-
-            ErrorCode retValue = userRepo.AddInstructorUsingStoredProf((Int32)instructorselId, txtfnameins.Text, txtlnameins.Text,
+         
+          
+            ErrorCode retValue = userRepo.AddInstructorUsingStoredProf(txtfnameins.Text, txtlnameins.Text,
                 txtexins.Text, txtcontactins.Text, ref strOutputMsg);
             if (retValue != ErrorCode.Success)
             {
                 MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadInstructor();
 
-                txtinsNumber.Clear();
+               
                 txtfnameins.Clear();
                 txtlnameins.Clear();
                 txtexins.Clear();
@@ -352,14 +352,9 @@ namespace Final_System.Forms
 
         private void btnUPDATEINS_Click(object sender, EventArgs e)
         {
-            String instructorID = txtinsNumber.Text;
+           
             String strOutputMsg = "";
-            // Validation not allow empty or null value
-            if (String.IsNullOrEmpty(instructorID))
-            {
-                errorProviderCustom1.SetError(txtinsNumber, "Empty Field!");
-                return;
-            }
+         
 
             ErrorCode retValue = userRepo.UpdateInstructorUsingStoredProf((Int32)instructorselId, txtfnameins.Text, txtlnameins.Text,
                 txtexins.Text, txtcontactins.Text, ref strOutputMsg);
@@ -368,7 +363,7 @@ namespace Final_System.Forms
                 MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadInstructor();
 
-                txtinsNumber.Clear();
+              
                 txtfnameins.Clear();
                 txtlnameins.Clear();
                 txtexins.Clear();
@@ -382,14 +377,9 @@ namespace Final_System.Forms
 
         private void btnDELETEINS_Click(object sender, EventArgs e)
         {
-            String instructorID = txtinsNumber.Text;
+           
             String strOutputMsg = "";
-            // Validation not allow empty or null value
-            if (String.IsNullOrEmpty(instructorID))
-            {
-                errorProviderCustom1.SetError(txtinsNumber, "Empty Field!");
-                return;
-            }
+          
 
             ErrorCode retValue = userRepo.DeleteInstructorUsingStoredProf((Int32)instructorselId, ref strOutputMsg);
             if (retValue != ErrorCode.Success)
@@ -397,7 +387,7 @@ namespace Final_System.Forms
                 MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadInstructor();
 
-                txtinsNumber.Clear();
+             
                 txtfnameins.Clear();
                 txtlnameins.Clear();
                 txtexins.Clear();
@@ -416,7 +406,7 @@ namespace Final_System.Forms
                 if (dataGridView1ins.Rows[e.RowIndex].Cells[0].Value != null)
 
                     instructorselId = (Int32)dataGridView1ins.Rows[e.RowIndex].Cells[0].Value;
-                txtinsNumber.Text = dataGridView1ins.Rows[e.RowIndex].Cells["Room_Number"].Value.ToString();
+             
                 txtfnameins.Text = dataGridView1ins.Rows[e.RowIndex].Cells["Room_Number"].Value.ToString();
                 txtlnameins.Text = dataGridView1ins.Rows[e.RowIndex].Cells["Room_Type"].Value.ToString();
                 txtexins.Text = dataGridView1ins.Rows[e.RowIndex].Cells["Aircon"].Value.ToString();

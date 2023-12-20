@@ -36,13 +36,10 @@ namespace Final_System.AppData
         public DbSet<vw_InsTable> vw_InsTable { get; set; }
         public DbSet<vw_TrainingTable> vw_TrainingTable { get; set; }
         public DbSet<vw_UserTable> vw_UserTable { get; set; }
+        public DbSet<vw_allAppointment> vw_allAppointment { get; set; }
     
-        public virtual int sp_addinstructor(Nullable<int> instructorId, string instructorLName, string instructorFName, string expertise, string contactNo)
+        public virtual int sp_addinstructor(string instructorLName, string instructorFName, string expertise, string contactNo)
         {
-            var instructorIdParameter = instructorId.HasValue ?
-                new ObjectParameter("instructorId", instructorId) :
-                new ObjectParameter("instructorId", typeof(int));
-    
             var instructorLNameParameter = instructorLName != null ?
                 new ObjectParameter("instructorLName", instructorLName) :
                 new ObjectParameter("instructorLName", typeof(string));
@@ -59,7 +56,7 @@ namespace Final_System.AppData
                 new ObjectParameter("contactNo", contactNo) :
                 new ObjectParameter("contactNo", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_addinstructor", instructorIdParameter, instructorLNameParameter, instructorFNameParameter, expertiseParameter, contactNoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_addinstructor", instructorLNameParameter, instructorFNameParameter, expertiseParameter, contactNoParameter);
         }
     
         public virtual int sp_checkoutBOOK(Nullable<int> checkid, string checkfname, string checklname, string checkAddress, string checkEmail, string checkPhone, Nullable<System.DateTime> checkDateSTART, Nullable<System.DateTime> checkDateEXPIRE)

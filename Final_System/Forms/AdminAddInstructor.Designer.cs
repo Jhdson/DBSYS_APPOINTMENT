@@ -32,8 +32,6 @@
             this.pnlInstructor = new System.Windows.Forms.Panel();
             this.dataGridView1ins = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtinsNumber = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.btnDELETEINS = new System.Windows.Forms.Button();
             this.btnUPDATEINS = new System.Windows.Forms.Button();
             this.btnAddINS = new System.Windows.Forms.Button();
@@ -104,8 +102,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.txtinsNumber);
-            this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.btnDELETEINS);
             this.panel2.Controls.Add(this.btnUPDATEINS);
             this.panel2.Controls.Add(this.btnAddINS);
@@ -122,23 +118,6 @@
             this.panel2.Size = new System.Drawing.Size(281, 346);
             this.panel2.TabIndex = 14;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // txtinsNumber
-            // 
-            this.txtinsNumber.Location = new System.Drawing.Point(116, 41);
-            this.txtinsNumber.Name = "txtinsNumber";
-            this.txtinsNumber.Size = new System.Drawing.Size(162, 20);
-            this.txtinsNumber.TabIndex = 18;
-            this.txtinsNumber.TextChanged += new System.EventHandler(this.txtinsNumber_TextChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 48);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 13);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "Instructor\'s  Number";
             // 
             // btnDELETEINS
             // 
@@ -172,7 +151,7 @@
             // 
             // txtfnameins
             // 
-            this.txtfnameins.Location = new System.Drawing.Point(116, 75);
+            this.txtfnameins.Location = new System.Drawing.Point(105, 62);
             this.txtfnameins.Name = "txtfnameins";
             this.txtfnameins.Size = new System.Drawing.Size(162, 20);
             this.txtfnameins.TabIndex = 1;
@@ -180,7 +159,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 210);
+            this.label4.Location = new System.Drawing.Point(7, 193);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 13);
             this.label4.TabIndex = 6;
@@ -188,14 +167,14 @@
             // 
             // txtexins
             // 
-            this.txtexins.Location = new System.Drawing.Point(116, 161);
+            this.txtexins.Location = new System.Drawing.Point(108, 145);
             this.txtexins.Name = "txtexins";
             this.txtexins.Size = new System.Drawing.Size(162, 20);
             this.txtexins.TabIndex = 5;
             // 
             // txtcontactins
             // 
-            this.txtcontactins.Location = new System.Drawing.Point(116, 203);
+            this.txtcontactins.Location = new System.Drawing.Point(109, 191);
             this.txtcontactins.Name = "txtcontactins";
             this.txtcontactins.Size = new System.Drawing.Size(162, 20);
             this.txtcontactins.TabIndex = 7;
@@ -203,7 +182,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(57, 168);
+            this.label3.Location = new System.Drawing.Point(36, 149);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 4;
@@ -212,7 +191,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(50, 82);
+            this.label1.Location = new System.Drawing.Point(27, 65);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 0;
@@ -220,7 +199,7 @@
             // 
             // txtlnameins
             // 
-            this.txtlnameins.Location = new System.Drawing.Point(116, 117);
+            this.txtlnameins.Location = new System.Drawing.Point(108, 102);
             this.txtlnameins.Name = "txtlnameins";
             this.txtlnameins.Size = new System.Drawing.Size(162, 20);
             this.txtlnameins.TabIndex = 3;
@@ -228,7 +207,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(49, 122);
+            this.label2.Location = new System.Drawing.Point(29, 105);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 2;
@@ -491,8 +470,8 @@
             this.Controls.Add(this.pbclose1);
             this.Controls.Add(this.btnInstructor);
             this.Controls.Add(this.btnUsers);
-            this.Controls.Add(this.pnlUsers);
             this.Controls.Add(this.pnlInstructor);
+            this.Controls.Add(this.pnlUsers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdminAddInstructor";
             this.Text = "AdminAddInstructor";
@@ -552,8 +531,6 @@
         private System.Windows.Forms.ErrorProvider errorProviderCustom1;
         private System.Windows.Forms.PictureBox pbclose1;
         private System.Windows.Forms.PictureBox pbmini1;
-        private System.Windows.Forms.TextBox txtinsNumber;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.DataGridView dataGridViewPARTICIPANTS;
     }

@@ -12,7 +12,7 @@ namespace Final_System.Model
 
         private static UserLogged _instance;
         public tblUser User { get; set; }
-
+        public TblInstructor instrucTOR { get; set; }
         private UserLogged()
         {
 
@@ -24,5 +24,6 @@ namespace Final_System.Model
                 _instance = new UserLogged();
             return _instance;
         }
+
     }
 }   

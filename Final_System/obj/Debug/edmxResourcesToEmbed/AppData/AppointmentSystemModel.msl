@@ -107,5 +107,19 @@
     <FunctionImportMapping FunctionImportName="sp_UpdateInstructor" FunctionName="AppointmentSystemModel.Store.sp_UpdateInstructor" />
     <FunctionImportMapping FunctionImportName="sp_UPDATEUSER" FunctionName="AppointmentSystemModel.Store.sp_UPDATEUSER" />
     <FunctionImportMapping FunctionImportName="bookinsturtor" FunctionName="AppointmentSystemModel.Store.bookinsturtor" />
+    <EntitySetMapping Name="vw_allAppointment">
+      <EntityTypeMapping TypeName="AppointmentSystemModel.vw_allAppointment">
+        <MappingFragment StoreEntitySet="vw_allAppointment">
+          <ScalarProperty Name="userNumber" ColumnName="userNumber" />
+          <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+          <ScalarProperty Name="userAddress" ColumnName="userAddress" />
+          <ScalarProperty Name="Participants_Name" ColumnName="Participants Name" />
+          <ScalarProperty Name="contactNo" ColumnName="contactNo" />
+          <ScalarProperty Name="expertise" ColumnName="expertise" />
+          <ScalarProperty Name="Instructors_Name" ColumnName="Instructors Name" />
+          <ScalarProperty Name="instructorId" ColumnName="instructorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -101,7 +101,6 @@
     <EntitySet Name="vw_TrainingTable" EntityType="Self.vw_TrainingTable" />
     <EntitySet Name="vw_UserTable" EntityType="Self.vw_UserTable" />
     <FunctionImport Name="sp_addinstructor">
-      <Parameter Name="instructorId" Mode="In" Type="Int32" />
       <Parameter Name="instructorLName" Mode="In" Type="String" />
       <Parameter Name="instructorFName" Mode="In" Type="String" />
       <Parameter Name="expertise" Mode="In" Type="String" />
@@ -169,5 +168,24 @@
       <Parameter Name="insEXPER" Mode="In" Type="String" />
       <Parameter Name="insPHONE" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="vw_allAppointment" EntityType="AppointmentSystemModel.vw_allAppointment" />
   </EntityContainer>
+  <EntityType Name="vw_allAppointment">
+    <Key>
+      <PropertyRef Name="instructorId" />
+      <PropertyRef Name="Instructors_Name" />
+      <PropertyRef Name="Participants_Name" />
+      <PropertyRef Name="userAddress" />
+      <PropertyRef Name="userEmail" />
+      <PropertyRef Name="userNumber" />
+    </Key>
+    <Property Name="instructorId" Type="Int32" Nullable="false" />
+    <Property Name="Instructors_Name" Type="String" Nullable="false" MaxLength="258" FixedLength="false" Unicode="false" />
+    <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Participants_Name" Type="String" Nullable="false" MaxLength="258" FixedLength="false" Unicode="true" />
+    <Property Name="userAddress" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="userEmail" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="userNumber" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

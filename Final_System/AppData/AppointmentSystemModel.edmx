@@ -63,6 +63,26 @@
           <Property Name="roleID" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'AppointmentSystem.dbo.vw_allAppointment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_allAppointment">
+          <Key>
+            <PropertyRef Name="instructorId" />
+            <PropertyRef Name="Instructors Name" />
+            <PropertyRef Name="Participants Name" />
+            <PropertyRef Name="userAddress" />
+            <PropertyRef Name="userEmail" />
+            <PropertyRef Name="userNumber" />
+          </Key>
+          <Property Name="instructorId" Type="int" Nullable="false" />
+          <Property Name="Instructors Name" Type="varchar" MaxLength="258" Nullable="false" />
+          <Property Name="expertise" Type="varchar" MaxLength="128" />
+          <Property Name="contactNo" Type="nvarchar" MaxLength="128" />
+          <Property Name="Participants Name" Type="nvarchar" MaxLength="258" Nullable="false" />
+          <Property Name="userAddress" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="userEmail" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="userNumber" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'AppointmentSystem.dbo.vw_InsTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vw_InsTable">
           <Key>
@@ -110,7 +130,6 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
           <Parameter Name="insPHONE" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_addinstructor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="instructorId" Type="int" Mode="In" />
           <Parameter Name="instructorLName" Type="nvarchar" Mode="In" />
           <Parameter Name="instructorFName" Type="nvarchar" Mode="In" />
           <Parameter Name="expertise" Type="nvarchar" Mode="In" />
@@ -177,6 +196,18 @@ warning 6002: The table/view 'AppointmentSystem.dbo.vw_UserTable' does not have 
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblInstructor" EntityType="Self.TblInstructor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_allAppointment" EntityType="Self.vw_allAppointment" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_allAppointment].[instructorId] AS [instructorId], 
+[vw_allAppointment].[Instructors Name] AS [Instructors Name], 
+[vw_allAppointment].[expertise] AS [expertise], 
+[vw_allAppointment].[contactNo] AS [contactNo], 
+[vw_allAppointment].[Participants Name] AS [Participants Name], 
+[vw_allAppointment].[userAddress] AS [userAddress], 
+[vw_allAppointment].[userEmail] AS [userEmail], 
+[vw_allAppointment].[userNumber] AS [userNumber]
+FROM [dbo].[vw_allAppointment] AS [vw_allAppointment]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vw_InsTable" EntityType="Self.vw_InsTable" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [vw_InsTable].[Instructor Id] AS [Instructor Id], 
@@ -312,7 +343,6 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           <EntitySet Name="vw_TrainingTable" EntityType="Self.vw_TrainingTable" />
           <EntitySet Name="vw_UserTable" EntityType="Self.vw_UserTable" />
           <FunctionImport Name="sp_addinstructor">
-            <Parameter Name="instructorId" Mode="In" Type="Int32" />
             <Parameter Name="instructorLName" Mode="In" Type="String" />
             <Parameter Name="instructorFName" Mode="In" Type="String" />
             <Parameter Name="expertise" Mode="In" Type="String" />
@@ -380,7 +410,26 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
             <Parameter Name="insEXPER" Mode="In" Type="String" />
             <Parameter Name="insPHONE" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="vw_allAppointment" EntityType="AppointmentSystemModel.vw_allAppointment" />
         </EntityContainer>
+        <EntityType Name="vw_allAppointment">
+          <Key>
+            <PropertyRef Name="instructorId" />
+            <PropertyRef Name="Instructors_Name" />
+            <PropertyRef Name="Participants_Name" />
+            <PropertyRef Name="userAddress" />
+            <PropertyRef Name="userEmail" />
+            <PropertyRef Name="userNumber" />
+          </Key>
+          <Property Name="instructorId" Type="Int32" Nullable="false" />
+          <Property Name="Instructors_Name" Type="String" Nullable="false" MaxLength="258" FixedLength="false" Unicode="false" />
+          <Property Name="expertise" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="contactNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Participants_Name" Type="String" Nullable="false" MaxLength="258" FixedLength="false" Unicode="true" />
+          <Property Name="userAddress" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="userEmail" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="userNumber" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -493,6 +542,20 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
           <FunctionImportMapping FunctionImportName="sp_UpdateInstructor" FunctionName="AppointmentSystemModel.Store.sp_UpdateInstructor" />
           <FunctionImportMapping FunctionImportName="sp_UPDATEUSER" FunctionName="AppointmentSystemModel.Store.sp_UPDATEUSER" />
           <FunctionImportMapping FunctionImportName="bookinsturtor" FunctionName="AppointmentSystemModel.Store.bookinsturtor" />
+          <EntitySetMapping Name="vw_allAppointment">
+            <EntityTypeMapping TypeName="AppointmentSystemModel.vw_allAppointment">
+              <MappingFragment StoreEntitySet="vw_allAppointment">
+                <ScalarProperty Name="userNumber" ColumnName="userNumber" />
+                <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+                <ScalarProperty Name="userAddress" ColumnName="userAddress" />
+                <ScalarProperty Name="Participants_Name" ColumnName="Participants Name" />
+                <ScalarProperty Name="contactNo" ColumnName="contactNo" />
+                <ScalarProperty Name="expertise" ColumnName="expertise" />
+                <ScalarProperty Name="Instructors_Name" ColumnName="Instructors Name" />
+                <ScalarProperty Name="instructorId" ColumnName="instructorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -507,7 +570,7 @@ FROM [dbo].[vw_UserTable] AS [vw_UserTable]</DefiningQuery>
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="true" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
